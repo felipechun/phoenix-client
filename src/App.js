@@ -10,6 +10,8 @@ import AuthService from './components/authentication/auth-service/auth-service';
 import Signup from './components/authentication/Signup/Signup';
 import Login from './components/authentication/Login/Login';
 
+import SellForm from './components/SellForm/SellForm';
+
 
 class App extends Component {
 
@@ -47,9 +49,11 @@ class App extends Component {
       return (
         <div className="App">
           <Navbar/>
+          <h1>LOGGED IN!</h1>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About}/>
+            <Route exact path="/sell-form" component={SellForm}/>
           </Switch>
           <Footer/>
         </div>
@@ -58,11 +62,13 @@ class App extends Component {
       return (
         <div className="App">
         <Navbar/>
+        <h1>HELLO NOT LOGGED IN</h1>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About}/>
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser}/>}/>
+          <Route exact path="/sell-form" component={SellForm}/>
         </Switch>
         <Footer/>
       </div>
