@@ -3,7 +3,7 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     let service = axios.create({
-      baseURL: 'http://localhost:9000/api',
+      baseURL: process.env.REACT_APP_API_URL,
       withCredentials: true
     });
     this.service = service;
@@ -21,12 +21,20 @@ class AuthService {
 
   login = (username, password) => {
     return this.service.post('/login', {username, password})
-    .then(response => response.data)
+    .then(response => {
+      return response.data
+    })
   }
   
   logout = () => {
-    return this.service.post('/logout', {})
+    return this.service.get('/logout', {})
     .then(response => response.data)
+  }
+
+  handleUpload (theFile) {
+    // console.log('file in service: ', theFile)
+    return this.service.post('/upload', theFile)
+      .then(res => res.data);
   }
 
 }

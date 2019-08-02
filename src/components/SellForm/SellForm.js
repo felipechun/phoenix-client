@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AuthService from '../authentication/auth-service/auth-service';
 
 export class SellForm extends Component {
 
@@ -10,11 +11,12 @@ export class SellForm extends Component {
       categories: '',
       path: '',
       brand: '',
-      price: '',
-      description: '',
+      model: '',
+      starterPrice: '',
+      clientDescription: '',
       imageUrl: '', 
       };
-    // this.service = new AuthService();
+    this.service = new AuthService();
   }
 
   handleFormSubmit = (event) => {
@@ -30,8 +32,9 @@ export class SellForm extends Component {
           categories: '',
           path: '',
           brand: '',
-          price: '',
-          description: '',
+          model: '',
+          starterPrice: '',
+          clientDescription: '',
           imageUrl: '', 
         });
         this.props.getUser(response)
@@ -41,15 +44,38 @@ export class SellForm extends Component {
   
   handleChange = (event) => {  
     const {name, value} = event.target;
-    this.setState({[name]: value}, () => console.log('set state!'));
+    this.setState({[name]: value});
   }
+
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    uploadData.append("imageUrl", e.target.files[0]);
+    
+    this.service.handleUpload(uploadData)
+    .then(response => {
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ imageUrl: response.secure_url }, () => console.log('IMAGE', this.state.imageUrl));
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+}
 
   render() {
     console.log(this.state.path);
     return (
       <div className="container">
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
         <div className="form-group">
+          <label>What do you want to do?</label>
+            <select name="path" required onChange={ e => this.handleChange(e)} className="form-control" >
+              <option value="" >Choose one</option>
+              <option value="Repair">Repair</option>
+              <option value="Sell">Sell</option>
+            </select>
             <label>Category</label>
             <select name="categories" required onChange={ e => this.handleChange(e)} className="form-control" >
               <option value="" >Choose one</option>
@@ -61,19 +87,17 @@ export class SellForm extends Component {
               <option value="Audio">Audio</option>
             </select>
           </div>
-          <label>What do you want to do?</label>
-            <select name="path" required onChange={ e => this.handleChange(e)} className="form-control" >
-              <option value="" >Choose one</option>
-              <option value="Repair">Repair</option>
-              <option value="Sell">Sell</option>
-            </select>
-          <div className="form-group">
-            <label>Product</label>
-            <input type="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="Name of the product"  />
-          </div>
           <div className="form-group">
             <label>Product Brand</label>
-            <input type="brand" className="form-control" value={this.state.brand} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
+            <input type="text" name="brand" className="form-control" value={this.state.brand} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
+          </div>
+          <div className="form-group">
+            <label>Product</label>
+            <input type="text" name="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="Name of the product"  />
+          </div>
+          <div className="form-group">
+            <label>Model</label>
+            <input type="text" name="model" className="form-control" value={this.state.model} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
           </div>
           <div className="form-group">
             <label>Condition</label>
@@ -87,13 +111,17 @@ export class SellForm extends Component {
             this.state.path === 'Sell' ? (
               <div className="form-group">
                 <label>Suggested Price</label>
-                <input type="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
+                <input type="text" name="starterPrice" className="form-control" value={this.state.starterPrice} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
               </div>
             ) : null
           }
           <div className="form-group">
             <label >Description</label>
-            <textarea className="form-control" placeholder="Does your device have any problems or physical damages such as a broken screen or scuffs? Please be as specific as possible." rows="3"></textarea>
+            <textarea className="form-control" name="clientDescription" value={this.state.clientDescription} required onChange={ e => this.handleChange(e)} placeholder="Does your device have any problems or physical damages such as a broken screen or scuffs? Please be as specific as possible." rows="3"></textarea>
+          </div>
+          <div className="form-group">
+            <label>Please upload a picture of your product</label>
+            <input type="file" className="form-control-file" required onChange={ e => this.handleFileUpload(e)}/>
           </div>
         </form>
       </div>

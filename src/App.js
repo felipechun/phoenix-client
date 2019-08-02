@@ -12,6 +12,8 @@ import Login from './components/authentication/Login/Login';
 
 import SellForm from './components/SellForm/SellForm';
 
+// require('dotenv').config();
+
 
 class App extends Component {
 
@@ -21,13 +23,14 @@ class App extends Component {
     this.service = new AuthService();
   }
 
-  fetchUser(){
+  fetchUser = () => {
     if( this.state.loggedInUser === null ){
       this.service.loggedin()
       .then(response =>{
+        console.log('SETSTATE');
         this.setState({
           loggedInUser: response
-        }) 
+        })
       })
       .catch( err =>{
         this.setState({
@@ -37,7 +40,7 @@ class App extends Component {
     }
   }
 
-  getTheUser= (userObj) => {
+  getTheUser = (userObj) => {
     this.setState({
       loggedInUser: userObj
     })
@@ -45,10 +48,11 @@ class App extends Component {
 
   render() {
     this.fetchUser()
+    console.log('RENDER')
     if (this.state.loggedInUser) {
       return (
         <div className="App">
-          <Navbar/>
+          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
           <h1>LOGGED IN!</h1>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -61,7 +65,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-        <Navbar/>
+        <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
         <h1>HELLO NOT LOGGED IN</h1>
         <Switch>
           <Route exact path="/" component={Home} />

@@ -3,7 +3,7 @@ import axios from 'axios';
 class AxiosRoutes {
   constructor() {
     let service = axios.create({
-      baseURL: 'http://localhost:9000/api',
+      baseURL: process.env.REACT_APP_API_URL,
       withCredentials: true
     });
     this.service = service;
