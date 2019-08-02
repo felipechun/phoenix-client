@@ -7,7 +7,7 @@ import SubmitBtn from '../../buttons/SubmitBtn';
 class Signup extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', role: '', };
     this.service = new AuthService();
   }
 
@@ -15,12 +15,14 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+    const role = this.state.role;
   
-    this.service.signup(username, password)
+    this.service.signup(username, password, role)
     .then( response => {
         this.setState({
-            username: "", 
-            password: "",
+            username: '', 
+            password: '',
+            role: '',
         });
         this.props.getUser(response)
     })
@@ -39,7 +41,7 @@ class Signup extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <Input placeholder="Email" type="email" name="username" value={this.state.username} required onChange={ e => this.handleChange(e)} />
           <Input placeholder="Password" name="password" value={this.state.password} min="8" required onChange={ e => this.handleChange(e)} />
-          <select name="role" required>
+          <select name="role" required onChange={ e => this.handleChange(e)}>
             <option value="">Select</option>            
             <option value="user">User</option>
             <option value="company">Company</option>
