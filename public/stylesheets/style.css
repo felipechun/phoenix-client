@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+  /* min-width: 100vw; */
+  max-width: calc(100vw - 10px);
+}
+
+main {
+  min-height: calc(100vh - 360px);
+  /* padding-bottom: 56px; */
+}
