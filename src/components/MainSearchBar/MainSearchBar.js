@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import Input from '../input/Input';
 import SubmitBtn from '../buttons/SubmitBtn';
+import AxiosRoutes from '../AxiosRoutes/AxiosRoutes';
 
 export class MainSearchBar extends Component {
 
   constructor(props){
     super(props);
     this.state = { searchTerm: '' };
-    // this.service = new AuthService();
+    this.service = new AxiosRoutes();
   }
   
   handleFormSubmit = (event) => {
     event.preventDefault();
     const searchTerm = this.state.searchTerm
-    // this.service.login(searchTerm)
+    this.service.mainSearch(searchTerm)
     .then( response => {
         this.setState({ searchTerm: '' });
     })
@@ -23,7 +24,7 @@ export class MainSearchBar extends Component {
   handleChange = (event) => {  
     const { value } = event.target;
     this.setState({ searchTerm: value });
-    console.log(this.state.searchTerm, '<<<<< SEARCH TERM');
+    // console.log(this.state.searchTerm, '<<<<< SEARCH TERM');
     
   }
 
@@ -41,4 +42,4 @@ export class MainSearchBar extends Component {
   }
 }
 
-export default MainSearchBar
+export default MainSearchBar;
