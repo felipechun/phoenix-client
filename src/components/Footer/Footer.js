@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { Fragment } from 'react';
+import './Footer.css';
+import UpperFooter from './UpperFooter';
 
 const Footer = () => {
-
-    return (
-      <footer className="navbar fixed-bottom">
-        <a href="mailto:contact@phoenix.com"className="navbar-item nav-link">contact@phoenix.com</a>
-        <a className="navbar-item">Copyright 2019. All rights reserved</a>
+  return (
+    <Fragment>
+      <UpperFooter />
+      <footer className="footer navbar bg-dark">
+        <div className="container d-flex flex-row justify-content-between">
+          <a href="mailto:contact@phoenix.com" className="navbar-item nav-link text-white"><small>contact@phoenix.com</small></a>
+          <a href="/" className="navbar-item text-white"><small>Copyright 2019. All rights reserved</small></a>
+        </div>
       </footer>
-    )
-  }
+    </Fragment>
+  )
+}
 
 export default Footer;
