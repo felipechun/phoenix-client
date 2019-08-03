@@ -14,6 +14,11 @@ class AuthService {
     .then(response => response.data)
   }
 
+  companySignup = (name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email) => {
+    return this.service.post('/create-company', {name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email})
+    .then(response => response.data)
+  }
+
   loggedin = () => {
     return this.service.get('/loggedin')
     .then(response => response.data)
