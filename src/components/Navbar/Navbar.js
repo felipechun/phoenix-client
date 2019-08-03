@@ -9,10 +9,6 @@ class Navbar extends Component {
     this.service = new AuthService();
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   logMeOut = () => {
     this.service.logout()
     .then(() => {

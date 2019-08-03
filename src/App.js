@@ -11,8 +11,7 @@ import Signup from './components/authentication/Signup/Signup';
 import Login from './components/authentication/Login/Login';
 
 import SellForm from './components/SellForm/SellForm';
-
-// require('dotenv').config();
+import CompanyRegister from './components/CompanyRegister/CompanyRegister';
 
 
 class App extends Component {
@@ -21,13 +20,13 @@ class App extends Component {
     super(props)
     this.state = { loggedInUser: null };
     this.service = new AuthService();
+    this.status = false;
   }
-
-  fetchUser = () => {
+  
+  fetchUser = () =>{
     if( this.state.loggedInUser === null ){
       this.service.loggedin()
       .then(response =>{
-        console.log('SETSTATE');
         this.setState({
           loggedInUser: response
         })
@@ -48,8 +47,13 @@ class App extends Component {
 
   render() {
     this.fetchUser()
-    console.log('RENDER')
-    if (this.state.loggedInUser) {
+    if(!this.status){
+      this.status= true;
+      return(
+        <div className="App">
+        </div>
+      );
+    } else if (this.state.loggedInUser) {
       return (
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
@@ -58,6 +62,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About}/>
             <Route exact path="/sell-form" component={SellForm}/>
+            <Route exact path="/company-signup" component={CompanyRegister} />
           </Switch>
           <Footer/>
         </div>
