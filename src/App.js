@@ -17,20 +17,16 @@ class App extends Component {
     }
   }
 
-  // state = {
-
-  // }
-
   render() {
     return (
       <div className="App">
         <main role="main">
           <Navbar/>
           <Switch>
-            <Route exact path="/" component={ProductDetails} />
-            <Route exact path="/" component={Showcase} />
-            <Route path="/" component={Home} />
-            <Route path="/about" component={About}/>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/products/" component={Showcase} />
+            <Route exact path="/products/product" component={ProductDetails} />
           </Switch>
         </main>
         <Footer/>

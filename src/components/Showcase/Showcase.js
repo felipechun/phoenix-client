@@ -17,11 +17,9 @@ export class Search extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-2">
-            <Sidebar />
-          </div>
-          <div className="col-10">
-            <div className="row">
+          <div className="col-12">
+            <div className="row d-flex flex-column align-items-center">
+              <Sidebar />
               <Feature />
             </div>
             <div id="Showcase" className="row mt-3">

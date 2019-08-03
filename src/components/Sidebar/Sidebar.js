@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 export class Sidebar extends Component {
   render() {
     return (
-      <div className="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
-        <Link to="/category" className="btn btn-outline-secondary">Category #1</Link>
-        <Link to="/category" className="btn btn-outline-secondary">Category #2</Link>
-        <Link to="/category" className="btn btn-outline-secondary">Category #3</Link>
-        <Link to="/category" className="btn btn-outline-secondary">Category #4</Link>
-        <Link to="/category" className="btn btn-outline-secondary">Category #5</Link>
-        <Link to="/category" className="btn btn-outline-secondary">Category #6</Link>
+      <div className="btn-group mb-3" role="group" aria-label="Button group with nested dropdown">
+        <Link to="/all" className="btn btn-outline-secondary">All</Link>
+        <Link to="/laptop" className="btn btn-outline-secondary">Laptop</Link>
+        <Link to="/tablet" className="btn btn-outline-secondary">Tablet</Link>
+        <Link to="/mobile" className="btn btn-outline-secondary">Mobile</Link>
+        <Link to="/consoles" className="btn btn-outline-secondary">Consoles</Link>
+        <Link to="/tvs" className="btn btn-outline-secondary">TV's</Link>
+        <Link to="/audio" className="btn btn-outline-secondary">Audio</Link>
       </div>
     )
   }
