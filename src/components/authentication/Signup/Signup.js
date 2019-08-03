@@ -43,8 +43,8 @@ class Signup extends Component {
           <Input placeholder="Password" name="password" value={this.state.password} min="8" required onChange={ e => this.handleChange(e)} />
           <select name="role" required onChange={ e => this.handleChange(e)}>
             <option value="">Select</option>            
-            <option value="user">User</option>
-            <option value="company">Company</option>
+            <option value="Costumer">User</option>
+            <option value="Repair">Company</option>
           </select>
           <SubmitBtn type="submit" className="btn btn-outline-success">Sign up</SubmitBtn>
         </form>
