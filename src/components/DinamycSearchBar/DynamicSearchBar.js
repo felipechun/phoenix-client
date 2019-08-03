@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from '../input/Input';
 import SubmitBtn from '../buttons/SubmitBtn';
 
-export class DynamicSearchBar extends Component {
+class DynamicSearchBar extends Component {
 
   constructor(props){
     super(props);

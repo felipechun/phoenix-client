@@ -8,11 +8,11 @@ class Button extends Component {
   render() {
     return (
       <button
-      type={props.type}
-      name={props.name}
-      value={props.value}
-      className={props.className}
-      >{props.children}</button>
+      type={this.props.type}
+      name={this.props.name}
+      value={this.props.value}
+      className={this.props.className}
+      >{this.props.children}</button>
     )
   }
 }

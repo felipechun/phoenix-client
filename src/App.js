@@ -7,7 +7,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Showcase from './components/Showcase/Showcase';
 import ProductDetails from './components/ProductDetails/ProductDetails';
-
+import Chart from './components/Chart/Chart';
 
 class App extends Component {
   constructor(props) {
@@ -21,15 +21,16 @@ class App extends Component {
     return (
       <div className="App">
         <main role="main">
-          <Navbar/>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About}/>
             <Route exact path="/products/" component={Showcase} />
             <Route exact path="/products/product" component={ProductDetails} />
+            <Route exact path="/chart" component={Chart} />
           </Switch>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

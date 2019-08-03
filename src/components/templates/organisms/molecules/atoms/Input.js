@@ -7,12 +7,12 @@ class Input extends Component {
   render() {
     return (
       <input
-      type={props.type}
-      name={props.name}
-      value={props.value}
-      className={props.className}
-      onChange={props.onChange}
-      placeholder={props.placeholder}
+      type={this.props.type}
+      name={this.props.name}
+      value={this.props.value}
+      className={this.props.className}
+      onChange={this.props.onChange}
+      placeholder={this.props.placeholder}
       required/>
     )
   }

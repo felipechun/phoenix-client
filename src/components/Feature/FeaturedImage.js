@@ -8,7 +8,7 @@ class FeaturedImage extends Component {
       <div className="carousel-inner">
         <div className="carousel-item active">
           <Link to="/:category/:id">
-            <img src={this.props.imgSource} className="d-block w-100" alt="Featured Product #1" />
+            <img src="./images/featured-searched-product-01.png" className="d-block w-100" alt="Featured Product #1" />
           </Link>
         </div>
         <div className="carousel-item">

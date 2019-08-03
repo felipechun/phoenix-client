@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 class Paragraph extends Component {
-  render(props) {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
     return (
-      <p className={props.className}>{props.children}</p>
+      <p className={this.props.paragraphClass}>{this.props.children}</p>
     )
   }
 }
