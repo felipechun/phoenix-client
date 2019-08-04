@@ -11,8 +11,9 @@ import Chart from './components/Chart/Chart';
 import AuthService from './components/authentication/auth-service/auth-service';
 import Signup from './components/authentication/Signup/Signup';
 import Login from './components/authentication/Login/Login';
-import SellForm from './components/SellForm/SellForm';
+import SellForm from './components/ProductForms/SellForm/SellForm';
 import CompanyRegister from './components/CompanyRegister/CompanyRegister';
+import FirstCompanyResponse from './components/ProductForms/FirstCompanyResponse/FirstCompanyResponse';
 
 
 class App extends Component {
@@ -61,11 +62,12 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About}/>
-            <Route exact path="/sell-form" component={SellForm}/>
-            <Route exact path="/company-signup" component={CompanyRegister} />
             <Route exact path="/products/" component={Showcase} />
             <Route exact path="/products/product" component={ProductDetails} />
             <Route exact path="/chart" component={Chart} />
+            <Route exact path="/company-signup" component={CompanyRegister} />
+            <Route exact path="/sell-form" component={SellForm}/>
+            <Route exact path="/first-response" component={FirstCompanyResponse} />
           </Switch>
           <Footer/>
         </div>

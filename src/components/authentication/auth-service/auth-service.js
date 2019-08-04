@@ -42,6 +42,49 @@ class AuthService {
       .then(res => res.data);
   }
 
+  updateProductStatus (
+    finalName,
+    status,
+    finalStatusProduct,
+    brand,
+    model,
+    specs,
+    starterPrice,
+    companyPrice,
+    repairPrice,
+    sellingPrice,
+    comission,
+    totalPrice,
+    repairDescription,
+    companyDescription,
+    finalDescription,
+    onSale,
+    repairImageUrl,
+    repairYesNo
+  ) {
+    return this.service.put('/product-status/:id', {
+      finalName,
+      status,
+      finalStatusProduct,
+      brand,
+      model,
+      specs,
+      starterPrice,
+      companyPrice,
+      repairPrice,
+      sellingPrice,
+      comission,
+      totalPrice,
+      repairDescription,
+      companyDescription,
+      finalDescription,
+      onSale,
+      repairImageUrl,
+      repairYesNo
+    })
+      .then(res => res.data)
+  }
+
 }
 
 export default AuthService;

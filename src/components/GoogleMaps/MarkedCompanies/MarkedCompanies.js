@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 // set all the style on the map
 const mapStylesX = {
- width: '100%',
- height: '300px',
- margin:"auto",
- borderRadius: "30px 30px 30px 30px",
- border: "3px solid #000000",
+//  width: '100%',
+//  height: '300px',
+//  margin:"auto",
+//  borderRadius: "30px 30px 30px 30px",
+//  border: "3px solid #000000",
 };
 // can be built as funcional component
 class MapContainer extends Component {
@@ -72,7 +72,8 @@ class MapContainer extends Component {
      <Map
        google={this.props.google}
        zoom={12}
-       style={mapStylesX}
+       className="mx-auto w-100 h-25 mx-auto mb-5"
+      //  style={mapStylesX}
        initialCenter={{ lat: -23.5470789, lng: -46.6826298 }}
      >
        {this.displayMarkers()}
