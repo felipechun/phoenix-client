@@ -40,7 +40,7 @@ export class SellForm extends Component {
     const imageUrl = this.state.imageUrl;
     const idCompany = this.state.idCompany;
   
-    this.service.updateProductStatus(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl, idCompany)
+    this.service.createProduct(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl, idCompany)
     .then( response => {
         this.setState({
           name: '',
@@ -130,7 +130,6 @@ export class SellForm extends Component {
   
 
   render() {
-    console.log(this.state.path);
     return (
       <div className="container">
         <div className="row">
