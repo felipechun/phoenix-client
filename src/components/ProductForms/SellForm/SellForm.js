@@ -40,7 +40,7 @@ export class SellForm extends Component {
     const imageUrl = this.state.imageUrl;
     const idCompany = this.state.idCompany;
   
-    this.service.updateProductStatus(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl, idCompany)
+    this.service.createProduct(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl, idCompany)
     .then( response => {
         this.setState({
           name: '',
@@ -130,7 +130,6 @@ export class SellForm extends Component {
   
 
   render() {
-    console.log(this.state.path);
     return (
       <div className="container">
         <div className="row">
@@ -179,32 +178,6 @@ export class SellForm extends Component {
                       <option value="Semi-used">Semi-used</option>
                     </select>
                   </div>
-                  {
-                    this.state.path === 'Sell' && this.state.statusProduct === 'Broken' ? (
-                      <div>
-                        <div className="form-group">
-                          <label className="card-title font-weight-bold">Suggested Price</label>
-                          <div className="input-group">
-                            <div className="input-group-prepend">
-                              <span className="input-group-text">$</span>
-                            </div>
-                            <input type="text" name="starterPrice" className="form-control" value={this.state.starterPrice} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
-                          </div>
-                        </div>
-                        <div className="form-group">
-                        <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
-                        <MarkedCompanies 
-                        displayMarkers={this.displayMarkers} 
-                        onMarkerClick={this.onMarkerClick} 
-                        onMapClicked={this.onMapClicked} 
-                        selectedPlace={this.state.selectedPlace}
-                        activeMarker={this.state.activeMarker}
-                        showingInfoWindow={this.state.showingInfoWindow}
-                        />
-                        </div>
-                      </div>
-                    ) : null
-                  }
                                     {
                     this.state.path === 'Sell' ? (
                       <div className="form-group">
@@ -240,6 +213,23 @@ export class SellForm extends Component {
                   <div className="form-group">
                     <label className="card-title font-weight-bold">Please upload a picture of your product</label>
                     <input type="file" className="form-control-file" required onChange={ e => this.handleFileUpload(e)}/>
+                  </div>
+                  <div className="form-group">
+                  {
+                    this.state.path === 'Sell' && this.state.statusProduct === 'Broken' ? (
+                      <div>
+                        <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
+                        <MarkedCompanies 
+                        displayMarkers={this.displayMarkers} 
+                        onMarkerClick={this.onMarkerClick} 
+                        onMapClicked={this.onMapClicked} 
+                        selectedPlace={this.state.selectedPlace}
+                        activeMarker={this.state.activeMarker}
+                        showingInfoWindow={this.state.showingInfoWindow}
+                        />
+                      </div>
+                    ) : null
+                  }
                   </div>
                   <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
                 </form>

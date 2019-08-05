@@ -2,16 +2,10 @@ import React from 'react'
 import { Map, InfoWindow, GoogleApiWrapper } from 'google-maps-react'
 
 const MapContainer = (props) => {
-  const styleContainer = {
-    width: '50%',
-    heigth: '30%',
-    clear: 'both',
-  };
   return (
     <Map
       google={props.google}
       zoom={12}
-      style={styleContainer}
       className="w-100 h-25 mx-auto mb-5"
       initialCenter={{ lat: -23.5470789, lng: -46.6826298 }}
     >
@@ -27,5 +21,5 @@ const MapContainer = (props) => {
  
 }
 export default GoogleApiWrapper({
- apiKey: 'AIzaSyCkanr-oYF_mRUa0P5FgxrDm7sBDYy2U3o'
+ apiKey: 'AIzaSyDdAcLIRpqv9khtc_t2kOOyIgvIEDUEQUk'
 })(MapContainer);
