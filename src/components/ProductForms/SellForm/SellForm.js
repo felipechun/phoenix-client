@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AuthService from '../../authentication/auth-service/auth-service';
 import MarkedCompanies from '../../GoogleMaps/MarkedCompanies/MarkedCompanies';
 import SubmitBtn from '../../buttons/SubmitBtn';
+import { Marker } from 'google-maps-react'
 
 export class SellForm extends Component {
 
@@ -16,7 +17,12 @@ export class SellForm extends Component {
       model: '',
       starterPrice: '',
       clientDescription: '',
-      imageUrl: '', 
+      imageUrl: '',
+      idCompany: '',
+      stores: [],
+      activeMarker: {}, // will display the marker info
+      showingInfoWindow: false,
+      selectedPlace: {},
       };
     this.service = new AuthService();
   }
@@ -32,8 +38,9 @@ export class SellForm extends Component {
     const starterPrice = this.state.starterPrice;
     const clientDescription = this.state.clientDescription;
     const imageUrl = this.state.imageUrl;
+    const idCompany = this.state.idCompany;
   
-    this.service.updateProductStatus(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl)
+    this.service.updateProductStatus(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl, idCompany)
     .then( response => {
         this.setState({
           name: '',
@@ -45,6 +52,7 @@ export class SellForm extends Component {
           starterPrice: '',
           clientDescription: '',
           imageUrl: '', 
+          idCompany: '',
         });
         this.props.getUser(response)
     })
@@ -72,6 +80,54 @@ export class SellForm extends Component {
         console.log("Error while uploading the file: ", err);
       });
   }
+
+  // -------------------GOOGLE MAPS MARKERS METHODS------------------- //
+
+  componentDidMount = () => {
+    this.service.getCompanies()
+    .then(answer => {      
+      this.setState({
+        stores: answer,
+      })
+    })
+    .catch(err => console.log(err));
+  }
+
+  displayMarkers = () => {
+    return this.state.stores.map((store, index) => {      
+      return <Marker
+        key={index}
+        name={store.name}
+        address={store.address}
+        id={store._id}
+        position={{
+          lat: store.location.coordinates[1],
+          lng: store.location.coordinates[0],
+        }}
+        onClick={this.onMarkerClick}
+        />
+    })
+  }
+  // get the id of the store and change the state for display variables
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      idCompany: marker.id,
+      activeMarker: marker,
+      showingInfoWindow: true,
+      selectedPlace: props,
+    })
+  }
+  // will display the info of the store on click
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  }
+
+  
 
   render() {
     console.log(this.state.path);
@@ -137,7 +193,14 @@ export class SellForm extends Component {
                         </div>
                         <div className="form-group">
                         <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
-                        <MarkedCompanies />
+                        <MarkedCompanies 
+                        displayMarkers={this.displayMarkers} 
+                        onMarkerClick={this.onMarkerClick} 
+                        onMapClicked={this.onMapClicked} 
+                        selectedPlace={this.state.selectedPlace}
+                        activeMarker={this.state.activeMarker}
+                        showingInfoWindow={this.state.showingInfoWindow}
+                        />
                         </div>
                       </div>
                     ) : null
@@ -159,7 +222,14 @@ export class SellForm extends Component {
                     this.state.path === 'Repair' ? (
                       <div className="form-group">
                       <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
-                      <MarkedCompanies />
+                      <MarkedCompanies 
+                      displayMarkers={this.displayMarkers} 
+                      onMarkerClick={this.onMarkerClick} 
+                      onMapClicked={this.onMapClicked} 
+                      selectedPlace={this.state.selectedPlace}
+                      activeMarker={this.state.activeMarker}
+                      showingInfoWindow={this.state.showingInfoWindow}
+                       />
                     </div>
                     ) : null
                   }
