@@ -72,8 +72,8 @@ class SendToStore extends Component {
               <div className="card-body">
                 <form onSubmit={this.handleFormSubmit}>
                   <div className="form-group">
-                    <label className="card-title font-weight-bold">Name to be displayed in store</label>
-                    <input type="text" name="finalName" className="form-control" value={this.state.finalName} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
+                    <label className="card-title font-weight-bold">Name</label>
+                    <input type="text" name="finalName" className="form-control" value={this.state.finalName} required onChange={ e => this.handleChange(e)} placeholder="Name to be displayed in store"  />
                   </div>
                   <div className="form-group">
                     <label className="card-title font-weight-bold">Description to be displayed in store</label>
