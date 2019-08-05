@@ -3,8 +3,13 @@ import React, { Component } from 'react';
 class Chart extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="row mt-5">
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col-12">
+            <h4 className="border-bottom text-uppercase">Cart</h4>
+          </div>
+        </div>
+        <div className="row mt-3">
           <div className="col-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <h5 className="border-bottom">This is your checkout area</h5>
             <table className="table table-sm">
@@ -24,7 +29,7 @@ class Chart extends Component {
                       <p>Product Specification</p>
                     </div>
                   </td>
-                  <td className="text-right align-middle">R$ 999,99</td>
+                  <td className="text-right align-middle">R$ 999,99 <button type="button" className="btn btn-sm btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
                 </tr>
               </tbody>
               <tfoot className="thead-dark">

@@ -2,7 +2,8 @@ import React from 'react'
 
 const Input = (props) => {
   return (
-    <input 
+    <input
+    id={props.id}
     placeholder={props.placeholder} 
     className={props.className} 
     name={props.name} 
