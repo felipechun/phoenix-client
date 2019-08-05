@@ -71,7 +71,7 @@ export class SellForm extends Component {
       .catch(err => {
         console.log("Error while uploading the file: ", err);
       });
-}
+  }
 
   render() {
     console.log(this.state.path);
@@ -124,6 +124,25 @@ export class SellForm extends Component {
                     </select>
                   </div>
                   {
+                    this.state.path === 'Sell' && this.state.statusProduct === 'Broken' ? (
+                      <div>
+                        <div className="form-group">
+                          <label className="card-title font-weight-bold">Suggested Price</label>
+                          <div className="input-group">
+                            <div className="input-group-prepend">
+                              <span className="input-group-text">$</span>
+                            </div>
+                            <input type="text" name="starterPrice" className="form-control" value={this.state.starterPrice} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                        <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
+                        <MarkedCompanies />
+                        </div>
+                      </div>
+                    ) : null
+                  }
+                                    {
                     this.state.path === 'Sell' ? (
                       <div className="form-group">
                         <label className="card-title font-weight-bold">Suggested Price</label>
@@ -132,14 +151,17 @@ export class SellForm extends Component {
                             <span className="input-group-text">$</span>
                           </div>
                           <input type="text" name="starterPrice" className="form-control" value={this.state.starterPrice} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
+                        </div>
                       </div>
-                      </div>
-                    ) : (
+                    ) : null
+                  }
+                  {
+                    this.state.path === 'Repair' ? (
                       <div className="form-group">
                       <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
                       <MarkedCompanies />
                     </div>
-                    )
+                    ) : null
                   }
                   <div className="form-group">
                     <label className="card-title font-weight-bold">Description</label>

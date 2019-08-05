@@ -14,7 +14,11 @@ import Login from './components/authentication/Login/Login';
 import SellForm from './components/ProductForms/SellForm/SellForm';
 import CompanyRegister from './components/CompanyRegister/CompanyRegister';
 import FirstCompanyResponse from './components/ProductForms/FirstCompanyResponse/FirstCompanyResponse';
-
+import ToRepair from './components/ProductForms/ToRepair/ToRepair';
+import RepairServiceOrder from './components/ProductForms/RepairServiceOrder/RepairServiceOrder';
+import CompanyRepairYesOrNo from './components/ProductForms/CompanyRepairYesOrNo/CompanyRepairYesOrNo';
+import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany';
+import SendToStore from './components/ProductForms/SendToStore/SendToStore';
 
 class App extends Component {
     constructor(props){
@@ -68,6 +72,11 @@ class App extends Component {
             <Route exact path="/company-signup" component={CompanyRegister} />
             <Route exact path="/sell-form" component={SellForm}/>
             <Route exact path="/first-response" component={FirstCompanyResponse} />
+            <Route exact path="/to-repair" component={ToRepair} />
+            <Route exact path="/service-order" component={RepairServiceOrder} />
+            <Route exact path="/repair-decision" component={CompanyRepairYesOrNo} />
+            <Route exact path="/send-to-company" component={SendToCompany} />
+            <Route exact path="/send-to-store" component={SendToStore} />
           </Switch>
           <Footer/>
         </div>
