@@ -2,22 +2,25 @@ import React from 'react'
 import { Map, InfoWindow, GoogleApiWrapper } from 'google-maps-react'
 
 const MapContainer = (props) => {
-
+  const styleContainer = {
+    width: '50%',
+    heigth: '30%',
+    clear: 'both',
+  };
   return (
     <Map
       google={props.google}
       zoom={12}
-      className="mx-auto w-100 h-25 mx-auto mb-5"
+      style={styleContainer}
+      className="w-100 h-25 mx-auto mb-5"
       initialCenter={{ lat: -23.5470789, lng: -46.6826298 }}
     >
       {props.displayMarkers()}
       <InfoWindow
         marker={props.activeMarker}
         visible={props.showingInfoWindow}>
-          <div>
-            <h3>{props.selectedPlace.name}</h3>
-            <p>{props.selectedPlace.address}</p>
-          </div>
+        <h3>{props.selectedPlace.name}</h3>
+        <p>{props.selectedPlace.address}</p>
       </InfoWindow>
     </Map>
   );
