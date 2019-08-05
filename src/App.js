@@ -59,6 +59,7 @@ class App extends Component {
       this.status = true;
       return <div className="App" />;
     } else if (this.state.loggedInUser) {
+      console.log(this.state.loggedInUser);
       return (
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
@@ -67,7 +68,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About}/>
-              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/profile" render={(props) => <Profile userObj={this.state.loggedInUser} />} />
               <Route exact path="/products/" component={Showcase} />
               <Route exact path="/products/product" component={ProductDetails} />
               <Route exact path="/cart" component={Cart} />
