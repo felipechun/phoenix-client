@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../auth-service/auth-service';
 import { Link } from 'react-router-dom';
+import Label from '../../label/Label';
 import Input from '../../input/Input';
 import SubmitBtn from '../../buttons/SubmitBtn';
 
@@ -28,29 +29,54 @@ class Signup extends Component {
     })
     .catch( error => console.log(error) )
   }
-  
-  handleChange = (event) => {  
+
+  handleChange = (event) => {
     const {name, value} = event.target;
     this.setState({[name]: value});
   }
-      
-  
+
   render(){
     return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <Input placeholder="Email" type="email" name="username" value={this.state.username} required onChange={ e => this.handleChange(e)} />
-          <Input placeholder="Password" name="password" value={this.state.password} min="8" required onChange={ e => this.handleChange(e)} />
-          <select name="role" required onChange={ e => this.handleChange(e)}>
-            <option value="">Select</option>            
-            <option value="Costumer">User</option>
-            <option value="Repair">Company</option>
-          </select>
-          <SubmitBtn type="submit" className="btn btn-outline-success">Sign up</SubmitBtn>
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col-12">
+            <h4 className="border-bottom text-uppercase">Signup</h4>
+          </div>
+        </div>
+        <form className="w-100" onSubmit={this.handleFormSubmit}>
+          <div className="row">
+            <div className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+              <div className="form-group">
+                <Label labelFor="email">Email</Label>
+                <Input id="email" className="form-control" placeholder="Email" type="email" name="username" value={this.state.username} onChange={ e => this.handleChange(e)} required />
+              </div>
+            </div>
+            <div className="col-12 col-sm-12 col-md-4 col-lg-5 col-xl-5">
+              <div className="form-group">
+                <Label labelFor="password">Password</Label>
+                  <Input id="password" className="form-control" placeholder="Password" type="password" name="password" value={this.state.password} min="8" onChange={ e => this.handleChange(e)} required />
+              </div>
+            </div>
+            <div className="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+              <div className="form-group">
+                <Label labelFor="role">Signup as</Label>
+                <select id="role" className="form-control" onChange={ e => this.handleChange(e)} required>
+                  <option value="">Select</option>
+                  <option value="Customer">User</option>
+                  <option value="Repair">Company</option>
+                </select>
+              </div>
+            </div>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+              <div className="d-flex flex-column align-items-center">
+                <SubmitBtn type="submit" className="btn btn-outline-success">Sign up</SubmitBtn>
+                <p className="mt-5">Already have an account?
+                    <Link to={"/login"}> Log in</Link>
+                </p>
+              </div>
+            </div>
+          </div>
         </form>
-        <p>Already have an account? 
-            <Link to={"/login"}> Log in</Link>
-        </p>
       </div>
     )
   }
