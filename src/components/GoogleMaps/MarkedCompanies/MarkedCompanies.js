@@ -7,7 +7,8 @@ const MapContainer = (props) => {
     <Map
       google={props.google}
       zoom={12}
-      className="mx-auto w-100 h-25 mx-auto mb-5"
+      id="identity"
+      className="h-25 mb-5"
       initialCenter={{ lat: -23.5470789, lng: -46.6826298 }}
     >
       {props.displayMarkers()}
