@@ -9,13 +9,14 @@ class AuthService {
     this.service = service;
   }
 
-  signup = (username, password) => {
-    return this.service.post('/signup', {username, password})
+
+  signup = (username, password, role) => {
+    return this.service.post('/signup', {username, password, role})
     .then(response => response.data)
   }
 
-  companySignup = (name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email) => {
-    return this.service.post('/create-company', {name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email})
+  companySignup = (name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email, cep) => {
+    return this.service.post('/create-company', {name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email, cep})
     .then(response => response.data)
   }
 
@@ -38,6 +39,20 @@ class AuthService {
 
   getCompanies = () => {
     return this.service.get('/companies/all')
+    .then(response => {
+      return response.data
+    })
+  }
+
+  getAllProducts = () => {
+    return this.service.get('/products/all')
+    .then(response => {
+      return response.data
+    })
+  }
+
+  populateProducts = () => {
+    return this.service.get('/client-products')
     .then(response => {
       return response.data
     })
@@ -76,7 +91,39 @@ class AuthService {
       .then(res => res.data)
   }
 
+  updateToFirstResponse (status, responsePrice, companyDescription, productId) {
+    return this.service.put(`/product-status/${productId}`, {
+      status,
+      responsePrice,
+      companyDescription,
+      productId,
+    })
+      .then( res => res.data)
+  }
+
+  updateToRepair (status, productId) {
+    return this.service.put(`/product-status/${productId}`, {
+      status,
+      productId,
+    })
+      .then(res => res.data)
+  }
+
+  updateToOrderRepair (status, repairPrice, repairDescription, model, specs, brand, repairImageUrl, productId) {
+    return this.service.put(`/product-status/${productId}`, {
+      status,
+      repairPrice,
+      repairDescription,
+      model,
+      specs,
+      brand,
+      repairImageUrl,
+      productId,
+    })
+  }
+
   updateProductStatus (
+    productId,
     finalName,
     status,
     finalStatusProduct,
@@ -96,7 +143,7 @@ class AuthService {
     repairImageUrl,
     repairYesNo
   ) {
-    return this.service.put('/product-status/:id', {
+    return this.service.put(`/product-status/${productId}`, {
       finalName,
       status,
       finalStatusProduct,

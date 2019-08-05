@@ -20,6 +20,7 @@ import CompanyRepairYesOrNo from './components/ProductForms/CompanyRepairYesOrNo
 import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany';
 import SendToStore from './components/ProductForms/SendToStore/SendToStore';
 import Profile from "./components/Profile/Profile";
+import AdminProfile from "./components/AdminProfile/AdminProfile";
 
 
 class App extends Component {
@@ -69,6 +70,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About}/>
               <Route exact path="/profile" render={(props) => <Profile userObj={this.state.loggedInUser} />} />
+              <Route exact path="/admin" render={(props) => <AdminProfile userObj={this.state.loggedInUser} />} />
               <Route exact path="/products/" component={Showcase} />
               <Route exact path="/products/product" component={ProductDetails} />
               <Route exact path="/cart" component={Cart} />

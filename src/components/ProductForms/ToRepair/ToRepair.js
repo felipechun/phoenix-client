@@ -8,9 +8,8 @@ class ToRepair extends Component {
     super(props);
     this.state = {
       status: 'ToRepair',
-      // starterPrice: this.props.starterPrice,
-      // companyPrice: this.props.companyPrice,
-      // NEED TO RECEIVE SELECTED COMPANY ADDRESS
+      company: this.props.companyObj,
+      productId: this.props.productId,
       };
     this.service = new AuthService();
   }
@@ -18,11 +17,13 @@ class ToRepair extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const status = this.state.status;
+    const productId = this.state.productId;
   
-    this.service.updateProductStatus(status)
+    this.service.updateToRepair(status, productId)
     .then( response => {
         this.setState({
           status: '',
+          productId: '',
         });
         // this.props.getUser(response)
     })
@@ -45,17 +46,9 @@ class ToRepair extends Component {
               <div className="card-body">
                 <form onSubmit={this.handleFormSubmit}>
                   <div className="form-group">
-                    <label className="card-title font-weight-bold">This is the estimated value of your product in its current condition, based on the current market and the information you have provided us. Note that this value is subject to change.</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">$</span>
-                      </div>
-                      <input type="text" name="companyPrice" className="form-control disabled" value='{this.state.companyPrice}' />
-                    </div>
-                  </div>
-                  <div className="form-group">
                     <label className="card-title font-weight-bold">Please send your device to the following address:</label>
-                    <p className="card-text" >get address info from state</p>
+                    <p className="card-text" >{this.state.company.address}</p>
+                    <p className="card-text" >CEP: {this.state.company.cep}</p>
                   </div>
                   <p className="card-text font-italic text-danger">Important: only click the button if you have sent your product to the given address</p>
                   <SubmitBtn type="submit" className="btn btn-outline-success float-right">Yes, I have sent my device</SubmitBtn>

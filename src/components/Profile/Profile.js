@@ -7,6 +7,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       user: this.props.userObj,
+      userProducts: [],
       // path: 'Repair',
       // categories: 'Laptop',
       // brand: 'Samsung',
@@ -32,9 +33,19 @@ class Profile extends Component {
     this.service = new AuthService();
   }
 
+  componentDidMount = () => {
+    this.service.populateProducts()
+      .then(answer => {
+        console.log(answer, 'ANSWER');
+
+        this.setState({
+          userProducts: answer,
+        })
+      })
+  }
 
   render() {
-    console.log('PROFILE ----->', this.props.userObj);
+    // console.log('PROFILE ----->', this.props.userObj);
     return (
       <div className="container mt-3">
       <div className="row">
@@ -100,9 +111,12 @@ class Profile extends Component {
                 <div className="col-12">
                   <h5 className="border-bottom">Products Repaired</h5>
                 </div>
-                { this.props.userObj.product.map((item, index) => {
-                  return <ProductCard key={index} singleProduct={item} />
-                })}
+                {
+                  !this.state.userProducts.product ? null :
+                  (this.state.userProducts.product.map((item, index) => {
+                  return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
+                }))
+                }
               </div>
               <div className="tab-pane fade" id="v-pills-sold" role="tabpanel" aria-labelledby="v-pills-sold-tab">
                 <div className="col-12">

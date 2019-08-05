@@ -60,11 +60,11 @@ class Signup extends Component {
             <div className="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
               <div className="form-group">
                 <Label labelFor="role">Signup as</Label>
-                <select id="role" className="form-control" onChange={ e => this.handleChange(e)} required>
+                <select name="role" className="form-control" onChange={ e => this.handleChange(e)} required>
                   <option value="">Select</option>
                   <option value="Customer">User</option>
                   <option value="Repair">Company</option>
-                  <option value="Admin">It's a Secret</option>
+                  {/* <option value="Admin">It's a Secret</option> */}
                 </select>
               </div>
             </div>

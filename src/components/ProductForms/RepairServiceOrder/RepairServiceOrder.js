@@ -14,6 +14,7 @@ class RepairServiceOrder extends Component {
       specs: '',
       brand: '',
       repairImageUrl: '',
+      productId: this.props.productId,
       };
     this.service = new AuthService();
   }
@@ -27,8 +28,9 @@ class RepairServiceOrder extends Component {
     const specs = this.state.specs;
     const brand = this.state.brand;
     const repairImageUrl = this.state.repairImageUrl;
+    const productId = this.state.productId;
   
-    this.service.updateProductStatus(status, repairPrice, repairDescription, model, specs, brand, repairImageUrl)
+    this.service.updateToOrderRepair(status, repairPrice, repairDescription, model, specs, brand, repairImageUrl, productId)
     .then( response => {
         this.setState({
           status: '',
@@ -38,6 +40,7 @@ class RepairServiceOrder extends Component {
           specs: '',
           brand: '',
           repairImageUrl: '',
+          productId: '',
         });
         // this.props.getUser(response)
     })

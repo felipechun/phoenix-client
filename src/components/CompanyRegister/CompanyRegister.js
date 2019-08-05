@@ -17,6 +17,7 @@ export class CompanyRegister extends Component {
       speciality: {Tablet: false, Mobile: false, Laptop: false, TV: false, Audio: false, Consoles: false},
       phone: '',
       cnpj: '',
+      cep: '',
       };
     this.service = new AuthService();
   }
@@ -32,8 +33,9 @@ export class CompanyRegister extends Component {
     const speciality = this.state.speciality;
     const phone = this.state.phone;
     const cnpj = this.state.cnpj;
+    const cep = this.state.cep;
   
-    this.service.companySignup(name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email)
+    this.service.companySignup(name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email, cep)
     .then( response => {
         this.setState({
           name: '',
@@ -45,6 +47,7 @@ export class CompanyRegister extends Component {
           speciality: '',
           phone: '',
           cnpj: '',
+          cep: '',
         });
         // this.props.getUser(response)
     })
@@ -96,6 +99,10 @@ export class CompanyRegister extends Component {
           <div className="form-group">
             <label>CNPJ</label>
             <input type="text" name="cnpj" className="form-control" value={this.state.cnpj} required onChange={ e => this.handleChange(e)} placeholder=""  />
+          </div>
+          <div className="form-group">
+            <label>CEP</label>
+            <input type="text" name="cep" className="form-control" value={this.state.cep} required onChange={ e => this.handleChange(e)} placeholder=""  />
           </div>
           <div className="form-group">
             <label>Speciality</label>
