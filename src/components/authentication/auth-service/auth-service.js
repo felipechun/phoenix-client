@@ -49,6 +49,33 @@ class AuthService {
       .then(res => res.data);
   }
 
+  createProduct (
+    name,
+    statusProduct,
+    categories,
+    path,
+    brand,
+    model,
+    starterPrice,
+    clientDescription,
+    imageUrl,
+    idCompany,
+  ) {
+    return this.service.post('/new-product', {
+    name,
+    statusProduct,
+    categories,
+    path,
+    brand,
+    model,
+    starterPrice,
+    clientDescription,
+    imageUrl,
+    idCompany,
+    })
+      .then(res => res.data)
+  }
+
   updateProductStatus (
     finalName,
     status,
@@ -57,7 +84,7 @@ class AuthService {
     model,
     specs,
     starterPrice,
-    companyPrice,
+    responsePrice,
     repairPrice,
     sellingPrice,
     comission,
@@ -77,7 +104,7 @@ class AuthService {
       model,
       specs,
       starterPrice,
-      companyPrice,
+      responsePrice,
       repairPrice,
       sellingPrice,
       comission,

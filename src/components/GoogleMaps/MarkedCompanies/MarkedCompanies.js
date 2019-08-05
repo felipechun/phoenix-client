@@ -7,7 +7,7 @@ const MapContainer = (props) => {
     <Map
       google={props.google}
       zoom={12}
-      className="mx-auto w-100 h-25 mx-auto mb-5"
+      className="mx-auto w-100 h-25 mb-5"
       initialCenter={{ lat: -23.5470789, lng: -46.6826298 }}
     >
       {props.displayMarkers()}
@@ -24,5 +24,5 @@ const MapContainer = (props) => {
  
 }
 export default GoogleApiWrapper({
- apiKey: 'AIzaSyCkanr-oYF_mRUa0P5FgxrDm7sBDYy2U3o'
+ apiKey: 'AIzaSyDdAcLIRpqv9khtc_t2kOOyIgvIEDUEQUk'
 })(MapContainer);
