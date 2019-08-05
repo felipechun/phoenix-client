@@ -23,13 +23,13 @@ class ProductInfos extends Component {
             </div>
           </div>
           <div className="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
-            <div class="card mb-4 shadow-sm mt-4">
-              <div class="card-header">
-                <h5 class="my-0 font-weight-normal">Price</h5>
+            <div className="card mb-4 shadow-sm mt-4">
+              <div className="card-header">
+                <h5 className="my-0 font-weight-normal">Price</h5>
               </div>
-              <div class="card-body">
-                <h5 class="card-title pricing-card-title d-flex flex-row justify-content-between"><span>R$</span> <span>999,99</span></h5>
-                <button type="button" class="btn btn-sm btn-block btn-outline-primary">Buy</button>
+              <div className="card-body">
+                <h5 className="card-title pricing-card-title d-flex flex-row justify-content-between"><span>R$</span> <span>999,99</span></h5>
+                <button type="button" className="btn btn-sm btn-block btn-outline-primary">Buy</button>
               </div>
             </div>
             <h6 className="border-bottom">History</h6>

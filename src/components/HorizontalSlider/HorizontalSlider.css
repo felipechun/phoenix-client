@@ -1,10 +1,10 @@
 #horizontal-slider {
-  overflow: hidden;
-}
-
-#horizontal-slider:hover {
   overflow-x: scroll;
 }
+
+/* #horizontal-slider:hover {
+  overflow-x: scroll;
+} */
 
 .horizontal-slider-container {
   display: flex;

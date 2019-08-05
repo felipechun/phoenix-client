@@ -36,10 +36,87 @@ class AuthService {
     .then(response => response.data)
   }
 
+  getCompanies = () => {
+    return this.service.get('/companies/all')
+    .then(response => {
+      return response.data
+    })
+  }
+
   handleUpload (theFile) {
     // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)
       .then(res => res.data);
+  }
+
+  createProduct (
+    name,
+    statusProduct,
+    categories,
+    path,
+    brand,
+    model,
+    starterPrice,
+    clientDescription,
+    imageUrl,
+    idCompany,
+  ) {
+    return this.service.post('/new-product', {
+    name,
+    statusProduct,
+    categories,
+    path,
+    brand,
+    model,
+    starterPrice,
+    clientDescription,
+    imageUrl,
+    idCompany,
+    })
+      .then(res => res.data)
+  }
+
+  updateProductStatus (
+    finalName,
+    status,
+    finalStatusProduct,
+    brand,
+    model,
+    specs,
+    starterPrice,
+    responsePrice,
+    repairPrice,
+    sellingPrice,
+    comission,
+    totalPrice,
+    repairDescription,
+    companyDescription,
+    finalDescription,
+    onSale,
+    repairImageUrl,
+    repairYesNo
+  ) {
+    return this.service.put('/product-status/:id', {
+      finalName,
+      status,
+      finalStatusProduct,
+      brand,
+      model,
+      specs,
+      starterPrice,
+      responsePrice,
+      repairPrice,
+      sellingPrice,
+      comission,
+      totalPrice,
+      repairDescription,
+      companyDescription,
+      finalDescription,
+      onSale,
+      repairImageUrl,
+      repairYesNo
+    })
+      .then(res => res.data)
   }
 
 }
