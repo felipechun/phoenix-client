@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 //import './App.css';
-<<<<<<< HEAD
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -8,7 +7,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Showcase from './components/Showcase/Showcase';
 import ProductDetails from './components/ProductDetails/ProductDetails';
-import Chart from './components/Chart/Chart';
+import Cart from './components/Cart/Cart';
 import AuthService from './components/authentication/auth-service/auth-service';
 import Signup from './components/authentication/Signup/Signup';
 import Login from './components/authentication/Login/Login';
@@ -20,22 +19,8 @@ import RepairServiceOrder from './components/ProductForms/RepairServiceOrder/Rep
 import CompanyRepairYesOrNo from './components/ProductForms/CompanyRepairYesOrNo/CompanyRepairYesOrNo';
 import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany';
 import SendToStore from './components/ProductForms/SendToStore/SendToStore';
-=======
-import { Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
-import About from "./components/About/About";
-import Showcase from "./components/Showcase/Showcase";
-import ProductDetails from "./components/ProductDetails/ProductDetails";
-import Cart from "./components/Cart/Cart";
-import AuthService from "./components/authentication/auth-service/auth-service";
-import Signup from "./components/authentication/Signup/Signup";
-import Login from "./components/authentication/Login/Login";
-import SellForm from "./components/SellForm/SellForm";
-import CompanyRegister from "./components/CompanyRegister/CompanyRegister";
->>>>>>> cfce82e05d3b8674484593bc6712be6061c4a962
+
 
 class App extends Component {
   constructor(props) {
