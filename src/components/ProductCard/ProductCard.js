@@ -19,7 +19,6 @@ class ProductCard extends Component {
 
     const isRepair = false;
 
-    // console.log(this.state.product._id);
     if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {
       return (
         <div>
@@ -39,7 +38,8 @@ class ProductCard extends Component {
 
         </div>
       )
-    } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') { 
+    } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {
+       
       return (
         <div>
           {/* INSERT SELL FORM DISPLAY COMPONENT */}

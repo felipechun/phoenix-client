@@ -56,8 +56,8 @@ class RepairServiceOrder extends Component {
     console.log("The file to be uploaded is: ", e.target.files[0]);
 
     const uploadData = new FormData();
-    // repairImageUrl => this name has to be the same as in the model since we pass
-    uploadData.append("repairImageUrl", e.target.files[0]);
+    // imageUrl => this name has to be the same as in the model since we pass
+    uploadData.append("imageUrl", e.target.files[0]);
     
     this.service.handleUpload(uploadData)
     .then(response => {

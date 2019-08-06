@@ -37,6 +37,13 @@ class AuthService {
     .then(response => response.data)
   }
 
+  updateUserDetails (name, address, city, cep, cpf, userId) {
+    return this.service.put(`/profile/edit/${userId}`, { name, address, city, cep, cpf, userId})
+    .then(response => {
+      return response.data
+    })
+  }
+
   getCompanies = () => {
     return this.service.get('/companies/all')
     .then(response => {
@@ -132,9 +139,10 @@ class AuthService {
       .then(res => res.data)
   }
 
-  updateSendToCompany (status, productId) {
+  updateSendToCompany (status, finalStatusProduct, productId) {
     return this.service.put(`/product-status/${productId}`, {
       status,
+      finalStatusProduct,
       productId,
     })
       .then(res => res.data)

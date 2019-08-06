@@ -60,14 +60,14 @@ class App extends Component {
       this.status = true;
       return <div className="App" />;
     } else if (this.state.loggedInUser) {
-      console.log(this.state.loggedInUser);
+      console.log(this.state.loggedInUser, 'LOGGED IN USER');
       return (
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
           <h1>LOGGED IN!</h1>
           <main role="main">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} />} />
               <Route exact path="/about" component={About}/>
               <Route exact path="/profile" render={(props) => <Profile userObj={this.state.loggedInUser} />} />
               <Route exact path="/admin" render={(props) => <AdminProfile userObj={this.state.loggedInUser} />} />
