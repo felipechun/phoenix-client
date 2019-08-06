@@ -8,6 +8,7 @@ class SendToCompany extends Component {
     super(props);
     this.state = {
       status: 'SendCompany',
+      productId: this.props.productId,
       };
     this.service = new AuthService();
   }
@@ -15,11 +16,13 @@ class SendToCompany extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const status = this.state.status;
+    const productId = this.state.productId;
   
-    this.service.updateProductStatus(status)
+    this.service.updateSendToCompany(status, productId)
     .then( response => {
         this.setState({
           status: '',
+          productId: '',
         });
         // this.props.getUser(response)
     })

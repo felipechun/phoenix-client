@@ -9,6 +9,7 @@ class CompanyRepairYesOrNo extends Component {
     this.state = {
       status: 'WantRepair',
       repairYesNo: '',
+      productId: this.props.productId,
       };
     this.service = new AuthService();
   }
@@ -17,12 +18,14 @@ class CompanyRepairYesOrNo extends Component {
     event.preventDefault();
     const status = this.state.status;
     const repairYesNo = this.state.repairYesNo;
+    const productId = this.state.productId;
   
-    this.service.updateProductStatus(status, repairYesNo)
+    this.service.updateRepairYesOrNo(status, repairYesNo, productId)
     .then( response => {
         this.setState({
           status: '',
           repairYesNo: '',
+          productId: '',
         });
         // this.props.getUser(response)
     })

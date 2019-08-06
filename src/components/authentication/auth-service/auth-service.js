@@ -120,7 +120,41 @@ class AuthService {
       repairImageUrl,
       productId,
     })
+      .then(res => res.data)
   }
+
+  updateRepairYesOrNo (status, repairYesNo, productId) {
+    return this.service.put(`/product-status/${productId}`, {
+      status,
+      repairYesNo,
+      productId,
+    })
+      .then(res => res.data)
+  }
+
+  updateSendToCompany (status, productId) {
+    return this.service.put(`/product-status/${productId}`, {
+      status,
+      productId,
+    })
+      .then(res => res.data)
+  }
+
+  updateSendToStore (status, finalName, onSale, sellingPrice, totalPrice, comission, finalDescription, productId) {
+    return this.service.put(`/product-status/${productId}`, {
+      status,
+      finalName,
+      onSale,
+      sellingPrice,
+      totalPrice,
+      comission,
+      finalDescription,
+      productId,
+    })
+      .then(res => res.data)
+  }
+
+
 
   updateProductStatus (
     productId,

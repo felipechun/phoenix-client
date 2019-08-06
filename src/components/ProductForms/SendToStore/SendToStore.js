@@ -7,13 +7,14 @@ class SendToStore extends Component {
   constructor(props){
     super(props);
     this.state = {
-      status: 'ToStore',
+      status: 'toStore',
       finalName: '',
       onSale: '',
       sellingPrice: '',
       totalPrice: '',
       comission: '',
       finalDescription: '',
+      productId: this.props.productId,      
       // finalImageUrl: '', 
       };
     this.service = new AuthService();
@@ -28,9 +29,10 @@ class SendToStore extends Component {
     const totalPrice = this.state.totalPrice;
     const comission = this.state.comission;
     const finalDescription = this.state.finalDescription;
+    const productId = this.state.productId;
     // const finalImageUrl = this.state.finalImageUrl;
   
-    this.service.updateProductStatus(status, finalName, onSale, sellingPrice, totalPrice, comission, finalDescription, ) // finalImageUrl
+    this.service.updateSendToStore(status, finalName, onSale, sellingPrice, totalPrice, comission, finalDescription, productId) // finalImageUrl
     .then( response => {
         this.setState({
           status: '',
@@ -40,6 +42,7 @@ class SendToStore extends Component {
           totalPrice: '',
           comission: '',
           finalDescription: '',
+          productId: '',
           // finalImageUrl: '', 
         });
         this.props.getUser(response)
