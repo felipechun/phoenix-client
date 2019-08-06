@@ -8,8 +8,9 @@ class FirstCompanyResponse extends Component {
     super(props);
     this.state = {
       status: 'FirstResponse',
-      companyPrice: '',
+      responsePrice: '',
       companyDescription: '',
+      productId: this.props.productId,
       };
     this.service = new AuthService();
   }
@@ -17,15 +18,17 @@ class FirstCompanyResponse extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const status = this.state.status;
-    const companyPrice = this.state.companyPrice;
+    const responsePrice = this.state.responsePrice;
     const companyDescription = this.state.companyDescription;
+    const productId = this.state.productId;
   
-    this.service.updateProductStatus(status, companyPrice, companyDescription)
+    this.service.updateToFirstResponse(status, responsePrice, companyDescription, productId)
     .then( response => {
         this.setState({
           status: '',
-          companyPrice: '',
+          responsePrice: '',
           companyDescription: '',
+          productId: '',
         });
         // this.props.getUser(response)
     })
@@ -35,6 +38,7 @@ class FirstCompanyResponse extends Component {
   handleChange = (event) => {
     const {name, value} = event.target;
     this.setState({[name]: value});
+    console.log(this.state)
   }
 
 
@@ -53,7 +57,7 @@ class FirstCompanyResponse extends Component {
                       <div className="input-group-prepend">
                         <span className="input-group-text">$</span>
                       </div>
-                      <input type="text" name="companyPrice" className="form-control" value={this.state.companyPrice} required onChange={ e => this.handleChange(e)} placeholder="The company's estimated price of the product in its current condition"  />
+                      <input type="text" name="responsePrice" className="form-control" value={this.state.responsePrice} required onChange={ e => this.handleChange(e)} placeholder="The company's estimated price of the product in its current condition"  />
                     </div>
                   </div>
                   <div className="form-group">
