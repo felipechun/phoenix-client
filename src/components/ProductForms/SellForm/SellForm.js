@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import AuthService from '../../authentication/auth-service/auth-service';
 import MarkedCompanies from '../../GoogleMaps/MarkedCompanies/MarkedCompanies';
 import SubmitBtn from '../../buttons/SubmitBtn';
@@ -217,7 +217,7 @@ export class SellForm extends Component {
                   <div className="form-group">
                   {
                     this.state.path === 'Sell' && this.state.statusProduct === 'Broken' ? (
-                      <div>
+                      <Fragment>
                         <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
                         <MarkedCompanies 
                         displayMarkers={this.displayMarkers} 
@@ -227,7 +227,7 @@ export class SellForm extends Component {
                         activeMarker={this.state.activeMarker}
                         showingInfoWindow={this.state.showingInfoWindow}
                         />
-                      </div>
+                      </Fragment>
                     ) : null
                   }
                   </div>

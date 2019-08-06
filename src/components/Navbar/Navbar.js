@@ -41,7 +41,7 @@ class Navbar extends Component {
             :
             <Fragment>
               <li className="nav-item">
-              <Link to="/profile" className="nav-link"><i className="fas fa-user-circle"></i></Link>
+              <Link to="/profile" className="nav-link"><i className="fas fa-user-circle"></i> {this.props.isLoggedIn.username}</Link>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About Us <span className="sr-only">(current)</span></Link>
