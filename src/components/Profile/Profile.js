@@ -6,35 +6,34 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.userObj,
-      // path: 'Repair',
-      // categories: 'Laptop',
-      // brand: 'Samsung',
-      // name: 'Ativ',
-      // model: '6',
-      // statusProduct: 'Semi-used',
-      // starterPrice: '1.000,00',
-      // clientDescription: 'A little description invented to test the rendering.',
-      // imageUrl: 'http://placeimg.com/200/100/tech',
-      // companyPrice: '900,00',
-      // companyDescription: 'Another fake description to justify more rendering test.',
-      // repairPrice: '150,00',
-      // repairDescription: 'Some description to explain the repair.',
-      // specs: 'data of product specification and on and on',
-      // repairImageUrl: 'http://placeimg.com/200/100/tech',
-      // finalName: 'Samsung Ativbook 6',
-      // onSale: false,
-      // sellingPrice: '1.050,00',
-      // totalPrice: '1.102,50',
-      // comission: '5%',
-      // finalDescription: 'Final description of this entire process from product registration to product repair to product sell.',
+      // user: this.props.userObj,
+      path: 'Repair',
+      categories: 'Laptop',
+      brand: 'Samsung',
+      name: 'Ativ',
+      model: '6',
+      statusProduct: 'Semi-used',
+      starterPrice: '1.000,00',
+      clientDescription: 'A little description invented to test the rendering.',
+      imageUrl: 'http://placeimg.com/200/100/tech',
+      companyPrice: '900,00',
+      companyDescription: 'Another fake description to justify more rendering test.',
+      repairPrice: '150,00',
+      repairDescription: 'Some description to explain the repair.',
+      specs: 'data of product specification and on and on',
+      repairImageUrl: 'http://placeimg.com/200/100/tech',
+      finalName: 'Samsung Ativbook 6',
+      onSale: false,
+      sellingPrice: '1.050,00',
+      totalPrice: '1.102,50',
+      comission: '5%',
+      finalDescription: 'Final description of this entire process from product registration to product repair to product sell.',
     };
     this.service = new AuthService();
   }
 
 
   render() {
-    console.log('PROFILE ----->', this.props.userObj);
     return (
       <div className="container mt-3">
       <div className="row">
@@ -97,16 +96,21 @@ class Profile extends Component {
                 </div>
               </div>
               <div className="tab-pane fade show active" id="v-pills-repaired" role="tabpanel" aria-labelledby="v-pills-repaired-tab">
-                <div className="col-12">
-                  <h5 className="border-bottom">Products Repaired</h5>
+                <div className="row">
+                  <div className="col-12">
+                    <h5 className="border-bottom">Products Repaired</h5>
+                  </div>
                 </div>
-                { this.props.userObj.product.map((item, index) => {
-                  return <ProductCard key={index} singleProduct={item} />
-                })}
+                <ProductCard singleProduct={{...this.state}} />
+                {/* { this.state.map((item, index) => {
+                return <ProductCard key={index} singleProduct={item} />
+                })} */}
               </div>
               <div className="tab-pane fade" id="v-pills-sold" role="tabpanel" aria-labelledby="v-pills-sold-tab">
-                <div className="col-12">
-                  <h5 className="border-bottom">Products Sold</h5>
+                <div className="row">
+                  <div className="col-12">
+                    <h5 className="border-bottom">Products Sold</h5>
+                  </div>
                 </div>
                 <div className="row">
                   <div className="col-6">

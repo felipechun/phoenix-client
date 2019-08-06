@@ -119,10 +119,10 @@ export class CompanyRegister extends Component {
           </div>
           <div className="form-group">
             <label>Please drag the marker to your company location</label>
+            <CompanyMapRegister getMarker={this.getMarker} className="mx-auto w-75 h-50 mx-auto mb-5" />
           </div>
           <SubmitBtn type="submit" className="btn btn-outline-success">Submit</SubmitBtn>
         </form>
-        <CompanyMapRegister getMarker={this.getMarker} className="mx-auto w-75 h-50 mx-auto mb-5" />
       </div>
     )
   }
