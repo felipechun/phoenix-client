@@ -154,7 +154,7 @@ export class SellForm extends Component {
                       <option value="Tablet">Tablet</option>
                       <option value="Mobile">Mobile</option>
                       <option value="Consoles">Videogame Console</option>
-                      <option value="TV's">Television</option>
+                      <option value="TV">Television</option>
                       <option value="Audio">Audio</option>
                     </select>
                   </div>

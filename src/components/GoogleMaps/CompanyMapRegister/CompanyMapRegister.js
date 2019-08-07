@@ -29,5 +29,5 @@ const RegistrationMap = (props) => {
  }
  
 export default GoogleApiWrapper({
- apiKey: 'AIzaSyBB7n_jgAaBU4YojJVF-0ZCn0KbDL55BVg'
+ apiKey: ''
 })(RegistrationMap);
