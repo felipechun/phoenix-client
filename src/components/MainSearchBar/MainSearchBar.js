@@ -31,7 +31,7 @@ export class MainSearchBar extends Component {
   render() {
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <div className="input-group mb-3">
+        <div className="input-group mb-3 mt-3">
           <Input className="form-control" type="text" value={this.state.searchTerm} onChange={ e => this.handleChange(e)} placeholder="What are you looking for?"/>
           <div className="input-group-append">
             <SubmitBtn className="btn btn-outline-primary" type="submit">Search</SubmitBtn>
