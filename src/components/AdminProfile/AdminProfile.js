@@ -8,6 +8,7 @@ export class AdminProfile extends Component {
     this.state = {
       allProducts: null,
       user: this.props.userObj,
+      x: null,
     }
     this.service = new AuthService();
   }

@@ -63,7 +63,6 @@ class Profile extends Component {
         </>
       )
     } else {
-      console.log(this.state.userProducts.company[0])
       return (
 
         <div className="container mt-3">
