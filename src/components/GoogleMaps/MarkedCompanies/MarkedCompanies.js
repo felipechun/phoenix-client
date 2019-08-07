@@ -9,7 +9,6 @@ const markedMap = {
  
 
 const MapContainer = (props) => {
-
   return (
     <div id="mapContainer">
       <Map

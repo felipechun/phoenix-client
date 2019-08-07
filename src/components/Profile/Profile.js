@@ -120,17 +120,19 @@ class Profile extends Component {
                   <div className="col-12">
                     <h5 className="border-bottom">Products Repaired</h5>
                   </div>
-                  {
-                    this.flagHell ? !this.state.userProducts.company[0].products ? null
-                    : (this.state.userProducts.company[0].products.map((item, index) => {
-                    return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
-                    }))
-                    : !this.state.userProducts.product
-                    ? null
-                    : (this.state.userProducts.product.map((item, index) => {
-                    return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
-                    }))
-                  }
+                  <div>
+                    {
+                      this.flagHell ? !this.state.userProducts.company[0].products ? null
+                      : (this.state.userProducts.company[0].products.map((item, index) => {
+                      return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
+                      }))
+                      : !this.state.userProducts.product
+                      ? null
+                      : (this.state.userProducts.product.map((item, index) => {
+                      return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
+                      }))
+                    }
+                  </div>
                 </div>
                 <div className="tab-pane fade" id="v-pills-sold" role="tabpanel" aria-labelledby="v-pills-sold-tab">
                   <div className="col-12">

@@ -4,8 +4,8 @@ class ToRepaiDisplay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: this.props.productId,
       company: this.props.companyObj,
+      productId: this.props.productId,
     }
   }
   
@@ -19,7 +19,7 @@ class ToRepaiDisplay extends Component {
               <div className="row">
                 <div className="col-12">
                   <div className="alert alert-success" role="alert">
-                    <p className="mb-0">This product was sent to "company's address not rendered" {this.state.company.name} at "company cep not rendered" {this.state.product.address} - {this.state.company.cep}.</p>
+                    <p className="mb-0">This product was sent to {this.state.company.name} at {this.state.company.address} - {this.state.company.cep}.</p>
                   </div>
                 </div>
               </div>
