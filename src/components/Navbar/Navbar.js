@@ -18,6 +18,7 @@ class Navbar extends Component {
   }
 
   render() {
+    console.log(this.props.cartLength, '<---- LENGTH')
     return (
       <nav id="uppernav" className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand text-uppercase"><img src="../../images/phoenix.png" height="40" alt="Phoenix" /> Phix - Sell and Repair</Link>
@@ -57,6 +58,7 @@ class Navbar extends Component {
             <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
               <Link to="/cart" className="nav-link">
                 <i className="fas fa-shopping-cart"></i>
+                <span className="badge badge-danger">{this.props.cartLength}</span>
               </Link>
             </li>
           </ul>
