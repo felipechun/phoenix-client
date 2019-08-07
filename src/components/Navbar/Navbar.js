@@ -21,7 +21,7 @@ class Navbar extends Component {
     console.log(this.props.cartLength, '<---- LENGTH')
     return (
       <nav id="uppernav" className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand text-uppercase"><img src="../../images/phoenix.png" height="40" alt="Phoenix" /> Phix - Sell and Repair</Link>
+        <Link to="/" className="navbar-brand"><img src="../../images/phoenix.png" height="40" alt="Phoenix" />&nbsp;&nbsp;Phix</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
