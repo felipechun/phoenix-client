@@ -58,7 +58,7 @@ class AuthService {
   }
 
   getToStore = () => {
-    return this.service.get('/products/all')
+    return this.service.get('/status-products/toStore')
     .then(response => {
       return response.data
     })
