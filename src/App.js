@@ -22,7 +22,6 @@ import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany
 import SendToStore from './components/ProductForms/SendToStore/SendToStore';
 import AdminProfile from "./components/AdminProfile/AdminProfile";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoutes";
-import { thisTypeAnnotation } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
