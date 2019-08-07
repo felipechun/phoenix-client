@@ -30,12 +30,17 @@ export class AdminProfile extends Component {
       )
     } else {
       return (
-        <div>
-          {
-            this.state.allProducts.map((singleProduct, index) => {
-              return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user}/>
-            })
-          }
+        <div className="card w-75 mx-auto">
+          <div className="card-header">
+            <h5 className="card-title">All Products</h5>
+          </div>
+          <div className="card-body">
+            {
+              this.state.allProducts.map((singleProduct, index) => {
+                return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user}/>
+              })
+            }
+          </div>
         </div>
       )
     }

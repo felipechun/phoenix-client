@@ -9,7 +9,6 @@ class AuthService {
     this.service = service;
   }
 
-
   signup = (username, password, role) => {
     return this.service.post('/signup', {username, password, role})
     .then(response => response.data)
@@ -53,6 +52,13 @@ class AuthService {
 
   getAllProducts = () => {
     return this.service.get('/products/all')
+    .then(response => {
+      return response.data
+    })
+  }
+
+  getToStore = () => {
+    return this.service.get('/status-products/toStore')
     .then(response => {
       return response.data
     })

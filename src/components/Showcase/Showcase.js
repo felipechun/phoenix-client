@@ -7,6 +7,11 @@ import ShowcaseProduct from '../ShowcaseProduct/ShowcaseProduct';
 import './Showcase.css';
 
 export class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
   render() {
     return (
       <div className="container mt-3">
@@ -23,18 +28,9 @@ export class Search extends Component {
               <Feature />
             </div>
             <div id="Showcase" className="row mt-3">
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
-              <ShowcaseProduct />
+              { this.props.products.map((item, index) => {
+                return <ShowcaseProduct key={index} product={item} id={item._id} getProducts={this.props.getProducts} />
+              }) }
             </div>
           </div>
         </div>
