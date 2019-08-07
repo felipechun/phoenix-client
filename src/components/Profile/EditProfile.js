@@ -34,8 +34,6 @@ class Profile extends Component {
   }
 
   render() {
-    // console.log('PROFILE ----->', this.props.userObj);
-    // console.log(this.state.userProducts.product, 'GIVE ME THE PRODUCT');
     if(!this.status){
       this.status = true;
       return (
@@ -44,12 +42,12 @@ class Profile extends Component {
       )
     } else {
       //console.log(this.state.userProducts.company[0])
-      console.log('PROFILE', this.props.userObj)
       return (
+
         <div className="container mt-3">
         <div className="row">
           <div className="col-12">
-            <h4 className="border-bottom text-uppercase">Profile Role</h4>
+            <h4 className="border-bottom text-uppercase">Edit Profile</h4>
           </div>
         </div>
           <div className="row">
@@ -60,7 +58,7 @@ class Profile extends Component {
               <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                 <div className="card-header text-uppercase"><span>Username</span></div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item"><Link to={`/profile/edit/${this.state.user._id}`}>Edit Profile</Link></li>
+                  <li className="list-group-item">View Profile</li>
                   <li className="list-group-item"><Link to="/sell-form">Add Product</Link></li>
                 </ul>
               </div>
@@ -74,6 +72,14 @@ class Profile extends Component {
               </div>
             </div>
             <div className="col-9">
+              {/* 
+              password, name, address, city, cep
+              */}
+              <div className="row">
+                <div className="col-12">
+                  <h5 className="border-bottom">Products Brought</h5>
+                </div>
+              </div>
               <div className="tab-content" id="v-pills-tabContent">
                 <div className="tab-pane fade" id="v-pills-bought" role="tabpanel" aria-labelledby="v-pills-bought-tab">
                   <div className="row">
