@@ -32,7 +32,7 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="true">Request</a>
-                    <a className="nav-item nav-link active" id="companyResponse-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="companyResponse" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link active" id="companyResponse-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="companyResponse" aria-selected="false">Phix's Reply</a>
                   </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
@@ -59,7 +59,7 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="true">Request</a>
-                    <a className="nav-item nav-link" id="companyResponse-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="companyResponse" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link" id="companyResponse-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="companyResponse" aria-selected="false">Phix's Reply</a>
                     <a className="nav-item nav-link active" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Send to Repair</a>
                   </div>
                 </nav>
@@ -68,7 +68,7 @@ class ProductCard extends Component {
                     <p>DISPLAY DO REQUEST</p>
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="companyResponse-tab">
-                    <p>DISPLAY DO COMPANY RESPONSE</p>
+                    <p>DISPLAY DO Phix's Reply</p>
                   </div>
                   <div className="tab-pane fade show active" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                     <ToRepair productId={this.state.product._id} companyObj={this.state.product.idCompany}/>
@@ -90,7 +90,7 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="true">Request</a>
-                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                     <a className="nav-item nav-link active" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Send to Repair</a>
                   </div>
                 </nav>
@@ -122,10 +122,10 @@ class ProductCard extends Component {
               <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                   <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                  <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                  <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                   <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                   <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                  <a className="nav-item nav-link active" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="true">Repair or No Repair</a>
+                  <a className="nav-item nav-link active" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="true">Repair Decision</a>
                 </div>
               </nav>
               <div className="tab-content" id="nav-tabContent">
@@ -133,7 +133,7 @@ class ProductCard extends Component {
                   <p>DISPLAY DO REQUEST</p>
                 </div>
                 <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                  <p>DISPLAY DO COMPANY RESPONSE</p>
+                  <p>DISPLAY DO Phix's Reply</p>
                 </div>
                 <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                   <p>TO REPAIR DISPLAY</p>
@@ -161,9 +161,9 @@ class ProductCard extends Component {
                   <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
                       <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                      <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                      <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                       <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                       <a className="nav-item nav-link active" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="true">Please Repair</a>
                     </div>
                   </nav>
@@ -172,7 +172,7 @@ class ProductCard extends Component {
                       <p>DISPLAY DO REQUEST</p>
                     </div>
                     <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                      <p>DISPLAY DO COMPANY RESPONSE</p>
+                      <p>DISPLAY DO Phix's Reply</p>
                     </div>
                     <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
                       <p>SERVICE ORDER DISPLAY</p>
@@ -199,9 +199,9 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                     <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                    <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                    <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                     <a className="nav-item nav-link active" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="true">Don't Repair</a>
                   </div>
                 </nav>
@@ -210,7 +210,7 @@ class ProductCard extends Component {
                     <p>DISPLAY DO REQUEST</p>
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO COMPANY RESPONSE</p>
+                    <p>DISPLAY DO Phix's Reply</p>
                   </div>
                   <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
                     <p>SERVICE ORDER DISPLAY</p>
@@ -242,10 +242,10 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                     <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                     <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                    <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                    <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                     <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
                     <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Send to Store</a>
                   </div>
@@ -255,7 +255,7 @@ class ProductCard extends Component {
                     <p>DISPLAY DO REQUEST</p>
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO COMPANY RESPONSE</p>
+                    <p>DISPLAY DO Phix's Reply</p>
                   </div>
                   <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                     <p>TO REPAIR DISPLAY</p>
@@ -288,10 +288,10 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                     <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                     <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                    <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                    <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                     <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
                     <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Send to Store</a>
                   </div>
@@ -301,7 +301,7 @@ class ProductCard extends Component {
                     <p>DISPLAY DO REQUEST</p>
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO COMPANY RESPONSE</p>
+                    <p>DISPLAY DO Phix's Reply</p>
                   </div>
                   <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                     <p>TO REPAIR DISPLAY</p>
@@ -337,10 +337,10 @@ class ProductCard extends Component {
                   <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
                       <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                      <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                      <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                       <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                       <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                       <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
                       <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Sent to Store</a>
                     </div>
@@ -350,7 +350,7 @@ class ProductCard extends Component {
                       <p>DISPLAY DO REQUEST</p>
                     </div>
                     <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                      <p>DISPLAY DO COMPANY RESPONSE</p>
+                      <p>DISPLAY DO Phix's Reply</p>
                     </div>
                     <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                       <p>TO REPAIR DISPLAY</p>
@@ -383,10 +383,10 @@ class ProductCard extends Component {
                   <nav>
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
                       <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                      <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                      <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                       <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                       <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                       <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
                       <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Sent to Store</a>
                     </div>
@@ -396,7 +396,7 @@ class ProductCard extends Component {
                       <p>DISPLAY DO REQUEST</p>
                     </div>
                     <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                      <p>DISPLAY DO COMPANY RESPONSE</p>
+                      <p>DISPLAY DO Phix's Reply</p>
                     </div>
                     <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                       <p>TO REPAIR DISPLAY</p>
@@ -434,7 +434,7 @@ class ProductCard extends Component {
                       <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
                       <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                       <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                       <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
                       <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Sent to Store</a>
                     </div>
@@ -476,7 +476,7 @@ class ProductCard extends Component {
                       <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
                       <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                       <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
-                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair or No Repair</a>
+                      <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
                       <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
                       <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Sent to Store</a>
                     </div>
@@ -518,7 +518,7 @@ class ProductCard extends Component {
                 <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
-                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Company Response</a>
+                    <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
                     <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
                     <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Sent to Store</a>
                   </div>
@@ -528,7 +528,7 @@ class ProductCard extends Component {
                     <p>DISPLAY DO REQUEST</p>
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO COMPANY RESPONSE</p>
+                    <p>DISPLAY DO Phix's Reply</p>
                   </div>
                   <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                     <p>TO REPAIR DISPLAY</p>
@@ -546,8 +546,26 @@ class ProductCard extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <ProductFigure data={this.state.product} index={this.state.product._id} imageClasses="figure-img img-fluid rounded" imageAlt={this.state.product.categories}/>
-          <p>Please await further instructions</p>
+          {/* <ProductFigure data={this.state.product} index={this.state.product._id} imageClasses="figure-img img-fluid rounded" imageAlt={this.state.product.categories}/>
+          <p>Please await further instructions</p> */}
+          <div className="" >
+            <div className="card mb-3">
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  <img src={this.state.product.imageUrl} className="figure-img img-fluid rounded" alt={this.state.product.categories} />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">{this.state.product.name}</h5>
+                    <p className="card-text">Client Description: {this.state.product.clientDescription}</p>
+                    <p className="card-text">Status: {this.state.product.status}</p>
+                    <p className="card-text">Product ID: {this.state.product._id}</p>
+                    <p className="card-text text-danger">Please await further instructions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>  
     )

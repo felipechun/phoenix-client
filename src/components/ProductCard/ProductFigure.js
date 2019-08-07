@@ -11,7 +11,7 @@ class ProductFigure extends Component {
   render() {
 
     return (
-      <div className="figure" data-toggle="collapse" href={`#a${this.props.index}`} role="button" aria-expanded="false" aria-controls="collapseExample">
+      <div className="" data-toggle="collapse" href={`#a${this.props.index}`} role="button" aria-expanded="false" aria-controls="collapseExample">
         <div className="card mb-3">
           <div className="row no-gutters">
             <div className="col-md-4">
