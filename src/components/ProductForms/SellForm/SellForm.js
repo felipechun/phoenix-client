@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import AuthService from '../../authentication/auth-service/auth-service';
 import MarkedCompanies from '../../GoogleMaps/MarkedCompanies/MarkedCompanies';
 import SubmitBtn from '../../buttons/SubmitBtn';
@@ -131,7 +131,7 @@ export class SellForm extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mt-3 mb-3">
         <div className="row">
           <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div className="card">
@@ -154,7 +154,7 @@ export class SellForm extends Component {
                       <option value="Tablet">Tablet</option>
                       <option value="Mobile">Mobile</option>
                       <option value="Consoles">Videogame Console</option>
-                      <option value="TV's">Television</option>
+                      <option value="TV">Television</option>
                       <option value="Audio">Audio</option>
                     </select>
                   </div>
@@ -217,7 +217,7 @@ export class SellForm extends Component {
                   <div className="form-group">
                   {
                     this.state.path === 'Sell' && this.state.statusProduct === 'Broken' ? (
-                      <div>
+                      <Fragment>
                         <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
                         <MarkedCompanies 
                         displayMarkers={this.displayMarkers} 
@@ -227,7 +227,7 @@ export class SellForm extends Component {
                         activeMarker={this.state.activeMarker}
                         showingInfoWindow={this.state.showingInfoWindow}
                         />
-                      </div>
+                      </Fragment>
                     ) : null
                   }
                   </div>

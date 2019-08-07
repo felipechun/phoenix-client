@@ -14,6 +14,7 @@ class RepairServiceOrder extends Component {
       specs: '',
       brand: '',
       repairImageUrl: '',
+      productId: this.props.productId,
       };
     this.service = new AuthService();
   }
@@ -27,8 +28,9 @@ class RepairServiceOrder extends Component {
     const specs = this.state.specs;
     const brand = this.state.brand;
     const repairImageUrl = this.state.repairImageUrl;
+    const productId = this.state.productId;
   
-    this.service.updateProductStatus(status, repairPrice, repairDescription, model, specs, brand, repairImageUrl)
+    this.service.updateToOrderRepair(status, repairPrice, repairDescription, model, specs, brand, repairImageUrl, productId)
     .then( response => {
         this.setState({
           status: '',
@@ -38,6 +40,7 @@ class RepairServiceOrder extends Component {
           specs: '',
           brand: '',
           repairImageUrl: '',
+          productId: '',
         });
         // this.props.getUser(response)
     })
@@ -53,8 +56,8 @@ class RepairServiceOrder extends Component {
     console.log("The file to be uploaded is: ", e.target.files[0]);
 
     const uploadData = new FormData();
-    // repairImageUrl => this name has to be the same as in the model since we pass
-    uploadData.append("repairImageUrl", e.target.files[0]);
+    // imageUrl => this name has to be the same as in the model since we pass
+    uploadData.append("imageUrl", e.target.files[0]);
     
     this.service.handleUpload(uploadData)
     .then(response => {
@@ -69,7 +72,7 @@ class RepairServiceOrder extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mt-3 mb-3">
         <div className="row">
           <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div className="card">

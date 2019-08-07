@@ -1,30 +1,33 @@
 import React from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react'
-// const mapStylesY = {
-//  width: '70%',
-//  height: '400px',
-//  margin:"0 auto",
-//  padding: '0'
-// };
+
+const companyRegisterMap = {
+  margin:"auto",
+  width: "100%",
+  height: "300px",
+ }
+
 const RegistrationMap = (props) => {
 
    return (
-     <Map
-       google={props.google}
-       zoom={14}
-       className={props.className}
-      //  style={mapStylesY}
-       initialCenter={{ lat: -23.5617326, lng: -46.6623271 }}
-     >
-       <Marker
-       title={'You are Here'} //marker title
-       draggable={true} //make the marker draggable
-       onDragend={props.getMarker}
-       />
-     </Map>
+     <div id="registrationMap">
+      <Map
+        google={props.google}
+        zoom={14}
+        className={props.className}
+        style={companyRegisterMap}
+        initialCenter={{ lat: -23.5617326, lng: -46.6623271 }}
+      >
+        <Marker
+        title={'You are Here'} //marker title
+        draggable={true} //make the marker draggable
+        onDragend={props.getMarker}
+        />
+      </Map>
+     </div>
    );
  }
  
 export default GoogleApiWrapper({
- apiKey: 'AIzaSyDdAcLIRpqv9khtc_t2kOOyIgvIEDUEQUk'
+ apiKey: 'AIzaSyB3daSfMZ9sznOP_MvVOuCeqaPjyB7sMAo'
 })(RegistrationMap);
