@@ -61,7 +61,7 @@ class App extends Component {
       return (
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
-          <h1>LOGGED IN!</h1>
+          {/* <h1>LOGGED IN!</h1> */}
           <main role="main">
             <Switch>
               <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} />} />

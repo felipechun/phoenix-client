@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AuthService from '../authentication/auth-service/auth-service';
 import ProductCard from '../ProductCard/ProductCard';
 // import ProfileProdBrought from './ProfileProdBrought';
@@ -63,7 +64,7 @@ class Profile extends Component {
         </>
       )
     } else {
-      console.log(this.state.userProducts.company[0])
+      //console.log(this.state.userProducts.company[0])
       return (
 
         <div className="container mt-3">
@@ -77,9 +78,19 @@ class Profile extends Component {
               <div className="text-center mt-1 mb-3">
                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" />
               </div>
-              <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a className="nav-link" id="v-pills-bought-tab" data-toggle="pill" href="#v-pills-bought" role="tab" aria-controls="v-pills-bought" aria-selected="true">Bought</a>
-                <a className="nav-link active" id="v-pills-repaired-tab" data-toggle="pill" href="#v-pills-repaired" role="tab" aria-controls="v-pills-repaired" aria-selected="false">Repaired</a>
+              <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                <div className="card-header text-uppercase"><span>Username</span></div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">View Profile</li>
+                  <li className="list-group-item"><Link to="/sell-form">Add Product</Link></li>
+                </ul>
+              </div>
+              <div className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                <div className="card-header text-uppercase">
+                  <span>Products</span>
+                </div>
+                <a className="nav-link border-bottom" id="v-pills-bought-tab" data-toggle="pill" href="#v-pills-bought" role="tab" aria-controls="v-pills-bought" aria-selected="true">Bought</a>
+                <a className="nav-link border-bottom active" id="v-pills-repaired-tab" data-toggle="pill" href="#v-pills-repaired" role="tab" aria-controls="v-pills-repaired" aria-selected="false">Repaired</a>
                 <a className="nav-link" id="v-pills-sold-tab" data-toggle="pill" href="#v-pills-sold" role="tab" aria-controls="v-pills-sold" aria-selected="false">Sold</a>
               </div>
             </div>
@@ -195,42 +206,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
-
-// DAVE CHANGES
-// return (
-//   <div className="container mt-3">
-//   <div className="row">
-//     <div className="col-12">
-//       <h4 className="border-bottom text-uppercase">Dashboard Role</h4>
-//     </div>
-//   </div>
-//     <div className="row">
-//       <div className="col-3">
-//         <div className="text-center mt-1 mb-3">
-//           <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" />
-//         </div>
-//         <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-//           <div className="card-header text-uppercase"><span>Username</span></div>
-//           <ul className="list-group list-group-flush">
-//             <li className="list-group-item">View Profile</li>
-//             <li className="list-group-item">Add Product</li>
-//           </ul>
-//         </div>
-//         <div className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-//           <div className="card-header text-uppercase">
-//             <span>Products</span>
-//           </div>
-//           <a className="nav-link border-bottom" id="v-pills-bought-tab" data-toggle="pill" href="#v-pills-bought" role="tab" aria-controls="v-pills-bought" aria-selected="true">Bought</a>
-//           <a className="nav-link border-bottom active" id="v-pills-repaired-tab" data-toggle="pill" href="#v-pills-repaired" role="tab" aria-controls="v-pills-repaired" aria-selected="false">Repaired</a>
-//           <a className="nav-link" id="v-pills-sold-tab" data-toggle="pill" href="#v-pills-sold" role="tab" aria-controls="v-pills-sold" aria-selected="false">Sold</a>
-//         </div>
-//       </div>
-//       <div className="col-9">
-//         <div className="tab-content" id="v-pills-tabContent">
-//           <ProfileProdBrought props={this.state} />
-//           <div className="tab-pane fade show active" id="v-pills-repaired" role="tabpanel" aria-labelledby="v-pills-repaired-tab">
-//             <div className="row">
-//               <div className="col-12">
-//                 <h5 className="border-bottom">Products Repaired</h5>
-//                  <ProfileProdSold props={this.state} />
