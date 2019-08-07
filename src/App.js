@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-//import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -13,16 +12,15 @@ import Signup from './components/authentication/Signup/Signup';
 import Login from './components/authentication/Login/Login';
 import SellForm from './components/ProductForms/SellForm/SellForm';
 import CompanyRegister from './components/CompanyRegister/CompanyRegister';
-import FirstCompanyResponse from './components/ProductForms/FirstCompanyResponse/FirstCompanyResponse';
-import ToRepair from './components/ProductForms/ToRepair/ToRepair';
-import RepairServiceOrder from './components/ProductForms/RepairServiceOrder/RepairServiceOrder';
-import CompanyRepairYesOrNo from './components/ProductForms/CompanyRepairYesOrNo/CompanyRepairYesOrNo';
-import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany';
-import SendToStore from './components/ProductForms/SendToStore/SendToStore';
+// import FirstCompanyResponse from './components/ProductForms/FirstCompanyResponse/FirstCompanyResponse';
+// import ToRepair from './components/ProductForms/ToRepair/ToRepair';
+// import RepairServiceOrder from './components/ProductForms/RepairServiceOrder/RepairServiceOrder';
+// import CompanyRepairYesOrNo from './components/ProductForms/CompanyRepairYesOrNo/CompanyRepairYesOrNo';
+// import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany';
+// import SendToStore from './components/ProductForms/SendToStore/SendToStore';
 import Profile from "./components/Profile/Profile";
 import AdminProfile from "./components/AdminProfile/AdminProfile";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoutes";
-
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +29,6 @@ class App extends Component {
     this.service = new AuthService();
     this.status = false;
   }
-
   fetchUser = () => {
     if (this.state.loggedInUser === null) {
       this.service
@@ -48,13 +45,11 @@ class App extends Component {
         });
     }
   };
-
   getTheUser = userObj => {
     this.setState({
       loggedInUser: userObj
     });
   };
-
   render() {
     this.fetchUser();
     if (!this.status) {
@@ -65,24 +60,17 @@ class App extends Component {
       return (
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
-          <h1>LOGGED IN!</h1>
           <main role="main">
             <Switch>
               <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} />} />
               <Route exact path="/about" component={About}/>
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/profile" component={Profile} />
-              <ProtectedRoute exact user={this.state.loggedInUser} role="Admin" path="/admin" component={AdminProfile} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Admin" path="/admin" component={AdminProfile} />
               <Route exact path="/products/" component={Showcase} />
               <Route exact path="/products/product" component={ProductDetails} />
-              <Route exact path="/cart" component={Cart} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/company-signup" component={CompanyRegister} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/sell-form" component={SellForm}/>
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/first-response" component={FirstCompanyResponse} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/to-repair" component={ToRepair} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/service-order" component={RepairServiceOrder} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/repair-decision" component={CompanyRepairYesOrNo} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-company" component={SendToCompany} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-store" component={SendToStore} />
+              <ProtectedRoute exact user={this.state.loggedInUser} shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} path="/cart" component={Cart} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Company" path="/company-signup" component={CompanyRegister} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/sell-form" component={SellForm}/>
             </Switch>
           </main>
           <Footer/>
@@ -100,7 +88,7 @@ class App extends Component {
               <Route exact path="/about" component={About}/>
               <Route exact path="/products/" component={Showcase} />
               <Route exact path="/products/product" component={ProductDetails} />
-              <Route exact path="/cart" component={Cart} />
+              <ProtectedRoute exact user={this.state.loggedInUser} shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} path="/cart" component={Cart} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/profile" component={Profile} />
             </Switch>
           </main>
@@ -119,17 +107,11 @@ class App extends Component {
               <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />
               <Route exact path="/products/" component={Showcase} />
               <Route exact path="/products/product" component={ProductDetails} />
-              <Route exact path="/cart" component={Cart} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/profile" component={Profile} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/admin" component={AdminProfile} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/company-signup" component={CompanyRegister} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/sell-form" component={SellForm}/>
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/first-response" component={FirstCompanyResponse} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/to-repair" component={ToRepair} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/service-order" component={RepairServiceOrder} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/repair-decision" component={CompanyRepairYesOrNo} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-company" component={SendToCompany} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-store" component={SendToStore} />
+              <ProtectedRoute exact user={this.state.loggedInUser} shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} path="/cart" component={Cart} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Admin" path="/admin" component={AdminProfile} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Company" path="/company-signup" component={CompanyRegister} />
+              <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/sell-form" component={SellForm}/>
             </Switch>
           </main>
           <Footer />
@@ -138,5 +120,4 @@ class App extends Component {
     }
   }
 }
-
 export default App;

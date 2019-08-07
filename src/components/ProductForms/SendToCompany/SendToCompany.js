@@ -10,6 +10,7 @@ class SendToCompany extends Component {
       status: 'SendCompany',
       finalStatusProduct: '',
       productId: this.props.productId,
+      productObj: this.props.productObj,
       };
     this.service = new AuthService();
   }
@@ -26,6 +27,7 @@ class SendToCompany extends Component {
           status: '',
           finalStatusProduct: '',
           productId: '',
+          productObj: '',
         });
         // this.props.getUser(response)
     })
@@ -39,13 +41,16 @@ class SendToCompany extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mt-3 mb-3">
         <div className="row">
           <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div className="card">
               <h5 className="card-header">Send Product to Phix</h5>
               <div className="card-body">
                 <form onSubmit={this.handleFormSubmit}>
+                  <div className="form-group">
+                    <label className="card-title font-weight-bold">Does Phix want to repair: {this.state.productObj.repairYesNo}</label>
+                  </div>
                   <div className="form-group">
                     <label className="card-title font-weight-bold">Condition</label>
                     <select name="finalStatusProduct" required onChange={ e => this.handleChange(e)} className="form-control" >
