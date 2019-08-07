@@ -131,7 +131,7 @@ export class SellForm extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mt-3 mb-3">
         <div className="row">
           <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
             <div className="card">

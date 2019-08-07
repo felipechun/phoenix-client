@@ -11,27 +11,6 @@ class Profile extends Component {
     this.state = {
       user: this.props.userObj,
       userProducts: [],
-      // path: 'Repair',
-      // categories: 'Laptop',
-      // brand: 'Samsung',
-      // name: 'Ativ',
-      // model: '6',
-      // statusProduct: 'Semi-used',
-      // starterPrice: '1.000,00',
-      // clientDescription: 'A little description invented to test the rendering.',
-      // imageUrl: 'http://placeimg.com/200/100/tech',
-      // companyPrice: '900,00',
-      // companyDescription: 'Another fake description to justify more rendering test.',
-      // repairPrice: '150,00',
-      // repairDescription: 'Some description to explain the repair.',
-      // specs: 'data of product specification and on and on',
-      // repairImageUrl: 'http://placeimg.com/200/100/tech',
-      // finalName: 'Samsung Ativbook 6',
-      // onSale: false,
-      // sellingPrice: '1.050,00',
-      // totalPrice: '1.102,50',
-      // comission: '5%',
-      // finalDescription: 'Final description of this entire process from product registration to product repair to product sell.',
     };
     this.service = new AuthService();
     this.flagHell = false;

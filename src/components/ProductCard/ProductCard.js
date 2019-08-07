@@ -45,7 +45,7 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>
                   </div>
                   <div className="tab-pane fade show active" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="companyResponse-tab">
                     <FirstCompanyResponse productId={this.state.product._id} />
@@ -57,6 +57,8 @@ class ProductCard extends Component {
         </div>
       )
     } else if (this.state.product.status === 'FirstResponse' && this.state.user.role === 'Customer') {
+      console.log(this.state.product.idCompany, "ID COMPANY");
+      
       return(
         <div className="row">
           <div className="col-12">
@@ -72,10 +74,10 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                    
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="companyResponse-tab">
-                    <p>DISPLAY DO Phix's Reply</p>
+                    <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                   </div>
                   <div className="tab-pane fade show active" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
                     <ToRepair productId={this.state.product._id} companyObj={this.state.product.idCompany}/>
@@ -87,6 +89,8 @@ class ProductCard extends Component {
         </div>
       )
     } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {
+      console.log(this.state.product.idCompany, "ID COMPANY DISPLAY");
+      
       return (
         <div className="row">
           <div className="col-12">
@@ -102,10 +106,10 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                    
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO SENT TO REPAIR (TO REPAIR)</p>
+                    <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />
                   </div>
                   <div className="tab-pane fade show active" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
                     <RepairServiceOrder productId={this.state.product._id} />
@@ -134,16 +138,15 @@ class ProductCard extends Component {
               </nav>
               <div className="tab-content" id="nav-tabContent">
                 <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                  <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                  
                 </div>
                 <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                  <p>DISPLAY DO Phix's Reply</p>
+                  <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                 </div>
                 <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                  <p>TO REPAIR DISPLAY</p>
-                </div>
+                  <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />                </div>
                 <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                  <p>SERVICE ORDER DISPLAY</p>
+                  <RepairServiceOrderDisplay product={this.state.product} />
                 </div>
                 <div className="tab-pane fade show active" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
                   <CompanyRepairYesOrNo productId={this.state.product._id} />
@@ -173,16 +176,16 @@ class ProductCard extends Component {
                   </nav>
                   <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                      <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                      
                     </div>
                     <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                      <p>DISPLAY DO Phix's Reply</p>
+                      <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                     </div>
                     <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                      <p>SERVICE ORDER DISPLAY</p>
+                      <RepairServiceOrderDisplay product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                      <p>ADMIN REPAIR YES DIPSLAY</p>
+                      <CompanyRepairYesOrNoDisplay alert="alert alert-success" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade show active" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
                       <SendToCompany productId={this.state.product._id} productObj={this.state.product}/>
@@ -211,16 +214,16 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                    
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO Phix's Reply</p>
+                    <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                   </div>
                   <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                    <p>SERVICE ORDER DISPLAY</p>
+                    <RepairServiceOrderDisplay product={this.state.product} />
                   </div>
                   <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                    <p>ADMIN REPAIR NO DIPSLAY</p>
+                    <CompanyRepairYesOrNoDisplay alert="alert alert-danger" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
                     <SendToCompany productId={this.state.product._id} productObj={this.state.product}/>
@@ -256,22 +259,21 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                    
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO Phix's Reply</p>
+                    <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                   </div>
                   <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                    <p>TO REPAIR DISPLAY</p>
-                  </div>
+                    <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />                  </div>
                   <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                    <p>SERVICE ORDER DISPLAY</p>
+                    <RepairServiceOrderDisplay product={this.state.product} />
                   </div>
                   <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                    <p>ADMIN REPAIR YES DIPSLAY</p>
+                    <CompanyRepairYesOrNoDisplay alert="alert alert-success" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                    <p>REPAIR SENT TO ADMIN DISPLAY</p>
+                    <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
                     <SendToStore productId={this.state.product._id}/>             
@@ -302,22 +304,22 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                    
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO Phix's Reply</p>
+                    <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                   </div>
                   <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                    <p>TO REPAIR DISPLAY</p>
+                    <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />
                   </div>
                   <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                    <p>SERVICE ORDER DISPLAY</p>
+                    <RepairServiceOrderDisplay product={this.state.product} />
                   </div>
                   <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                    <p>ADMIN REPAIR NO DIPSLAY</p>
+                    <CompanyRepairYesOrNoDisplay alert="alert alert-danger" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                    <p>REPAIR SENT TO ADMIN DISPLAY</p>
+                    <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
                     <SendToStore productId={this.state.product._id}/>             
@@ -351,25 +353,24 @@ class ProductCard extends Component {
                   </nav>
                   <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                      <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                      
                     </div>
                     <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                      <p>DISPLAY DO Phix's Reply</p>
+                      <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                     </div>
                     <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                      <p>TO REPAIR DISPLAY</p>
-                    </div>
+                      <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />                    </div>
                     <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                      <p>SERVICE ORDER DISPLAY</p>
+                      <RepairServiceOrderDisplay product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                      <p>ADMIN REPAIR YES DIPSLAY</p>
+                      <CompanyRepairYesOrNoDisplay alert="alert alert-success" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                      <p>REPAIR SENT TO ADMIN DISPLAY</p>
+                      <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                      <p>TO STORE DISPLAY</p>             
+                      <SendToStoreDisplay product={this.state.product}/>             
                     </div>
                   </div>
                 </div>
@@ -397,25 +398,24 @@ class ProductCard extends Component {
                   </nav>
                   <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                      <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                      
                     </div>
                     <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                      <p>DISPLAY DO Phix's Reply</p>
+                      <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                     </div>
                     <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                      <p>TO REPAIR DISPLAY</p>
-                    </div>
+                      <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />                    </div>
                     <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                      <p>SERVICE ORDER DISPLAY</p>
+                      <RepairServiceOrderDisplay product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                      <p>ADMIN REPAIR NO DIPSLAY</p>
+                      <CompanyRepairYesOrNoDisplay alert="alert alert-danger" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                      <p>REPAIR SENT TO ADMIN DISPLAY</p>
+                      <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                      <p>TO STORE DISPLAY</p>             
+                      <SendToStoreDisplay product={this.state.product}/>             
                     </div>
                   </div>
                 </div>
@@ -445,22 +445,22 @@ class ProductCard extends Component {
                   </nav>
                   <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                      <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                      
                     </div>
                     <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                      <p>TO REPAIR DISPLAY</p>
+                      <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />
                     </div>
                     <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                      <p>SERVICE ORDER DISPLAY</p>
+                      <RepairServiceOrderDisplay product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                      <p>ADMIN REPAIR YES DIPSLAY</p>
+                      <CompanyRepairYesOrNoDisplay alert="alert alert-success" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                      <p>REPAIR SENT TO ADMIN DISPLAY</p>
+                      <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                      <p>TO STORE DISPLAY</p>             
+                      <SendToStoreDisplay product={this.state.product}/>             
                     </div>
                   </div>
                 </div>
@@ -487,22 +487,22 @@ class ProductCard extends Component {
                   </nav>
                   <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                      <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                      
                     </div>
                     <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                      <p>TO REPAIR DISPLAY</p>
+                      <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />
                     </div>
                     <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                      <p>SERVICE ORDER DISPLAY</p>
+                      <RepairServiceOrderDisplay product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                      <p>ADMIN REPAIR NO DIPSLAY</p>
+                      <CompanyRepairYesOrNoDisplay alert="alert alert-danger" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                      <p>REPAIR SENT TO ADMIN DISPLAY</p>
+                      <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                      <p>TO STORE DISPLAY</p>             
+                      <SendToStoreDisplay product={this.state.product}/>             
                     </div>
                   </div>
                 </div>
@@ -529,16 +529,16 @@ class ProductCard extends Component {
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
                   <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
-                    <p>DISPLAY DO REQUEST</p>
+                    <RequestDisplay product={this.state.product} user={this.state.user}/>                    
                   </div>
                   <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
-                    <p>DISPLAY DO Phix's Reply</p>
+                    <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                   </div>
                   <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                    <p>TO REPAIR DISPLAY</p>
+                    <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                    <p>TO STORE DISPLAY</p>             
+                    <SendToStoreDisplay product={this.state.product}/>             
                   </div>
                 </div>
               </div>

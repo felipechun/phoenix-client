@@ -15,10 +15,10 @@ class CompanyRepairYesOrNoDisplay extends Component {
         <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
           <div className="card">
             <h5 className="card-header">Repair Device?</h5>
-            <div className="card-body">
+            <div className="card-body mx-auto">
               <div className="row">
                 <div className={this.props.alert} role="alert">
-                  <p className="mb-0">Customer aswered <span className="text-uppercase font-weight-bold">{this.state.product.repairYesNo}</span> to repair this product.</p>
+                  <p className="mb-0">Phix answered <span className="text-uppercase font-weight-bold">{this.state.product.repairYesNo}</span> to repair this product.</p>
                 </div>
               </div>
             </div>
