@@ -30,7 +30,7 @@ class Navbar extends Component {
               !this.props.isLoggedIn ?
             <Fragment>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/about" className="nav-link">About Us <span className="sr-only">(current)</span></Link>
+                <Link to="/about" className="nav-link">About Us</Link>
               </li>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <Link to="/login" className="nav-link">Login</Link>
