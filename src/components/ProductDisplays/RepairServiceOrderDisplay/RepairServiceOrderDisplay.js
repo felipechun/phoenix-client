@@ -17,7 +17,7 @@ class RepairServiceOrderDisplay extends Component {
             <h5 className="card-header">Service Order</h5>
             <div className="card-body">
               <p className="text-center">
-                <img src={this.state.product.repairImageUrl} alt={this.state.product._id} className="img-thumbnail" />
+                <img src={this.state.product.repairImageUrl} alt={this.state.product._id} className="img-thumbnail h-50 w-50" />
               </p>
               <div className="row">
                 <div className="col-4 col-sm-4 col-md-3 col-lg-3 col-xl-3 text-right">

@@ -216,7 +216,7 @@ export class SellForm extends Component {
                   </div>
                   <div className="form-group">
                   {
-                    this.state.path === 'Sell' && this.state.statusProduct === 'Broken' ? (
+                    this.state.path === 'Sell' ? (
                       <Fragment>
                         <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
                         <MarkedCompanies 

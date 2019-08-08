@@ -71,6 +71,13 @@ class AuthService {
     })
   }
 
+  getMyPurchases = () => {
+    return this.service.get('/myPurchases')
+    .then(response => {
+      return response.data
+    })
+  }
+
   handleUpload (theFile) {
     // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)
