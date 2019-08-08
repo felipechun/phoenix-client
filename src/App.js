@@ -22,7 +22,7 @@ import SendToCompany from './components/ProductForms/SendToCompany/SendToCompany
 import SendToStore from './components/ProductForms/SendToStore/SendToStore';
 import AdminProfile from "./components/AdminProfile/AdminProfile";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoutes";
-import { thisTypeAnnotation } from "@babel/types";
+import Checkout from "./components/Cart/Checkout/Checkout";
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +46,26 @@ class App extends Component {
         })
       })
       .catch(err => console.log(err))
+  }
+
+  getProductsFromApi = (request) => {
+    if (request === 'All') {
+      this.service.getToStore()
+        .then(answer => {
+          this.setState({
+            displayStore: answer,
+          })
+        })
+        .catch(err => console.log(err))
+    } else {
+      this.service.getSpecific(request)
+        .then(answer => {
+          this.setState({
+            displayStore: answer,
+          })
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   // Add products to shopping cart
@@ -133,14 +153,13 @@ class App extends Component {
           {/* <h1>LOGGED IN!</h1> */}
           <main role="main">
             <Switch>
-              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} />} />
+              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/about" component={About}/>
               <ProtectedRoute exact user={this.state.loggedInUser} path="/profile" component={Profile} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/admin" component={AdminProfile} />
-              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} />} />
+              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
 
-              <ProtectedRoute exact user={this.state.loggedInUser} shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} path="/cart" component={Cart} />
 
               <ProtectedRoute exact user={this.state.loggedInUser} path="/company-signup" component={CompanyRegister} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/sell-form" component={SellForm}/>
@@ -150,6 +169,9 @@ class App extends Component {
               <ProtectedRoute exact user={this.state.loggedInUser} path="/repair-decision" component={CompanyRepairYesOrNo} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-company" component={SendToCompany} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-store" component={SendToStore} />
+
+              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} component={Cart} />
+              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} shoppingCart={this.state.shoppingCart} cartLength={this.state.cartLength} />
             </Switch>
           </main>
           <Footer/>
@@ -163,12 +185,14 @@ class App extends Component {
           <h1>ACEITA EMAIL PORRA</h1>
           <main role="main">
             <Switch>
-              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} />} />
+              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/about" component={About}/>
-              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} />} />
+              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" render={(props) => <Cart checkout={this.checkout} shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} /> } />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/profile" component={Profile} />
+
+              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" render={(props) => <Cart checkout={this.checkout} shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} /> } />
+              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} shoppingCart={this.state.shoppingCart} cartLength={this.state.cartLength} />
             </Switch>
           </main>
           <Footer/>
@@ -180,13 +204,12 @@ class App extends Component {
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} />
           <main role="main">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" render={(props) => <Home getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/about" component={About} />
               <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />
-              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} />} />
+              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" render={(props) => <Cart shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} checkout={this.checkout} total={this.state.total} /> } />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/profile" component={Profile} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/admin" component={AdminProfile} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/company-signup" component={CompanyRegister} />
@@ -197,6 +220,9 @@ class App extends Component {
               <ProtectedRoute exact user={this.state.loggedInUser} path="/repair-decision" component={CompanyRepairYesOrNo} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-company" component={SendToCompany} />
               <ProtectedRoute exact user={this.state.loggedInUser} path="/send-to-store" component={SendToStore} />
+
+              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" render={(props) => <Cart shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} checkout={this.checkout} total={this.state.total} /> } />
+              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} shoppingCart={this.state.shoppingCart} cartLength={this.state.cartLength} />
             </Switch>
           </main>
           <Footer />

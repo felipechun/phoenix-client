@@ -26,17 +26,18 @@ main {
 .centered {
   /* position: absolute; */
   font-size: 3rem;
-  display: none;
-}
-
-.centered:hover {
   display: block;
+  opacity: 0;
 }
 
-#category-img {
-  width: 100%; /* You can set the dimensions to whatever you want */
-  height: 300px;
-  object-fit: cover;
+.card:hover .centered {
+  opacity: 1;
+}
+
+.category-img {
+  width: 100% !important; /* You can set the dimensions to whatever you want */
+  height: 300px !important;
+  object-fit: cover !important;
 }
 
 #mapContainer,

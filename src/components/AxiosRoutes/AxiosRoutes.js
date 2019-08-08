@@ -10,7 +10,6 @@ class AxiosRoutes {
   }
 
   mainSearch = (searchTerm) => {
-    console.log(searchTerm, 'THIS IS THE SEARCH TERM IN AXIOSROUTES');
     return this.service.post('/search', { searchTerm })
     .then(response => response.data)
   }

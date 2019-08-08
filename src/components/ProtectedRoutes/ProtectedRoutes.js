@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 const ProtectedRoute  = ({component: Component, user, checkout, remove, shoppingCart, total, path, ...rest}) => {
+  console.log('REST', {...rest})
   return (
     <Route
       {...rest}

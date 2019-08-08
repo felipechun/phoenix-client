@@ -53,15 +53,12 @@ class RepairServiceOrder extends Component {
   }
 
   handleFileUpload = e => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
-
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
     uploadData.append("imageUrl", e.target.files[0]);
     
     this.service.handleUpload(uploadData)
     .then(response => {
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
         this.setState({ repairImageUrl: response.secure_url }, () => console.log('IMAGE', this.state.repairImageUrl));
       })
       .catch(err => {

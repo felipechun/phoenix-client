@@ -9,7 +9,6 @@ class CompanyRepairYesOrNoDisplay extends Component {
   }
 
   render() {
-    console.log('yes or no ----->', this.state.product)
     return (
       <div className="row mt-3 mt-3 mb-3">
         <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
