@@ -68,7 +68,7 @@ class Signup extends Component {
                     <option value="">Select</option>
                     <option value="Customer">User</option>
                     <option value="Company">Company</option>
-                    <option value="Admin">It's a Secret</option>
+                    {/* <option value="Admin">It's a Secret</option> */}
                   </select>
                 </div>
               </div>

@@ -141,7 +141,7 @@ class App extends Component {
     if (!this.status) {
       this.status = true;
       return <div className="App" />;
-    } else if (this.state.loggedInUser && this.state.loggedInUser.status === 'Pending') {
+    } else if (this.state.loggedInUser && this.state.loggedInUser.status === 'Active') {
 
       return (
         <div className="App">
@@ -165,7 +165,7 @@ class App extends Component {
           <Footer/>
         </div>
       );
-    } else if(this.state.loggedInUser && this.state.loggedInUser.status === 'Active'){
+    } else if(this.state.loggedInUser && this.state.loggedInUser.status === 'Pending'){
       console.log(this.state.loggedInUser);
       return(
         <div className="App">
