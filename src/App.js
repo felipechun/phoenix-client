@@ -100,11 +100,9 @@ class App extends Component {
   checkout = () => {
     const cart = [...this.state.shoppingCart]
     const products = cart.map(item => item._id)
-    
     let total = this.state.total;
-
-    console.log(total, 'axios')
-    console.log(products, 'axios')
+    console.log('----->',cart)
+    console.log(total, '<-----')
     this.service.cartCheckout(products, total)
       .then(res => console.log(res))
       .catch(err => console.log(err))
@@ -140,6 +138,7 @@ class App extends Component {
       this.status = true;
       return <div className="App" />;
     } else if (this.state.loggedInUser && this.state.loggedInUser.status === 'Pending') {
+
       return (
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} cartLength={this.state.cartLength} />
@@ -155,8 +154,8 @@ class App extends Component {
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Company" path="/company-signup" component={CompanyRegister} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/sell-form" component={SellForm}/>
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/edit-profile" component={UserDetails} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} component={Cart} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} shoppingCart={this.state.shoppingCart} cartLength={this.state.cartLength} />
+              <ProtectedRoute exact typeRole="Customer" user={this.state.loggedInUser} path="/cart" shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} component={Cart} />
+              <ProtectedRoute exact typeRole="Customer" user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} />
             </Switch>
           </main>
           <Footer/>
@@ -177,8 +176,8 @@ class App extends Component {
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/edit-profile" component={UserDetails} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" render={(props) => <Cart checkout={this.checkout} shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} /> } />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} shoppingCart={this.state.shoppingCart} cartLength={this.state.cartLength} />
+              <ProtectedRoute exact typeRole="Customer" user={this.state.loggedInUser} path="/cart" shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} component={Cart} />
+              <ProtectedRoute exact typeRole="Customer" user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} />
             </Switch>
           </main>
           <Footer/>
@@ -202,8 +201,8 @@ class App extends Component {
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Company" path="/company-signup" component={CompanyRegister} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/sell-form" component={SellForm}/>
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Customer" path="/edit-profile" component={UserDetails} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart" shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} component={Cart} />
-              <ProtectedRoute exact user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} shoppingCart={this.state.shoppingCart} cartLength={this.state.cartLength} />
+              <ProtectedRoute exact typeRole="Customer" user={this.state.loggedInUser} path="/cart" shoppingCart={this.state.shoppingCart} checkout={this.checkout} remove={this.removeFromCart} total={this.state.total} component={Cart} />
+              <ProtectedRoute exact typeRole="Customer" user={this.state.loggedInUser} path="/cart/checkout" component={Checkout} />
             </Switch>
           </main>
           <Footer />

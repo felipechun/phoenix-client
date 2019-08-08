@@ -2,7 +2,7 @@
   height: auto;
   width: 100%;
 }
-.card img#checkout {
+.card img.checkout {
   height: 50px;
   width: 50px;
 }

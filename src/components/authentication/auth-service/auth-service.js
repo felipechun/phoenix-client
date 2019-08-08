@@ -64,6 +64,15 @@ class AuthService {
     })
   }
 
+
+  // get user cart
+  getCart = () => {
+    return this.service.get(`/myCart`)
+    .then(response => {
+      return response.data
+    })
+  }
+
   cartCheckout = (products, total) => {
     return this.service.post('/cart', {products, total})
     .then(response => {
@@ -235,13 +244,6 @@ class AuthService {
     })
   }
 
-  // get user cart
-  getCart = () => {
-    return this.service.get('/myCart')
-    .then(response => {
-      return response.data
-    })
-  }
   // edit user cart
   editCart = (request, status) => {
     return this.service.put(`/cart-edit/${request}`, { status })
@@ -250,7 +252,7 @@ class AuthService {
     })
   }
 
-  getCart = (request) => {
+  deletCart = (request) => {
     return this.service.delete(`/delete-cart/${request}`)
     .then(response => {
       return response.data
