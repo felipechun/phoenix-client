@@ -86,11 +86,7 @@ class ProductCard extends Component {
           </div>
         </div>
       )
-<<<<<<< HEAD
     } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {
-=======
-    } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {      
->>>>>>> 0ed2ad34b7ff4e15a181a76a0372c68b73741fd1
       return (
         <div className="row">
           <div className="col-12">
