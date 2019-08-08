@@ -157,7 +157,7 @@ export class CompanyRegister extends Component {
                     <label className="card-title font-weight-bold">Please drag the marker to your company location</label>
                     <CompanyMapRegister getMarker={this.getMarker} className="mx-auto w-75 h-50 mx-auto mb-5" />
                   </div>
-                  <SubmitBtn type="submit" className="btn btn-outline-success">Submit</SubmitBtn>
+                  <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
                 </form>
               </div>
             </div>

@@ -145,7 +145,7 @@ class App extends Component {
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} cartLength={this.state.cartLength} />
           <main role="main">
             <Switch>
-              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} />} />
+              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} featuredProducts={this.state.displayStore} />} />
               <Route exact path="/about" component={About}/>
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Admin" path="/admin" component={AdminProfile} />
@@ -175,7 +175,7 @@ class App extends Component {
           <h1>Precisa autenticar conta no Email.</h1>
           <main role="main">
             <Switch>
-              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} />} />
+              <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} featuredProducts={this.state.displayStore} />} />
               <Route exact path="/about" component={About}/>
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" shoppingCart={this.state.shoppingCart} remove={this.removeFromCart} total={this.state.total} path="/cart" component={Cart} />
 
@@ -201,7 +201,7 @@ class App extends Component {
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} />
           <main role="main">
             <Switch>
-              <Route exact path="/" render={(props) => <Home getProductsFromApi={this.getProductsFromApi} />} />
+              <Route exact path="/" render={(props) => <Home getProductsFromApi={this.getProductsFromApi} featuredProducts={this.state.displayStore} />} />
               <Route exact path="/about" component={About} />
               <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />

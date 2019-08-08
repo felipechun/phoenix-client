@@ -31,10 +31,10 @@ class DynamicSearchBar extends Component {
     return (
       <form onSubmit={this.handleFormSubmit}>
         <div className="input-group mb-3">
-          <Input className="form-control" type="text" value={this.state.searchTerm} onChange={ e => this.handleChange(e)} placeholder="Type here to filter our products." />
-          <div className="input-group-append">
-            <SubmitBtn className="btn btn-outline-primary" type="submit">Search</SubmitBtn>
+          <div className="input-group-prepend">
+            <SubmitBtn className="btn btn-secondary" disabled="disabled">Filter</SubmitBtn>
           </div>
+          <Input className="form-control" type="text" value={this.state.searchTerm} onChange={ e => this.handleChange(e)} placeholder="Type here to filter our products" />
         </div>
       </form>
     )
