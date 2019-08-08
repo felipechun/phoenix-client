@@ -12,14 +12,25 @@ class Home extends Component {
     super(props)
     this.state = {
       user: this.props.userObj,
+      status: false
     }
   }
 
   
   render() {
-    if(this.state.user){
-      if (this.state.user.role === 'Company' && this.state.user.company.length <= 0) {
+    if(this.state.status){
+      this.setState({
+        status: true,
+      })
+      return(
+        <>
+        </>
+      )
+    } else if(this.props.userObj){
+      if (this.props.userObj.role === 'Company' && this.props.userObj.company.length <= 0) {
         return <Redirect to="/company-signup"/>
+      } else if (this.props.userObj.role === 'Customer' && this.props.userObj["name"] === undefined) {
+        return <Redirect to="/edit-profile"/>
       } else {
         return (
           <Fragment>
@@ -81,7 +92,7 @@ class Home extends Component {
           </Fragment>
         )
       }
-    } else {
+    } else if(!this.props.userObj){
       return (
         <Fragment>
           <div className="container-fluid">

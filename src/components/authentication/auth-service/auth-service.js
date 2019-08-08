@@ -37,7 +37,7 @@ class AuthService {
   }
 
   updateUserDetails (name, address, city, cep, cpf, userId) {
-    return this.service.put(`/profile/edit/${userId}`, { name, address, city, cep, cpf, userId})
+    return this.service.put(`/profile/edit/${userId}`, { name, address, city, cep, cpf})
     .then(response => {
       return response.data
     })

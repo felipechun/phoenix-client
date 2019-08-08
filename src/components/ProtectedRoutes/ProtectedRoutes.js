@@ -18,7 +18,7 @@ const ProtectedRoute  = ({component: Component, user, typeRole, remove, shopping
                 } else {
                     return <Redirect to={{pathname: '/', state: {from: props.location}}} />
                 }
-            } else {              
+            } else {
                 if(user && user.role === typeRole){
                     return <Component {...props} userObj={user}/>
                 } else {

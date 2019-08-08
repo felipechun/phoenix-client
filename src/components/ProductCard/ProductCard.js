@@ -24,11 +24,11 @@ class ProductCard extends Component {
       user: this.props.userObj,
       // index: this.props.idNum
     }
+    // this.status = false;
   }
 
 
   render() {
-
     if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {
       // console.log(this.props.idNum, 'THE KEYYYYY');
       
@@ -90,8 +90,6 @@ class ProductCard extends Component {
         </div>
       )
     } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {
-      console.log(this.state.product.idCompany, "ID COMPANY DISPLAY");
-      
       return (
         <div className="row">
           <div className="col-12">
@@ -424,7 +422,7 @@ class ProductCard extends Component {
             </div>
           </div>
         )
-      } 
+      }
 
     } else if (this.state.product.status === 'toStore' && this.state.user.role === 'Company') {
       if (this.state.product.repairYesNo === 'Yes') {
