@@ -9,7 +9,6 @@ const markedMap = {
  
 
 const MapContainer = (props) => {
-
   return (
     <div id="mapContainer">
       <Map
@@ -35,5 +34,5 @@ const MapContainer = (props) => {
  
 }
 export default GoogleApiWrapper({
- apiKey: 'AIzaSyB3daSfMZ9sznOP_MvVOuCeqaPjyB7sMAo'
+ apiKey: 'AIzaSyBbckGODqBrqGU7vZ4Sk23SVu0lQ5b6lEo'
 })(MapContainer);

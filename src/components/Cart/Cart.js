@@ -1,7 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import CartItem from './CartItem/CartItem';
 
-class Chart extends Component {
-  render() {
+const Cart = (props) => {
+  if (props.shoppingCart.length === 0) {
+    return (
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col-12">
+            <h4 className="border-bottom text-uppercase">Cart</h4>
+          </div>
+        </div>
+        <div className="row mt-3">
+          <div className="col-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 text-center">
+            <div class="alert alert-info" role="alert">
+            Your shopping cart is empty.
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  } else {
     return (
       <div className="container mt-3">
         <div className="row">
@@ -20,22 +38,14 @@ class Chart extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <img src="http://placeimg.com/100/100/tech" className="rounded float-left mt-1 mr-2" alt="Product" />
-                    <div>
-                      <h5>Product Name</h5>
-                      <p>Product Description</p>
-                      <p>Product Specification</p>
-                    </div>
-                  </td>
-                  <td className="text-right align-middle">R$ 999,99 <button type="button" className="btn btn-sm btn-outline-danger"><i className="fas fa-trash-alt"></i></button></td>
-                </tr>
+                { props.shoppingCart.map((item, index) => {
+                  return <CartItem key={item._id} index={index} {...item} remove={props.remove} />
+                })}
               </tbody>
               <tfoot className="thead-dark">
                 <tr>
                   <th>Total Value</th>
-                  <th className="text-right">R$ 999,99</th>
+                  <th className="text-right">R$ {props.total}</th>
                 </tr>
               </tfoot>
             </table>
@@ -49,4 +59,4 @@ class Chart extends Component {
   }
 }
 
-export default Chart;
+export default Cart;

@@ -2,18 +2,41 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 html, body {
   min-height: 100vh;
+
   /* min-width: 100vw; */
   /* max-width: calc(100vw - 10px); */
 }
 
 main {
+
   /* min-height: 100vh; */
   min-height: calc(100vh - 442px);
   /* padding-bottom: 56px; */
+}
+
+/* .carousel-inner {
+  min-height: 300px !important;
+} */
+
+.centered {
+  /* position: absolute; */
+  font-size: 3rem;
+  display: none;
+}
+
+.centered:hover {
+  display: block;
+}
+
+#category-img {
+  width: 100%; /* You can set the dimensions to whatever you want */
+  height: 300px;
+  object-fit: cover;
 }
 
 #mapContainer,
