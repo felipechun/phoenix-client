@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import ProductGallery from '../ProductGallery/ProductGallery';
 
 class ProductInfos extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   render() {
     console.log('prod infos', this.props)
     return (

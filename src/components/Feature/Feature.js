@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import FeaturedImage from './FeaturedImage'; 
 
 class Feature extends Component {
   render() {

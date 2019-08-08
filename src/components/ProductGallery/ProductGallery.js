@@ -1,10 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-class ProductGallery extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
+class ProductGallery extends Component {  
   render() {
     return (
       <Fragment>

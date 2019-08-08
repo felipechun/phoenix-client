@@ -64,6 +64,13 @@ class AuthService {
     })
   }
 
+  cartCheckout = (products, total) => {
+    return this.service.post('/cart', {products, total})
+    .then(response => {
+      return response.data
+    })
+  }
+
   populateProducts = () => {
     return this.service.get('/client-products')
     .then(response => {
@@ -79,7 +86,6 @@ class AuthService {
   }
 
   handleUpload (theFile) {
-    // console.log('file in service: ', theFile)
     return this.service.post('/upload', theFile)
       .then(res => res.data);
   }
@@ -221,6 +227,35 @@ class AuthService {
       .then(res => res.data)
   }
 
+  // get specific products from the server
+  getSpecific = (request) => {
+    return this.service.get(`/categorie/${request}`)
+    .then(response => {
+      return response.data
+    })
+  }
+
+  // get user cart
+  getCart = () => {
+    return this.service.get(`/myCart`)
+    .then(response => {
+      return response.data
+    })
+  }
+  // edit user cart
+  editCart = (request, status) => {
+    return this.service.put(`/cart-edit/${request}`, { status })
+    .then(response => {
+      return response.data
+    })
+  }
+
+  getCart = (request) => {
+    return this.service.delete(`/delete-cart/${request}`)
+    .then(response => {
+      return response.data
+    })
+  }
 }
 
 export default AuthService;

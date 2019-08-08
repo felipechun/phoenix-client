@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import './Footer.css';
-import UpperFooter from './UpperFooter';
 
 const Footer = () => {
   return (

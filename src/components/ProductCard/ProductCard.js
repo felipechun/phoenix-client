@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import FirstCompanyResponse from '../ProductForms/FirstCompanyResponse/FirstCompanyResponse';
 import ToRepair from '../ProductForms/ToRepair/ToRepair';
 import RepairServiceOrder from '../ProductForms/RepairServiceOrder/RepairServiceOrder';
@@ -29,9 +29,8 @@ class ProductCard extends Component {
 
 
   render() {
-    if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {
-      // console.log(this.props.idNum, 'THE KEYYYYY');
-      
+
+    if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {      
       return (
         <div className="row">
           <div className="col-12">
@@ -57,9 +56,7 @@ class ProductCard extends Component {
           </div>
         </div>
       )
-    } else if (this.state.product.status === 'FirstResponse' && this.state.user.role === 'Customer') {
-      console.log(this.state.product.idCompany, "ID COMPANY");
-      
+    } else if (this.state.product.status === 'FirstResponse' && this.state.user.role === 'Customer') {      
       return(
         <div className="row">
           <div className="col-12">
@@ -89,7 +86,11 @@ class ProductCard extends Component {
           </div>
         </div>
       )
+<<<<<<< HEAD
     } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {
+=======
+    } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {      
+>>>>>>> 0ed2ad34b7ff4e15a181a76a0372c68b73741fd1
       return (
         <div className="row">
           <div className="col-12">
