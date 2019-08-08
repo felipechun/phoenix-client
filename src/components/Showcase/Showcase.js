@@ -18,14 +18,14 @@ export class Search extends Component {
         <div className="row">
           <div className="col-12">
             <DynamicSearchBar />
-            <h1>Search Results from Home</h1>
+            {/* <h1>Search Results from Home</h1> */}
           </div>
         </div>
         <div className="row">
           <div className="col-12">
             <div className="row d-flex flex-column align-items-center">
               <Sidebar getProductsFromApi={this.props.getProductsFromApi} />
-              <Feature />
+              {/* <Feature /> */}
             </div>
             <div id="Showcase" className="row mt-3">
               { this.props.products.map((item, index) => {

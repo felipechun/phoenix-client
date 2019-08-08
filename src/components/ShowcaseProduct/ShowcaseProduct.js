@@ -12,9 +12,9 @@ class ShowcaseProduct extends Component {
   
   render() {
     return (
-      <div className="col-md-3">
+      <div className="col-lg-4 col-md-6 col-xs-12">
         <div className="card mb-4 shadow-sm">
-          <img src={this.props.product.imageUrl} alt="Product Avatar" />
+          <img src={this.props.product.repairImageUrl} alt="Product Avatar" />
           <div className="card-body">
             <p className="card-text">{this.props.product.finalName}</p>
             <p className="card-text"><small>{this.props.product.brand}</small></p>

@@ -8,7 +8,7 @@ export class AdminProfile extends Component {
     this.state = {
       allProducts: null,
       user: this.props.userObj,
-      x: null,
+      flag: false,
     }
     this.service = new AuthService();
   }
@@ -23,28 +23,32 @@ export class AdminProfile extends Component {
       .catch(err => console.log(err))
   } 
 
+    updateIfHell = () =>{
+      window.location.reload();
+  }
 
   render() {
-    if (!this.state.allProducts) {
-      return (
-        <div></div>
-      )
-    } else {
-      return (
-        <div className="card w-75 mx-auto">
-          <div className="card-header">
-            <h5 className="card-title">All Products</h5>
+
+      if (!this.state.allProducts) {
+        return (
+          <div></div>
+        )
+      } else {
+        return (
+          <div className="card w-75 mx-auto">
+            <div className="card-header">
+              <h5 className="card-title">All Products</h5>
+            </div>
+            <div className="card-body">
+              {
+                this.state.allProducts.map((singleProduct, index) => {
+                  return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user} update={this.updateIfHell}/>
+                })
+              }
+            </div>
           </div>
-          <div className="card-body">
-            {
-              this.state.allProducts.map((singleProduct, index) => {
-                return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user}/>
-              })
-            }
-          </div>
-        </div>
-      )
-    }
+        )
+      }
   }
 }
 

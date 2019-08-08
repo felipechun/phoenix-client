@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AuthService from '../../authentication/auth-service/auth-service';
 import SubmitBtn from '../../buttons/SubmitBtn';
+import { Redirect } from 'react-router-dom';
 
 class FirstCompanyResponse extends Component {
 
@@ -13,6 +14,7 @@ class FirstCompanyResponse extends Component {
       productId: this.props.productId,
       };
     this.service = new AuthService();
+    this.status = false;
   }
 
   handleFormSubmit = (event) => {
@@ -21,7 +23,9 @@ class FirstCompanyResponse extends Component {
     const responsePrice = this.state.responsePrice;
     const companyDescription = this.state.companyDescription;
     const productId = this.state.productId;
-  
+    this.status = true;
+    this.props.update();
+
     this.service.updateToFirstResponse(status, responsePrice, companyDescription, productId)
     .then( response => {
         this.setState({
@@ -42,35 +46,40 @@ class FirstCompanyResponse extends Component {
 
 
   render() {
-    return (
-      <div className="container mt-3 mb-3">
-        <div className="row">
-          <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
-            <div className="card">
-              <h5 className="card-header">First Response</h5>
-              <div className="card-body">
-                <form onSubmit={this.handleFormSubmit}>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Company Price</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">$</span>
+    if(this.status === false){
+      return (
+        <div className="container mt-3 mb-3">
+          <div className="row">
+            <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
+              <div className="card">
+                <h5 className="card-header">First Response</h5>
+                <div className="card-body">
+                  <form onSubmit={this.handleFormSubmit}>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Company Price</label>
+                      <div className="input-group">
+                        <div className="input-group-prepend">
+                          <span className="input-group-text">$</span>
+                        </div>
+                        <input type="text" name="responsePrice" className="form-control" value={this.state.responsePrice} required onChange={ e => this.handleChange(e)} placeholder="The company's estimated price of the product in its current condition"  />
                       </div>
-                      <input type="text" name="responsePrice" className="form-control" value={this.state.responsePrice} required onChange={ e => this.handleChange(e)} placeholder="The company's estimated price of the product in its current condition"  />
                     </div>
-                  </div>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Description</label>
-                  <textarea className="form-control" name="companyDescription" value={this.state.companyDescription} required onChange={ e => this.handleChange(e)} placeholder="Company's description of the received product" rows="3"></textarea>
-                  </div>
-                  <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
-                </form>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Description</label>
+                    <textarea className="form-control" name="companyDescription" value={this.state.companyDescription} required onChange={ e => this.handleChange(e)} placeholder="Company's description of the received product" rows="3"></textarea>
+                    </div>
+                    <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    )
+      ) 
+    } else if(this.status === true){
+
+      return <Redirect to="/admin"/>
+    }
   }
 }
 

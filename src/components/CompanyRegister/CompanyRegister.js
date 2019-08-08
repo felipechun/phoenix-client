@@ -37,6 +37,7 @@ export class CompanyRegister extends Component {
     const cnpj = this.state.cnpj;
     const cep = this.state.cep;
     this.status = true;
+    
     this.service.companySignup(name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email, cep)
     .then( response => {
         this.setState({
@@ -80,7 +81,6 @@ export class CompanyRegister extends Component {
 
   render() {
     if(this.status === false){
-      console.log('IF FALSE', this.status)
     return (
       <div className="container">
         <div className="row">
@@ -157,7 +157,7 @@ export class CompanyRegister extends Component {
                     <label className="card-title font-weight-bold">Please drag the marker to your company location</label>
                     <CompanyMapRegister getMarker={this.getMarker} className="mx-auto w-75 h-50 mx-auto mb-5" />
                   </div>
-                  <SubmitBtn type="submit" className="btn btn-outline-success">Submit</SubmitBtn>
+                  <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
                 </form>
               </div>
             </div>
@@ -166,7 +166,6 @@ export class CompanyRegister extends Component {
       </div>
     )
     }  else if(this.status === true){
-      console.log('ELSE TRUE', this.status)
 
       return <Redirect to="/after-signup"/>
     }
