@@ -20,7 +20,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav id="uppernav" className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand"><img src="../../images/phoenix.png" height="40" alt="Phoenix" />&nbsp;&nbsp;Phix</Link>
+        <Link to="/" className="navbar-brand"><img src="../../images/phix-icon.svg" height="40" alt="Phoenix" />&nbsp;&nbsp;Phixit</Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -30,7 +30,7 @@ class Navbar extends Component {
               !this.props.isLoggedIn ?
             <Fragment>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/about" className="nav-link">About Us <span className="sr-only">(current)</span></Link>
+                <Link to="/about" className="nav-link">About Us</Link>
               </li>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <Link to="/login" className="nav-link">Login</Link>

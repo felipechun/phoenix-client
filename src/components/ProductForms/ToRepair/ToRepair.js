@@ -18,7 +18,8 @@ class ToRepair extends Component {
     event.preventDefault();
     const status = this.state.status;
     const productId = this.state.productId;
-  
+    this.props.update();
+
     this.service.updateToRepair(status, productId)
     .then( response => {
         this.setState({

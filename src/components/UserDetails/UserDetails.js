@@ -61,23 +61,23 @@ class UserDetails extends Component {
                   <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
                     <div className="form-group">
                       <label className="card-title font-weight-bold">Name</label>
-                      <input type="text" name="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
+                      <input type="text" name="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="Your Name"  />
                     </div>
                     <div className="form-group">
                       <label className="card-title font-weight-bold">CPF</label>
-                      <input type="text" name="cpf" className="form-control" value={this.state.cpf} required onChange={ e => this.handleChange(e)} placeholder="Product model"  />
+                      <input type="text" name="cpf" className="form-control" value={this.state.cpf} required onChange={ e => this.handleChange(e)}  />
                     </div>
                     <div className="form-group">
                       <label className="card-title font-weight-bold">City</label>
-                    <textarea className="form-control" name="city" value={this.state.city} required onChange={ e => this.handleChange(e)} placeholder="Please describe all the repairs that are needed" rows="3"></textarea>
+                    <input type="text" className="form-control" name="city" value={this.state.city} required onChange={ e => this.handleChange(e)} placeholder="Your City"></input>
                     </div>
                     <div className="form-group">
                       <label className="card-title font-weight-bold">Address</label>
-                      <input type="text" name="address" className="form-control" value={this.state.address} required onChange={ e => this.handleChange(e)} placeholder="Product model"  />
+                      <input type="text" name="address" className="form-control" value={this.state.address} required onChange={ e => this.handleChange(e)} placeholder="Street, etc."  />
                     </div>
                     <div className="form-group">
                       <label className="card-title font-weight-bold">CEP</label>
-                      <input type="text" name="cep" className="form-control" value={this.state.cep} required onChange={ e => this.handleChange(e)} placeholder="Product model"  />
+                      <input type="text" name="cep" className="form-control" value={this.state.cep} required onChange={ e => this.handleChange(e)} placeholder="Your Postal Code"  />
                     </div>
                     <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
                   </form>

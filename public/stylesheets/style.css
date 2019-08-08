@@ -5,6 +5,11 @@
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.navbar-brand {
+  font-family: 'Audiowide', sans-serif;
+  color: rgb(231, 87, 39) !important;
+}
+
 html, body {
   min-height: 100vh;
 
@@ -23,9 +28,26 @@ main {
   min-height: 300px !important;
 } */
 
+.cover-image {
+  background-image: url('../images/phix-cover.jpeg');
+  background-size: cover;
+  height: 475px;
+  width: 100%;
+}
+
+.phix-title {
+  /* width: 60%; */
+  /* padding: 3% 0 0 9rem; */
+  font-size: 3rem;
+}
+
+.colorful {
+  color: rgb(231, 87, 39);
+}
+
 .centered {
   /* position: absolute; */
-  font-size: 3rem;
+  font-size: 2rem;
   display: block;
   opacity: 0;
 }
@@ -35,6 +57,18 @@ main {
 }
 
 .category-img {
+  width: 100% !important; /* You can set the dimensions to whatever you want */
+  height: 300px !important;
+  object-fit: cover !important;
+}
+
+.featured-product-img {
+  width: 100% !important; /* You can set the dimensions to whatever you want */
+  height: 475px !important;
+  object-fit: cover !important;
+}
+
+.product-showcase-img {
   width: 100% !important; /* You can set the dimensions to whatever you want */
   height: 300px !important;
   object-fit: cover !important;

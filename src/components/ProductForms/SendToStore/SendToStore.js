@@ -31,7 +31,8 @@ class SendToStore extends Component {
     const finalDescription = this.state.finalDescription;
     const productId = this.state.productId;
     // const finalImageUrl = this.state.finalImageUrl;
-  
+    this.props.update();
+
     this.service.updateSendToStore(status, finalName, onSale, sellingPrice, totalPrice, comission, finalDescription, productId) // finalImageUrl
     .then( response => {
         this.setState({
