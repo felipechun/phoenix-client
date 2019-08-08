@@ -101,10 +101,14 @@ class App extends Component {
     const cart = [...this.state.shoppingCart]
     const products = cart.map(item => item._id)
     let total = this.state.total;
-    console.log('----->',cart)
-    console.log(total, '<-----')
     this.service.cartCheckout(products, total)
-      .then(res => console.log(res))
+      .then(() => {
+        this.setState({
+          shoppingCart: [],
+          total: '',
+          cartLength: 0,
+        })
+      })
       .catch(err => console.log(err))
 
   }
