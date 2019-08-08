@@ -237,7 +237,7 @@ class AuthService {
 
   // get user cart
   getCart = () => {
-    return this.service.get(`/myCart`)
+    return this.service.get('/myCart')
     .then(response => {
       return response.data
     })

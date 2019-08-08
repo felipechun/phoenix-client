@@ -21,15 +21,12 @@ class ProductCard extends Component {
     super(props);
     this.state = {
       product: this.props.singleProduct,
-      user: this.props.userObj,
-      // index: this.props.idNum
+      user: this.props.userObj, 
     }
-    // this.status = false;
   }
 
-
   render() {
-
+    console.log(this.props)
     if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {      
       return (
         <div className="row">
@@ -48,7 +45,7 @@ class ProductCard extends Component {
                     <RequestDisplay product={this.state.product} user={this.state.user}/>
                   </div>
                   <div className="tab-pane fade show active" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="companyResponse-tab">
-                    <FirstCompanyResponse productId={this.state.product._id} />
+                    <FirstCompanyResponse productId={this.state.product._id} update={this.props.update}/>
                   </div>
                 </div>
               </div>
@@ -78,7 +75,7 @@ class ProductCard extends Component {
                     <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
                   </div>
                   <div className="tab-pane fade show active" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
-                    <ToRepair productId={this.state.product._id} companyObj={this.state.product.idCompany}/>
+                    <ToRepair productId={this.state.product._id} companyObj={this.state.product.idCompany} update={this.props.update}/>
                   </div>
                 </div>
               </div>
@@ -108,7 +105,7 @@ class ProductCard extends Component {
                     <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />
                   </div>
                   <div className="tab-pane fade show active" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
-                    <RepairServiceOrder productId={this.state.product._id} />
+                    <RepairServiceOrder productId={this.state.product._id} update={this.props.update} />
                   </div>
                 </div>
               </div>
@@ -145,7 +142,7 @@ class ProductCard extends Component {
                   <RepairServiceOrderDisplay product={this.state.product} />
                 </div>
                 <div className="tab-pane fade show active" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
-                  <CompanyRepairYesOrNo productId={this.state.product._id} />
+                  <CompanyRepairYesOrNo productId={this.state.product._id} update={this.props.update}/>
                 </div>
               </div>
             </div>
@@ -184,7 +181,7 @@ class ProductCard extends Component {
                       <CompanyRepairYesOrNoDisplay alert="alert alert-success" product={this.state.product} />
                     </div>
                     <div className="tab-pane fade show active" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                      <SendToCompany productId={this.state.product._id} productObj={this.state.product}/>
+                      <SendToCompany productId={this.state.product._id} productObj={this.state.product} update={this.props.update}/>
                     </div>
                   </div>
                 </div>
@@ -222,7 +219,7 @@ class ProductCard extends Component {
                     <CompanyRepairYesOrNoDisplay alert="alert alert-danger" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
-                    <SendToCompany productId={this.state.product._id} productObj={this.state.product}/>
+                    <SendToCompany productId={this.state.product._id} productObj={this.state.product} update={this.props.update}/>
                   </div>
                 </div>
               </div>
@@ -272,7 +269,7 @@ class ProductCard extends Component {
                     <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                    <SendToStore productId={this.state.product._id}/>             
+                    <SendToStore productId={this.state.product._id} update={this.props.update}/>             
                   </div>
                 </div>
               </div>
@@ -318,7 +315,7 @@ class ProductCard extends Component {
                     <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
                   </div>
                   <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
-                    <SendToStore productId={this.state.product._id}/>             
+                    <SendToStore productId={this.state.product._id} update={this.props.update}/>             
                   </div>
                 </div>
               </div>
@@ -642,9 +639,9 @@ class ProductCard extends Component {
             </div>
           )
         }
-      } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Customer') {
+    } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Customer') {
         return null;
-      } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Company') {
+    } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Company') {
         return null;
     } else
     return (

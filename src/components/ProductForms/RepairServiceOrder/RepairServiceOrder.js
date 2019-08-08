@@ -29,7 +29,8 @@ class RepairServiceOrder extends Component {
     const brand = this.state.brand;
     const repairImageUrl = this.state.repairImageUrl;
     const productId = this.state.productId;
-  
+    this.props.update();
+
     this.service.updateToOrderRepair(status, repairPrice, repairDescription, model, specs, brand, repairImageUrl, productId)
     .then( response => {
         this.setState({

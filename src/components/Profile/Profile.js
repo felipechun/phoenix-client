@@ -4,6 +4,7 @@ import AuthService from '../authentication/auth-service/auth-service';
 import ProductCard from '../ProductCard/ProductCard';
 import ProfileProdBought from './ProfileProdBought';
 import ProfileProdSold from './ProfileProdSold';
+import { nextTick } from 'q';
 // import ProfileProdBrought from './ProfileProdBrought';
 // import ProfileProdSold from './ProfileProdSold';
 
@@ -23,11 +24,13 @@ class Profile extends Component {
   componentDidMount = () => {
     this.service.populateProducts()
       .then(answer => {
-        // console.log(answer, 'ANSWER');
-
+        console.log(answer, 'ANSWER');
+        this.status = true;
         this.setState({
           userProducts: answer,
         })
+   
+
       })
       .catch(err => console.log(err))
 
@@ -45,18 +48,22 @@ class Profile extends Component {
       }
   }
 
+  updateIfHell = () =>{
+    window.location.reload();
+}
+
   render() {
-    // console.log('PROFILE ----->', this.props.userObj);
-    // console.log(this.state.userProducts.product, 'GIVE ME THE PRODUCT');
+
     if(!this.status){
-      this.status = true;
+      console.log('IF', this.state.userProducts)
+
       return (
         <>
         </>
       )
     } else {
-      //console.log(this.state.userProducts.company[0])
-      console.log('PROFILE', this.props.userObj)
+
+      console.log('ELSE', this.state.userProducts)
       return (
         <div className="container mt-3">
           <div className="row">
@@ -98,12 +105,12 @@ class Profile extends Component {
                     {
                       this.flagHell ? !this.state.userProducts.company[0].products ? null
                       : (this.state.userProducts.company[0].products.map((item, index) => {
-                      return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
+                      return <ProductCard key={index} singleProduct={item} userObj={this.state.user} update={this.updateIfHell}/>
                       }))
                       : !this.state.userProducts.product
                       ? null
                       : (this.state.userProducts.product.map((item, index) => {
-                      return <ProductCard key={index} singleProduct={item} userObj={this.state.user} />
+                      return <ProductCard key={index} singleProduct={item} userObj={this.state.user} update={this.updateIfHell}/>
                       }))
                     }
                   </div>

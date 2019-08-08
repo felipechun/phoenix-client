@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import AuthService from '../../authentication/auth-service/auth-service';
 import MarkedCompanies from '../../GoogleMaps/MarkedCompanies/MarkedCompanies';
 import SubmitBtn from '../../buttons/SubmitBtn';
-import { Marker } from 'google-maps-react'
+import { Marker } from 'google-maps-react';
+import { Redirect } from 'react-router-dom';
 
 export class SellForm extends Component {
 
@@ -25,6 +26,8 @@ export class SellForm extends Component {
       selectedPlace: {},
       };
     this.service = new AuthService();
+    this.status = false;
+
   }
 
   handleFormSubmit = (event) => {
@@ -39,7 +42,7 @@ export class SellForm extends Component {
     const clientDescription = this.state.clientDescription;
     const imageUrl = this.state.imageUrl;
     const idCompany = this.state.idCompany;
-  
+    this.status = true;
     this.service.createProduct(name, statusProduct, categories, path, brand, model, starterPrice, clientDescription, imageUrl, idCompany)
     .then( response => {
         this.setState({
@@ -130,94 +133,71 @@ export class SellForm extends Component {
   
 
   render() {
-    return (
-      <div className="container mt-3 mb-3">
-        <div className="row">
-          <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
-            <div className="card">
-              <h5 className="card-header">Sell or Repair a product</h5>
-              <div className="card-body">
-                <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-                <div className="form-group">
-                  <label className="card-title font-weight-bold">What do you want to do?</label>
-                    <select name="path" required onChange={ e => this.handleChange(e)} className="form-control" >
-                      <option value="" >Choose one</option>
-                      <option value="Sell">Sell</option>
-                      <option value="Repair">Repair</option>
-                    </select>
-                  </div>
+    if(this.status === false){
+      return (
+        <div className="container mt-3 mb-3">
+          <div className="row">
+            <div className="col-sm-12 col-md-10 col-lg-8 mx-auto">
+              <div className="card">
+                <h5 className="card-header">Sell or Repair a product</h5>
+                <div className="card-body">
+                  <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
                   <div className="form-group">
-                    <label className="card-title font-weight-bold">Category</label>
-                    <select name="categories" required onChange={ e => this.handleChange(e)} className="form-control" >
-                      <option value="" >Choose one</option>
-                      <option value="Laptop">Laptop</option>
-                      <option value="Tablet">Tablet</option>
-                      <option value="Mobile">Mobile</option>
-                      <option value="Consoles">Videogame Console</option>
-                      <option value="TV">Television</option>
-                      <option value="Audio">Audio</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Product Brand</label>
-                    <input type="text" name="brand" className="form-control" value={this.state.brand} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
-                  </div>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Product</label>
-                    <input type="text" name="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="Name of the product"  />
-                  </div>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Model</label>
-                    <input type="text" name="model" className="form-control" value={this.state.model} required onChange={ e => this.handleChange(e)} placeholder="Product model"  />
-                  </div>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Condition</label>
-                    <select name="statusProduct" required onChange={ e => this.handleChange(e)} className="form-control" >
-                      <option value="" >Choose one</option>
-                      <option value="Broken">Broken</option>
-                      <option value="Semi-used">Semi-used</option>
-                    </select>
-                  </div>
-                                    {
-                    this.state.path === 'Sell' ? (
-                      <div className="form-group">
-                        <label className="card-title font-weight-bold">Suggested Price</label>
-                        <div className="input-group">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text">$</span>
-                          </div>
-                          <input type="text" name="starterPrice" className="form-control" value={this.state.starterPrice} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
-                        </div>
-                      </div>
-                    ) : null
-                  }
-                  {
-                    this.state.path === 'Repair' ? (
-                      <div className="form-group">
-                      <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
-                      <MarkedCompanies 
-                      displayMarkers={this.displayMarkers} 
-                      onMarkerClick={this.onMarkerClick} 
-                      onMapClicked={this.onMapClicked} 
-                      selectedPlace={this.state.selectedPlace}
-                      activeMarker={this.state.activeMarker}
-                      showingInfoWindow={this.state.showingInfoWindow}
-                       />
+                    <label className="card-title font-weight-bold">What do you want to do?</label>
+                      <select name="path" required onChange={ e => this.handleChange(e)} className="form-control" >
+                        <option value="" >Choose one</option>
+                        <option value="Sell">Sell</option>
+                        <option value="Repair">Repair</option>
+                      </select>
                     </div>
-                    ) : null
-                  }
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Description</label>
-                    <textarea className="form-control" name="clientDescription" value={this.state.clientDescription} required onChange={ e => this.handleChange(e)} placeholder="Does your device have any problems or physical damages such as a broken screen or scuffs? Please be as specific as possible." rows="3"></textarea>
-                  </div>
-                  <div className="form-group">
-                    <label className="card-title font-weight-bold">Please upload a picture of your product</label>
-                    <input type="file" className="form-control-file" required onChange={ e => this.handleFileUpload(e)}/>
-                  </div>
-                  <div className="form-group">
-                  {
-                    this.state.path === 'Sell' ? (
-                      <Fragment>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Category</label>
+                      <select name="categories" required onChange={ e => this.handleChange(e)} className="form-control" >
+                        <option value="" >Choose one</option>
+                        <option value="Laptop">Laptop</option>
+                        <option value="Tablet">Tablet</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="Consoles">Videogame Console</option>
+                        <option value="TV">Television</option>
+                        <option value="Audio">Audio</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Product Brand</label>
+                      <input type="text" name="brand" className="form-control" value={this.state.brand} required onChange={ e => this.handleChange(e)} placeholder="Brand of the product"  />
+                    </div>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Product</label>
+                      <input type="text" name="name" className="form-control" value={this.state.name} required onChange={ e => this.handleChange(e)} placeholder="Name of the product"  />
+                    </div>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Model</label>
+                      <input type="text" name="model" className="form-control" value={this.state.model} required onChange={ e => this.handleChange(e)} placeholder="Product model"  />
+                    </div>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Condition</label>
+                      <select name="statusProduct" required onChange={ e => this.handleChange(e)} className="form-control" >
+                        <option value="" >Choose one</option>
+                        <option value="Broken">Broken</option>
+                        <option value="Semi-used">Semi-used</option>
+                      </select>
+                    </div>
+                                      {
+                      this.state.path === 'Sell' ? (
+                        <div className="form-group">
+                          <label className="card-title font-weight-bold">Suggested Price</label>
+                          <div className="input-group">
+                            <div className="input-group-prepend">
+                              <span className="input-group-text">$</span>
+                            </div>
+                            <input type="text" name="starterPrice" className="form-control" value={this.state.starterPrice} required onChange={ e => this.handleChange(e)} placeholder="How much do you think your product is worth?"  />
+                          </div>
+                        </div>
+                      ) : null
+                    }
+                    {
+                      this.state.path === 'Repair' ? (
+                        <div className="form-group">
                         <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
                         <MarkedCompanies 
                         displayMarkers={this.displayMarkers} 
@@ -227,18 +207,45 @@ export class SellForm extends Component {
                         activeMarker={this.state.activeMarker}
                         showingInfoWindow={this.state.showingInfoWindow}
                         />
-                      </Fragment>
-                    ) : null
-                  }
-                  </div>
-                  <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
-                </form>
+                      </div>
+                      ) : null
+                    }
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Description</label>
+                      <textarea className="form-control" name="clientDescription" value={this.state.clientDescription} required onChange={ e => this.handleChange(e)} placeholder="Does your device have any problems or physical damages such as a broken screen or scuffs? Please be as specific as possible." rows="3"></textarea>
+                    </div>
+                    <div className="form-group">
+                      <label className="card-title font-weight-bold">Please upload a picture of your product</label>
+                      <input type="file" className="form-control-file" required onChange={ e => this.handleFileUpload(e)}/>
+                    </div>
+                    <div className="form-group">
+                    {
+                      this.state.path === 'Sell' ? (
+                        <Fragment>
+                          <label className="card-title font-weight-bold">Please choose a repair and maintenance company to handle your product</label>
+                          <MarkedCompanies 
+                          displayMarkers={this.displayMarkers} 
+                          onMarkerClick={this.onMarkerClick} 
+                          onMapClicked={this.onMapClicked} 
+                          selectedPlace={this.state.selectedPlace}
+                          activeMarker={this.state.activeMarker}
+                          showingInfoWindow={this.state.showingInfoWindow}
+                          />
+                        </Fragment>
+                      ) : null
+                    }
+                    </div>
+                    <SubmitBtn type="submit" className="btn btn-outline-success float-right">Submit</SubmitBtn>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    }  else if(this.status === true){
+      return <Redirect to="/profile"/>
+    }
   }
 }
 

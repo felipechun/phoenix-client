@@ -37,6 +37,7 @@ export class CompanyRegister extends Component {
     const cnpj = this.state.cnpj;
     const cep = this.state.cep;
     this.status = true;
+    
     this.service.companySignup(name, razaosocial, address, latitude, longitude, speciality, phone, cnpj, email, cep)
     .then( response => {
         this.setState({
@@ -80,7 +81,6 @@ export class CompanyRegister extends Component {
 
   render() {
     if(this.status === false){
-      console.log('IF FALSE', this.status)
     return (
       <div className="container">
         <div className="row">
@@ -166,7 +166,6 @@ export class CompanyRegister extends Component {
       </div>
     )
     }  else if(this.status === true){
-      console.log('ELSE TRUE', this.status)
 
       return <Redirect to="/after-signup"/>
     }
