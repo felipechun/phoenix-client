@@ -24,7 +24,7 @@ export class Search extends Component {
         <div className="row">
           <div className="col-12">
             <div className="row d-flex flex-column align-items-center">
-              <Sidebar />
+              <Sidebar getProductsFromApi={this.props.getProductsFromApi} />
               <Feature />
             </div>
             <div id="Showcase" className="row mt-3">

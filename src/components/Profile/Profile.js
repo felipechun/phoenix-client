@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../authentication/auth-service/auth-service';
 import ProductCard from '../ProductCard/ProductCard';
+import ProfileProdBought from './ProfileProdBought';
+import ProfileProdSold from './ProfileProdSold';
 // import ProfileProdBrought from './ProfileProdBrought';
 // import ProfileProdSold from './ProfileProdSold';
 
@@ -11,6 +13,7 @@ class Profile extends Component {
     this.state = {
       user: this.props.userObj,
       userProducts: [],
+      userPurchases: [],
     };
     this.service = new AuthService();
     this.flagHell = false;
@@ -26,6 +29,15 @@ class Profile extends Component {
           userProducts: answer,
         })
       })
+      .catch(err => console.log(err))
+
+    this.service.getMyPurchases()
+      .then(answer => {
+        this.setState({
+          userPurchases: answer,
+        })
+      })
+
       if(this.props.userObj.company.length <= 0){
         this.flagHell = false;
       } else {
@@ -47,15 +59,10 @@ class Profile extends Component {
       console.log('PROFILE', this.props.userObj)
       return (
         <div className="container mt-3">
-        <div className="row">
-          <div className="col-12">
-            <h4 className="border-bottom text-uppercase">Profile Role</h4>
-          </div>
-        </div>
           <div className="row">
             <div className="col-3">
               <div className="text-center mt-1 mb-3">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" />
+                {/* <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" /> */}
               </div>
               <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                 <div className="card-header text-uppercase"><span>Username</span></div>
@@ -77,49 +84,16 @@ class Profile extends Component {
               <div className="tab-content" id="v-pills-tabContent">
                 <div className="tab-pane fade" id="v-pills-bought" role="tabpanel" aria-labelledby="v-pills-bought-tab">
                   <div className="row">
-                    <div className="col-12">
-                      <h5 className="border-bottom">Products Brought</h5>
-                    </div>
-                    <div className="col-6">
-                      <div className="card mb-3">
-                        <div className="row no-gutters">
-                          <div className="col-md-4">
-                            <img src={this.state.imageUrl} className="card-img" alt={this.state.name} />
-                          </div>
-                          <div className="col-md-8">
-                            <div className="card-body">
-                              <h5 className="card-title">{this.state.categories} {this.state.name} {this.state.model}</h5>
-                              <p className="card-text">{this.state.clientDescription}</p>
-                              <p className="card-text">{this.state.statusProduct}</p>
-                              <p className="card-text"><small className="text-muted">Bought at 31/12/9999</small></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-6">
-                      <div className="card mb-3">
-                        <div className="row no-gutters">
-                          <div className="col-md-4">
-                            <img src={this.state.imageUrl} className="card-img" alt={this.state.name} />
-                          </div>
-                          <div className="col-md-8">
-                            <div className="card-body">
-                              <h5 className="card-title">{this.state.categories} {this.state.name} {this.state.model}</h5>
-                              <p className="card-text">{this.state.clientDescription}</p>
-                              <p className="card-text">{this.state.statusProduct}</p>
-                              <p className="card-text"><small className="text-muted">Bought at 31/12/9999</small></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {
+                      !this.state.userPurchases
+                      ? null
+                      : (this.state.userPurchases.map((item, index) => {
+                        return <ProfileProdBought key={index} singleProduct={item} userObj={this.state.user} />
+                      }))
+                    }
                   </div>
                 </div>
                 <div className="tab-pane fade show active" id="v-pills-repaired" role="tabpanel" aria-labelledby="v-pills-repaired-tab">
-                  <div className="col-12">
-                    <h5 className="border-bottom">Products Repaired</h5>
-                  </div>
                   <div>
                     {
                       this.flagHell ? !this.state.userProducts.company[0].products ? null
@@ -135,44 +109,14 @@ class Profile extends Component {
                   </div>
                 </div>
                 <div className="tab-pane fade" id="v-pills-sold" role="tabpanel" aria-labelledby="v-pills-sold-tab">
-                  <div className="col-12">
-                    <h5 className="border-bottom">Products Sold</h5>
-                  </div>
                   <div className="row">
-                    <div className="col-6">
-                      <div className="card mb-3">
-                        <div className="row no-gutters">
-                          <div className="col-md-4">
-                            <img src="http://placeimg.com/127/236/tech" className="card-img" alt="..." />
-                          </div>
-                          <div className="col-md-8">
-                            <div className="card-body">
-                              <h5 className="card-title">Product Name</h5>
-                              <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                              <p className="card-text">This content is a little bit longer.</p>
-                              <p className="card-text"><small className="text-muted">Bought at 31/12/9999</small></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-6">
-                      <div className="card mb-3">
-                        <div className="row no-gutters">
-                          <div className="col-md-4">
-                            <img src="http://placeimg.com/127/236/tech" className="card-img" alt="..." />
-                          </div>
-                          <div className="col-md-8">
-                            <div className="card-body">
-                              <h5 className="card-title">Product Name</h5>
-                              <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                              <p className="card-text">This content is a little bit longer.</p>
-                              <p className="card-text"><small className="text-muted">Bought at 31/12/9999</small></p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {
+                      !this.state.userProducts.product
+                      ? null
+                      : (this.state.userProducts.product.map((item, index) => {
+                        return <ProfileProdSold key={index} singleProduct={item} userObj={this.state.user} />
+                      }))
+                    }
                   </div>
                 </div>
               </div>

@@ -18,7 +18,6 @@ class Navbar extends Component {
   }
 
   render() {
-    console.log(this.props.cartLength, '<---- LENGTH')
     return (
       <nav id="uppernav" className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand"><img src="../../images/phoenix.png" height="40" alt="Phoenix" />&nbsp;&nbsp;Phix</Link>

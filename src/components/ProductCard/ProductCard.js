@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import FirstCompanyResponse from '../ProductForms/FirstCompanyResponse/FirstCompanyResponse';
 import ToRepair from '../ProductForms/ToRepair/ToRepair';
 import RepairServiceOrder from '../ProductForms/RepairServiceOrder/RepairServiceOrder';
@@ -14,6 +14,7 @@ import RepairServiceOrderDisplay from '../ProductDisplays/RepairServiceOrderDisp
 import CompanyRepairYesOrNoDisplay from '../ProductDisplays/CompanyRepairYesOrNoDisplay/CompanyRepairYesOrNoDisplay';
 import SendToCompanyDisplay from '../ProductDisplays/SendToCompanyDisplay/SendToCompanyDisplay';
 import SendToStoreDisplay from '../ProductDisplays/SendToStoreDisplay/SendToStoreDisplay';
+import ProductSoldDisplay from '../ProductDisplays/ProductSoldDisplay/ProductSoldDisplay';
 
 class ProductCard extends Component {
   constructor(props) {
@@ -23,14 +24,13 @@ class ProductCard extends Component {
       user: this.props.userObj,
       // index: this.props.idNum
     }
+    // this.status = false;
   }
 
 
   render() {
 
-    if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {
-      // console.log(this.props.idNum, 'THE KEYYYYY');
-      
+    if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {      
       return (
         <div className="row">
           <div className="col-12">
@@ -56,9 +56,7 @@ class ProductCard extends Component {
           </div>
         </div>
       )
-    } else if (this.state.product.status === 'FirstResponse' && this.state.user.role === 'Customer') {
-      console.log(this.state.product.idCompany, "ID COMPANY");
-      
+    } else if (this.state.product.status === 'FirstResponse' && this.state.user.role === 'Customer') {      
       return(
         <div className="row">
           <div className="col-12">
@@ -89,8 +87,6 @@ class ProductCard extends Component {
         </div>
       )
     } else if (this.state.product.status === 'ToRepair' && this.state.user.role === 'Company') {
-      console.log(this.state.product.idCompany, "ID COMPANY DISPLAY");
-      
       return (
         <div className="row">
           <div className="col-12">
@@ -423,7 +419,7 @@ class ProductCard extends Component {
             </div>
           </div>
         )
-      } 
+      }
 
     } else if (this.state.product.status === 'toStore' && this.state.user.role === 'Company') {
       if (this.state.product.repairYesNo === 'Yes') {
@@ -546,12 +542,114 @@ class ProductCard extends Component {
           </div>
         </div>
       )
+    } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Admin') {
+        if (this.state.product.repairYesNo === 'Yes') {
+          return (
+            <div className="row">
+              <div className="col-12">
+                <ProductFigure data={this.state.product} index={this.state.product._id} imageClasses="figure-img img-fluid rounded" imageAlt={this.state.product.categories}/>
+                <div className="collapse" id={`a${this.state.product._id}`}>
+                  <div className="card">
+                    <nav>
+                      <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
+                        <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
+                        <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
+                        <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
+                        <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
+                        <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
+                        <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="false">Sent to Store</a>
+                        <a className="nav-item nav-link active" id="sold-tab" data-toggle="tab" href={`#sold${this.state.product._id}`} role="tab" aria-controls="sold" aria-selected="true">Product Sold</a>
+                      </div>
+                    </nav>
+                    <div className="tab-content" id="nav-tabContent">
+                      <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
+                      <RequestDisplay product={this.state.product} user={this.state.user}/>                      
+                      </div>
+                      <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
+                        <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
+                      </div>
+                      <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
+                        <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />                    </div>
+                      <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
+                        <RepairServiceOrderDisplay product={this.state.product} />
+                      </div>
+                      <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
+                        <CompanyRepairYesOrNoDisplay alert="alert alert-success" product={this.state.product} />
+                      </div>
+                      <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
+                        <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
+                      </div>
+                      <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
+                        <SendToStoreDisplay product={this.state.product}/>             
+                      </div>
+                      <div className="tab-pane fade show active" id={`sold${this.state.product._id}`} role="tabpanel" aria-labelledby="sold-tab">
+                        <ProductSoldDisplay />             
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        } else if (this.state.product.repairYesNo === 'No') {
+          return (
+            <div className="row">
+              <div className="col-12">
+                <ProductFigure data={this.state.product} index={this.state.product._id} imageClasses="figure-img img-fluid rounded" imageAlt={this.state.product.categories}/>
+                <div className="collapse" id={`a${this.state.product._id}`}>
+                  <div className="card">
+                    <nav>
+                      <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a className="nav-item nav-link" id="request-tab" data-toggle="tab" href={`#request${this.state.product._id}`} role="tab" aria-controls="request" aria-selected="false">Request</a>
+                        <a className="nav-item nav-link" id="company-response-tab" data-toggle="tab" href={`#companyResponse${this.state.product._id}`} role="tab" aria-controls="company-response" aria-selected="false">Phix's Reply</a>
+                        <a className="nav-item nav-link" id="to-repair-tab" data-toggle="tab" href={`#toRepair${this.state.product._id}`} role="tab" aria-controls="to-repair" aria-selected="false">Sent to Repair</a>
+                        <a className="nav-item nav-link" id="service-order-tab" data-toggle="tab" href={`#serviceOrder${this.state.product._id}`} role="tab" aria-controls="service-order" aria-selected="false">Service Order</a>
+                        <a className="nav-item nav-link" id="yes-or-no-tab" data-toggle="tab" href={`#yesOrNo${this.state.product._id}`} role="tab" aria-controls="yes-or-no" aria-selected="false">Repair Decision</a>
+                        <a className="nav-item nav-link" id="sendToCompany-tab" data-toggle="tab" href={`#sendToCompany${this.state.product._id}`} role="tab" aria-controls="sendToCompany" aria-selected="false">Please Repair</a>
+                        <a className="nav-item nav-link active" id="send-to-store-tab" data-toggle="tab" href={`#sendToStore${this.state.product._id}`} role="tab" aria-controls="send-to-store" aria-selected="true">Sent to Store</a>
+                        <a className="nav-item nav-link active" id="sold-tab" data-toggle="tab" href={`#sold${this.state.product._id}`} role="tab" aria-controls="sold" aria-selected="true">Product Sold</a>
+                      </div>
+                    </nav>
+                    <div className="tab-content" id="nav-tabContent">
+                      <div className="tab-pane fade" id={`request${this.state.product._id}`} role="tabpanel" aria-labelledby="request-tab">
+                      <RequestDisplay product={this.state.product} user={this.state.user}/>                      
+                      </div>
+                      <div className="tab-pane fade" id={`companyResponse${this.state.product._id}`} role="tabpanel" aria-labelledby="company-response-tab">
+                        <FirstCompanyResponseDisplay product={this.state.product} user={this.state.user} />
+                      </div>
+                      <div className="tab-pane fade" id={`toRepair${this.state.product._id}`} role="tabpanel" aria-labelledby="to-repair-tab">
+                        <ToRepairDisplay productId={this.state.product} companyObj={this.state.product.idCompany} />                    </div>
+                      <div className="tab-pane fade" id={`serviceOrder${this.state.product._id}`} role="tabpanel" aria-labelledby="service-order-tab">
+                        <RepairServiceOrderDisplay product={this.state.product} />
+                      </div>
+                      <div className="tab-pane fade" id={`yesOrNo${this.state.product._id}`} role="tabpanel" aria-labelledby="yes-or-no-tab">
+                        <CompanyRepairYesOrNoDisplay alert="alert alert-danger" product={this.state.product} />
+                      </div>
+                      <div className="tab-pane fade" id={`sendToCompany${this.state.product._id}`} role="tabpanel" aria-labelledby="sendToCompany-tab">
+                        <SendToCompanyDisplay alert="alert alert-warning" product={this.state.product} />
+                      </div>
+                      <div className="tab-pane fade show active" id={`sendToStore${this.state.product._id}`} role="tabpanel" aria-labelledby="send-to-store-tab">
+                        <SendToStoreDisplay product={this.state.product}/>             
+                      </div>
+                      <div className="tab-pane fade show active" id={`sold${this.state.product._id}`} role="tabpanel" aria-labelledby="sold-tab">
+                        <ProductSoldDisplay />             
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        }
+      } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Customer') {
+        return null;
+      } else if (this.state.product.status === 'Sold' && this.state.user.role === 'Company') {
+        return null;
     } else
     return (
       <div className="row">
         <div className="col-12">
-          {/* <ProductFigure data={this.state.product} index={this.state.product._id} imageClasses="figure-img img-fluid rounded" imageAlt={this.state.product.categories}/>
-          <p>Please await further instructions</p> */}
           <div className="" >
             <div className="card mb-3">
               <div className="row no-gutters">
