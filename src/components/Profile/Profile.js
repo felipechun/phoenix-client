@@ -47,15 +47,10 @@ class Profile extends Component {
       console.log('PROFILE', this.props.userObj)
       return (
         <div className="container mt-3">
-        <div className="row">
-          <div className="col-12">
-            <h4 className="border-bottom text-uppercase">Profile Role</h4>
-          </div>
-        </div>
           <div className="row">
             <div className="col-3">
               <div className="text-center mt-1 mb-3">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" />
+                {/* <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" /> */}
               </div>
               <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                 <div className="card-header text-uppercase"><span>Username</span></div>

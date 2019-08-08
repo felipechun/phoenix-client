@@ -12,8 +12,8 @@ const Cart = (props) => {
         </div>
         <div className="row mt-3">
           <div className="col-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 text-center">
-            <div class="alert alert-info" role="alert">
-            Your shopping cart is empty.
+            <div className="alert alert-info" role="alert">
+              Your shopping cart is empty.
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@ const Cart = (props) => {
             </table>
           </div>
           <div className="col-12 col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 text-center">
-            <button type="button" className="btn btn-outline-success">Payment</button>
+            <button type="button" onClick={() => props.checkout()} className="btn btn-outline-success">Payment</button>
           </div>
         </div>
       </div>

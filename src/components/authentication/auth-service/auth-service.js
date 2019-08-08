@@ -58,7 +58,14 @@ class AuthService {
   }
 
   getToStore = () => {
-    return this.service.get('/products/all')
+    return this.service.get('/status-products/toStore')
+    .then(response => {
+      return response.data
+    })
+  }
+
+  cartCheckout = (products, total) => {
+    return this.service.post('/cart', {products, total})
     .then(response => {
       return response.data
     })
