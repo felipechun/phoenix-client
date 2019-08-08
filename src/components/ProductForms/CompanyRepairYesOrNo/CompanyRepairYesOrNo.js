@@ -19,7 +19,8 @@ class CompanyRepairYesOrNo extends Component {
     const status = this.state.status;
     const repairYesNo = this.state.repairYesNo;
     const productId = this.state.productId;
-  
+    this.props.update();
+
     this.service.updateRepairYesOrNo(status, repairYesNo, productId)
     .then( response => {
         this.setState({
@@ -27,7 +28,6 @@ class CompanyRepairYesOrNo extends Component {
           repairYesNo: '',
           productId: '',
         });
-        // this.props.getUser(response)
     })
     .catch( error => console.log(error) )
   }

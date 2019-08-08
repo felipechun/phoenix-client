@@ -20,7 +20,8 @@ class SendToCompany extends Component {
     const status = this.state.status;
     const finalStatusProduct = this.state.finalStatusProduct;
     const productId = this.state.productId;
-  
+    this.props.update();
+
     this.service.updateSendToCompany(status, finalStatusProduct, productId)
     .then( response => {
         this.setState({

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
+import AuthService from '../authentication/auth-service/auth-service';
 
 class Cart extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class Cart extends Component {
     this.state = {
       myCart: '',
     }
+    this.service = new AuthService();
   }
 
   componentDidMount = () => {
