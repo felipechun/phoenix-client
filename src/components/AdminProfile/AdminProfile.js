@@ -24,12 +24,6 @@ export class AdminProfile extends Component {
       })
       .catch(err => console.log(err))
 
-    this.service.getCompanies()
-      .then(answer => {
-        this.setState({
-          allCompanies: answer,
-        })
-      })
   }
 
     updateIfHell = () =>{
@@ -38,7 +32,7 @@ export class AdminProfile extends Component {
 
   render() {
     let arrCompanies = this.state.allCompanies;
-    console.log('XXXXXXXXXXXXXXXX', arrCompanies)
+    console.log('XXXXXXXXXXXXXXXX', this.state.allCompanies)
     if (!this.state.allProducts) {
       return (
         <div></div>
@@ -86,8 +80,8 @@ export class AdminProfile extends Component {
                         </div>
                         <div className="card-body">
                           {
-                            this.state.allCompanies.map((singleCompany, index) => {
-                              return <CompanyCard key={index} singleCompany={singleCompany} />
+                            this.state.allProducts.map((singleProduct, index) => {
+                              return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user} update={this.updateIfHell}/>
                             })
                           }
                         </div>
