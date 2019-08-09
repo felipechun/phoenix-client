@@ -36,6 +36,7 @@ class Profile extends Component {
 
     this.service.getMyPurchases()
       .then(answer => {
+        console.log(answer, 'GET MY PURCHASES')
         this.setState({
           userPurchases: answer,
         })
@@ -62,7 +63,6 @@ class Profile extends Component {
         </>
       )
     } else {
-
       console.log('ELSE', this.state.userProducts)
       return (
         <div className="container mt-3">
@@ -95,7 +95,8 @@ class Profile extends Component {
                       !this.state.userPurchases
                       ? null
                       : (this.state.userPurchases.map((item, index) => {
-                        return <ProfileProdBought key={index} singleProduct={item} userObj={this.state.user} />
+                        console.log(item, 'ENTREI NO MAP')
+                        return <ProfileProdBought key={index} {...item} userObj={this.state.user} />
                       }))
                     }
                   </div>

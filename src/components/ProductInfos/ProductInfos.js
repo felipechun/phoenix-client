@@ -8,21 +8,48 @@ class ProductInfos extends Component {
     return (
       <Fragment>
         <div className="row">
+          <div className="col-12 mb-4 p-0">
+            <ProductGallery imageUrl={this.props.product.repairImageUrl} />
+          </div>
           <div className="col-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
-              <h5 className="border-bottom">{this.props.product.finalName}</h5>
-            <div className="row">
-              <ProductGallery imageUrl={this.props.product.imageUrl} />
-            </div>
+            <h2 className="mt-4 mb-4 pl-4">{this.props.product.finalName}</h2>
+            <hr></hr>
             <div className="row mt-3">
-              <div className="col-12">
-                <h6 className="border-bottom">Description:</h6>
-                <p>{this.props.product.finalDescription}</p>
+              <div className="col-sm-12 col-md-4 col-lg-4 col-xl-3 pl-5">
+                <h4 className="mt-4">Brand</h4>
               </div>
-              <div className="col-12">
-                <h6 className="border-bottom">Specifications:</h6>
-                <p>{this.props.product.specs}</p>
+              <div className="col-sm-12 col-md-8 col-lg-8 col-xl-9 pl-5">
+                <p className="mt-4" >{this.props.product.brand}</p>
               </div>
             </div>
+            <hr className="mt-4 mb-4"></hr>
+            <div className="row mt-3">
+              <div className="col-sm-12 col-md-4 col-lg-4 col-xl-3 pl-5">
+                <h4 className="mt-4">Description</h4>
+              </div>
+              <div className="col-sm-12 col-md-8 col-lg-8 col-xl-9 pl-5">
+                <p className="mt-4" >{this.props.product.finalDescription}</p>
+              </div>
+            </div>
+            <hr className="mt-4 mb-4"></hr>
+            <div className="row mt-3">
+              <div className="col-sm-12 col-md-4 col-lg-4 col-xl-3 pl-5">
+                <h4 className="mt-4">Specifications</h4>
+              </div>
+              <div className="col-sm-12 col-md-8 col-lg-8 col-xl-9 pl-5">
+                <p className="mt-4" >{this.props.product.specs}</p>
+              </div>
+            </div>
+            <hr className="mt-4 mb-4"></hr>
+            <div className="row mt-3">
+              <div className="col-sm-12 col-md-4 col-lg-4 col-xl-3 pl-5">
+                <h4 className="mt-4">Repairs Performed</h4>
+              </div>
+              <div className="col-sm-12 col-md-8 col-lg-8 col-xl-9 pl-5">
+                <p className="mt-4" >{this.props.product.repairDescription}</p>
+              </div>
+            </div>
+            <hr className="mt-4 mb-4"></hr>
           </div>
           <div className="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3">
             <div className="card mb-4 shadow-sm mt-4">
@@ -35,10 +62,6 @@ class ProductInfos extends Component {
                 <button type="button" className="btn btn-sm btn-block btn-outline-success" onClick={() => this.props.getProducts(this.props.product)}>Add to Cart</button>
               </div>
             </div>
-            <h6 className="border-bottom">History</h6>
-                <p>{this.props.product.finalDescription}</p>
-                <h6>What was the repair?</h6>
-                <p>{this.props.product.repairDescription}</p>
           </div>
         </div>
       </Fragment>

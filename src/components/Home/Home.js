@@ -76,8 +76,9 @@ class Home extends Component {
                 </div>
               </div> */}
               <div className="row">
-                <div className="col-lg-6 col-sm-6 col-xs-12 p-2">
+                <div className="col-lg-6 col-sm-6 col-xs-12 p-2 position-relative">
                   <Link onClick={() => this.props.getProductsFromApi('Laptop')} to='/products/'>
+                    <div className="color-bg position-absolute w-100 h-100 top-0"></div>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/laptops-category.jpg" alt="laptops category" />
                       <div className="centered position-absolute text-light">Laptops</div>
@@ -175,8 +176,9 @@ class Home extends Component {
               </div>
             </div> */}
             <div className="row">
-              <div className="col-lg-6 col-sm-6 col-xs-12 p-2">
+              <div className="col-lg-6 col-sm-6 col-xs-12 p-2 position-relative">
                 <Link onClick={() => this.props.getProductsFromApi('Laptop')} to='/products/'>
+                  <div className="color-bg position-absolute w-100 h-100 top-0"></div>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/laptops-category.jpg" alt="laptops category" />
                     <div className="centered position-absolute text-light">Laptops</div>

@@ -17,6 +17,19 @@ html, body {
   /* max-width: calc(100vw - 10px); */
 }
 
+.color-bg {
+  background-color: rgba(231, 87, 39, .5);
+  display: none;
+}
+
+.product-img {
+  height: 450px !important;
+}
+
+.product-img img {
+  object-fit: cover !important;
+}
+
 main {
 
   /* min-height: 100vh; */
@@ -54,6 +67,10 @@ main {
 
 .card:hover .centered {
   opacity: 1;
+}
+
+.card:hover .color-bg {
+  display: block;
 }
 
 .category-img {

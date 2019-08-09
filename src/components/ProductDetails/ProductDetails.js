@@ -5,8 +5,8 @@ import ProductInfos from '../ProductInfos/ProductInfos';
 class ProductDetails extends Component {
   render() {
     return (
-      <div className="container mt-3">
-        <MainSearchBar />
+      <div className="container-fluid">
+        {/* <MainSearchBar /> */}
         <ProductInfos product={this.props.location.state.selectedProduct} getProducts={this.props.getProducts} />
       </div>
     )
