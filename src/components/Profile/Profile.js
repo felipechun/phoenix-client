@@ -67,7 +67,7 @@ class Profile extends Component {
               <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                 <div className="card-header text-uppercase"><span>Profile</span></div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item"><Link to="/edit-profile">Edit Profile</Link></li>
+                  {/* <li className="list-group-item"><Link to="/edit-profile">Edit Profile</Link></li> */}
                   <li className="list-group-item"><Link to="/sell-form">Add Product</Link></li>
                 </ul>
               </div>

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import AuthService from '../authentication/auth-service/auth-service';
 import ProductCard from '../ProductCard/ProductCard';
 import CompanyCard from '../CompanyCard/CompanyCard';
+import UserCard from '../UserCard/UserCard';
 
 export class AdminProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       allProducts: null,
+      allCompanies: null,
       user: this.props.userObj,
       flag: false,
     }
@@ -24,6 +25,13 @@ export class AdminProfile extends Component {
       })
       .catch(err => console.log(err))
 
+    this.service.getCompanies()
+      .then(answer => {
+        this.setState({
+          allCompanies: answer,
+        })
+      })
+      .catch(err => console.log(err))
   }
 
     updateIfHell = () =>{
@@ -31,9 +39,7 @@ export class AdminProfile extends Component {
   }
 
   render() {
-    let arrCompanies = this.state.allCompanies;
-    console.log('XXXXXXXXXXXXXXXX', this.state.allCompanies)
-    if (!this.state.allProducts) {
+    if (!this.state.allProducts || !this.state.allCompanies) {
       return (
         <div></div>
       )
@@ -48,7 +54,6 @@ export class AdminProfile extends Component {
                 </div>
                 <a className="nav-link border-bottom active" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="true">Products</a>
                 <a className="nav-link border-bottom" id="v-pills-companies-tab" data-toggle="pill" href="#v-pills-companies" role="tab" aria-controls="v-pills-companies" aria-selected="false">Companies</a>
-                <a className="nav-link" id="v-pills-users-tab" data-toggle="pill" href="#v-pills-users" role="tab" aria-controls="v-pills-users" aria-selected="false">Users</a>
               </div>
             </div>
             <div className="col-9">
@@ -80,8 +85,8 @@ export class AdminProfile extends Component {
                         </div>
                         <div className="card-body">
                           {
-                            this.state.allProducts.map((singleProduct, index) => {
-                              return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user} update={this.updateIfHell}/>
+                            this.state.allCompanies.map((singleCompany, index) => {
+                              return <CompanyCard key={index} singleCompany={singleCompany} />
                             })
                           }
                         </div>
