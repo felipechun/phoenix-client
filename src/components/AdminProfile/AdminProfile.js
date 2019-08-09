@@ -31,8 +31,6 @@ export class AdminProfile extends Component {
   }
 
   render() {
-    let arrCompanies = this.state.allCompanies;
-    console.log('XXXXXXXXXXXXXXXX', this.state.allCompanies)
     if (!this.state.allProducts) {
       return (
         <div></div>
