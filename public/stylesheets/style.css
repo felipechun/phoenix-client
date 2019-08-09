@@ -20,7 +20,7 @@ html, body {
 main {
 
   /* min-height: 100vh; */
-  min-height: calc(100vh - 442px);
+  min-height: calc(100vh - 162px);
   /* padding-bottom: 56px; */
 }
 

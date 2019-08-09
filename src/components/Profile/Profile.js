@@ -55,24 +55,17 @@ class Profile extends Component {
   render() {
 
     if(!this.status){
-      console.log('IF', this.state.userProducts)
-
       return (
         <>
         </>
       )
     } else {
-
-      console.log('ELSE', this.state.userProducts)
       return (
         <div className="container mt-3">
           <div className="row">
             <div className="col-3">
-              <div className="text-center mt-1 mb-3">
-                {/* <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" className="avatar rounded-circle img-thumbnail" alt="avatar" /> */}
-              </div>
               <div id="v-pills-tab" className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                <div className="card-header text-uppercase"><span>Username</span></div>
+                <div className="card-header text-uppercase"><span>Profile</span></div>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item"><Link to="/edit-profile">Edit Profile</Link></li>
                   <li className="list-group-item"><Link to="/sell-form">Add Product</Link></li>

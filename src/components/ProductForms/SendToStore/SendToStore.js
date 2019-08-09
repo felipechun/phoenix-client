@@ -38,7 +38,7 @@ class SendToStore extends Component {
         this.setState({
           status: '',
           finalName: '',
-          onSale: '',
+          onSale: false,
           sellingPrice: '',
           totalPrice: '',
           comission: '',
