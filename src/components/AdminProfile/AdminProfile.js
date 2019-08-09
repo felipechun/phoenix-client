@@ -24,12 +24,6 @@ export class AdminProfile extends Component {
       })
       .catch(err => console.log(err))
 
-    this.service.getCompanies()
-      .then(answer => {
-        this.setState({
-          allCompanies: answer,
-        })
-      })
   }
 
     updateIfHell = () =>{
@@ -38,7 +32,7 @@ export class AdminProfile extends Component {
 
   render() {
     let arrCompanies = this.state.allCompanies;
-    console.log('XXXXXXXXXXXXXXXX', arrCompanies)
+    console.log('XXXXXXXXXXXXXXXX', this.state.allCompanies)
     if (!this.state.allProducts) {
       return (
         <div></div>
