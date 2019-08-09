@@ -7,7 +7,6 @@ class ProfileProdBrought extends Component {
   }
   
   render() {
-    console.log(this.props[0], 'SOU EUU');
     
     return (
       <div className="col-6">

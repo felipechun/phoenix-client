@@ -49,8 +49,6 @@ class UserDetails extends Component {
 
   render() {
     if(this.status === false){
-      console.log('IF FALSE', this.status)
-
       return (
         <div className="container">
           <div className="row">
@@ -88,8 +86,6 @@ class UserDetails extends Component {
         </div>
       )
     } else if(this.status === true){
-      console.log('ELSE TRUE', this.status)
-
       return <Redirect to="/after-signup"/>
     }
   }

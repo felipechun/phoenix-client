@@ -12,9 +12,7 @@ class Feature extends Component {
     this.service = new AuthService();
   }
 
-  render() {
-    console.log(this.props.singleProduct);
-    
+  render() {    
     return (
         <div className="carousel-item">
           <Link to={{ pathname: `/products/${this.props.singleProduct._id}`, state: {selectedProduct: this.props.singleProduct}}} className="">

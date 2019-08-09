@@ -20,8 +20,6 @@ class Profile extends Component {
   componentDidMount = () => {
     this.service.populateProducts()
       .then(answer => {
-        // console.log(answer, 'ANSWER');
-
         this.setState({
           userProducts: answer,
         })
@@ -41,7 +39,6 @@ class Profile extends Component {
         </>
       )
     } else {
-      //console.log(this.state.userProducts.company[0])
       return (
 
         <div className="container mt-3">

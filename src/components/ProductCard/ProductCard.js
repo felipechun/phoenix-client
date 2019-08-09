@@ -26,7 +26,6 @@ class ProductCard extends Component {
   }
 
   render() {
-    console.log(this.props)
     if (this.state.product.status === 'Request' && this.state.user.role === 'Admin') {      
       return (
         <div className="row">

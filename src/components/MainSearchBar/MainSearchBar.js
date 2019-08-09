@@ -23,9 +23,7 @@ export class MainSearchBar extends Component {
 
   handleChange = (event) => {  
     const { value } = event.target;
-    this.setState({ searchTerm: value });
-    // console.log(this.state.searchTerm, '<<<<< SEARCH TERM');
-    
+    this.setState({ searchTerm: value });    
   }
 
   render() {

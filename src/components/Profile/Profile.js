@@ -21,7 +21,6 @@ class Profile extends Component {
   componentDidMount = () => {
     this.service.populateProducts()
       .then(answer => {
-        console.log(answer, 'ANSWER');
         this.status = true;
         this.setState({
           userProducts: answer,
@@ -33,7 +32,6 @@ class Profile extends Component {
 
     this.service.getMyPurchases()
       .then(answer => {
-        console.log(answer, 'GET MY PURCHASES')
         this.setState({
           userPurchases: answer,
         })
@@ -86,7 +84,6 @@ class Profile extends Component {
                       !this.state.userPurchases
                       ? null
                       : (this.state.userPurchases.map((item, index) => {
-                        console.log(item, 'ENTREI NO MAP')
                         return <ProfileProdBought key={index} {...item} userObj={this.state.user} />
                       }))
                     }

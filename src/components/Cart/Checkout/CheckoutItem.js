@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CheckoutItem = (props) => {
-  console.log(props)
   return (
     <div className="card-body border-top">
       <p className="card-text">

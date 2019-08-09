@@ -4,7 +4,6 @@ import ProductGallery from '../ProductGallery/ProductGallery';
 
 class ProductInfos extends Component {
   render() {
-    console.log('prod infos', this.props)
     return (
       <Fragment>
         <div className="row">

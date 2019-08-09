@@ -203,7 +203,6 @@ class App extends Component {
         </div>
       );
     } else if(this.state.loggedInUser && this.state.loggedInUser.status === 'Pending'){
-      console.log(this.state.loggedInUser);
       return(
         <div className="App">
           <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} clearQuery={this.clearQuery} />

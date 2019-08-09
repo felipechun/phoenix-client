@@ -17,7 +17,6 @@ class Checkout extends Component {
   componentDidMount = () => {
     this.service.getCart()
       .then(answer => {
-        console.log(answer[0])
         this.setState({
           myCart: answer[0],
 
@@ -28,12 +27,11 @@ class Checkout extends Component {
   }
 
   purchased = () => {
-    console.log(this.state.myCart._id)
     this.service.editCart(this.state.myCart._id, 'Purchased')
     .then(answer => {
       console.log(answer)
     })
-    .catch()
+    .catch(err => console.log(err))
   }
 
   render() {
@@ -51,9 +49,6 @@ class Checkout extends Component {
                     </div>
                     <div className="card-body border-top">
                     </div>
-                     {/* { this.state.flag ? <p>loading</p> : 
-                      console.log(this.state.myCart)
-                    }  */}
                       <p>im there</p>
                     <div className="card-footer d-flex flex-row justify-content-between">
                     <span>TOTAL</span> <span>R$ {this.state.myCart.total}</span>
