@@ -47,7 +47,7 @@ class Checkout extends Component {
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                   <div className="card">
                     <div className="card-header d-flex flex-row justify-content-between">
-                      <span>Your Products</span> <Link to="/cart"><small>Edit Cart</small></Link>
+                      <span>Your Products</span> <Link to="/showcase"><i className="fas fa-trash-alt"></i></Link>
                     </div>
                     <div className="card-body border-top">
                     </div>
@@ -113,7 +113,7 @@ class Checkout extends Component {
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                   <div className="card">
                     <div className="card-header d-flex flex-row justify-content-between">
-                      <span>Your Products</span> <Link to="/cart">{/* <small>Edit Cart</small> */}</Link>
+                      <span>Your Products</span> <Link to="/showcase"><i className="fas fa-trash-alt"></i></Link>
                     </div>
                      { 
                       this.state.myCart.products.map((item, index) => {
@@ -158,8 +158,10 @@ class Checkout extends Component {
                     </div>
                   </div>
                   <div className="mb-3 text-center">
-                  <h6>Click to generate your billing</h6>
-                    <button type="button" onClick={this.purchased}className="btn btn-outline-success d-inline-block">Pay</button>
+                    <h6>Click to generate your billing</h6>
+                    <Link to="/profile">
+                      <button type="button" onClick={this.purchased} className="btn btn-outline-success d-inline-block">Pay</button>
+                    </Link>
                   </div>
                 </div>
               </div>

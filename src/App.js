@@ -28,6 +28,9 @@ class App extends Component {
       shoppingCart: [],
       total: '',
       cartLength: 0,
+      filteredProducts:[],
+      filter: false,
+      searchQuery:'',
     };
     this.service = new AuthService();
     this.status = false;
@@ -43,12 +46,37 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
+  // method to dynamic filter
+  filterHandler = (event) => {
+    if (event.target.value !== '') {
+      this.setState({
+        filter: true,
+        searchQuery: event.target.value,
+      })
+    } else {
+      this.setState({
+        filter: false,
+        searchQuery: event.target.value,
+      })
+    }
+    let allProducts = [...this.state.displayStore];
+    let search = this.state.searchQuery.toUpperCase()
+    const filteredProducts = allProducts.filter((item) => {
+      return item.finalName.toUpperCase().includes(search)
+    });
+    this.setState({
+      filteredProducts,
+    })
+  }
+
   getProductsFromApi = (request) => {
     if (request === 'All') {
       this.service.getToStore()
         .then(answer => {
           this.setState({
             displayStore: answer,
+            filter: false,
+            searchQuery:'',
           })
         })
         .catch(err => console.log(err))
@@ -57,10 +85,19 @@ class App extends Component {
         .then(answer => {
           this.setState({
             displayStore: answer,
+            filter: false,
+            searchQuery:'',
           })
         })
         .catch(err => console.log(err))
     }
+  }
+
+  clearQuery = () => {
+    this.setState({
+      filter: false,
+      searchQuery:'',
+    })
   }
 
   // Add products to shopping cart
@@ -145,12 +182,12 @@ class App extends Component {
 
       return (
         <div className="App">
-          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} cartLength={this.state.cartLength} />
+          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} cartLength={this.state.cartLength} clearQuery={this.clearQuery} />
           <main role="main">
             <Switch>
               <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} featuredProducts={this.state.displayStore} />} />
               <Route exact path="/about" component={About}/>
-              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
+              <Route exact path="/products/" render={(props) => <Showcase state={this.state.searchQuery} products={this.state.filter ? this.state.filteredProducts : this.state.displayStore} filterHandler={this.filterHandler} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
               <Route exatc path="/after-signup"  render={(props) => <AfterSignup getTheUser={this.getTheUser} {...props} />} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
@@ -169,13 +206,13 @@ class App extends Component {
       console.log(this.state.loggedInUser);
       return(
         <div className="App">
-          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser}/>
+          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} clearQuery={this.clearQuery} />
           <h1>Precisa autenticar conta no Email.</h1>
           <main role="main">
             <Switch>
               <Route exact path="/" render={(props) => <Home userObj={this.state.loggedInUser} getProductsFromApi={this.getProductsFromApi} featuredProducts={this.state.displayStore} />} />
               <Route exact path="/about" component={About}/>
-              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
+              <Route exact path="/products/" render={(props) => <Showcase state={this.state.searchQuery} products={this.state.filter ? this.state.filteredProducts : this.state.displayStore} filterHandler={this.filterHandler} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exatc path="/after-signup"  render={(props) => <AfterSignup getTheUser={this.getTheUser} {...props} />} />
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
@@ -190,14 +227,14 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} />
+          <Navbar isLoggedIn={this.state.loggedInUser} logout={this.getTheUser} clearQuery={this.clearQuery} />
           <main role="main">
             <Switch>
               <Route exact path="/" render={(props) => <Home getProductsFromApi={this.getProductsFromApi} featuredProducts={this.state.displayStore} />} />
               <Route exact path="/about" component={About} />
               <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser} />} />
               <Route exact path="/login" render={() => <Login getUser={this.getTheUser} />} />
-              <Route exact path="/products/" render={(props) => <Showcase products={this.state.displayStore} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
+              <Route exact path="/products/" render={(props) => <Showcase state={this.state.searchQuery} products={this.state.filter ? this.state.filteredProducts : this.state.displayStore} filterHandler={this.filterHandler} getProducts={this.getProducts} getProductsFromApi={this.getProductsFromApi} />} />
               <Route exact path="/products/:id" render={(props) => <ProductDetails products={this.state.displayStore} getProducts={this.getProducts} {...props} />} />
               <Route exatc path="/after-signup"  render={(props) => <AfterSignup getTheUser={this.getTheUser} {...props} />} />
               <ProtectedRoute exact user={this.state.loggedInUser} typeRole="Both" path="/profile" component={Profile} />
