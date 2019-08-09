@@ -86,8 +86,8 @@ export class AdminProfile extends Component {
                         </div>
                         <div className="card-body">
                           {
-                            this.state.allCompanies.map((singleCompany, index) => {
-                              return <CompanyCard key={index} singleCompany={singleCompany} />
+                            this.state.allProducts.map((singleProduct, index) => {
+                              return <ProductCard key={index} singleProduct={singleProduct} userObj={this.state.user} update={this.updateIfHell}/>
                             })
                           }
                         </div>
