@@ -8,6 +8,7 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.service = new AuthService();
+    this.role = '';
   }
 
   logMeOut = () => {
@@ -18,6 +19,15 @@ class Navbar extends Component {
   }
 
   render() {
+
+    if(this.props.isLoggedIn){
+      if ( this.props.isLoggedIn.role === 'Admin' ) {
+        this.role = <Link to="/admin" className="nav-link" onClick={this.props.clearQuery}><i className="fas fa-user-circle"></i> {this.props.isLoggedIn.username}</Link>;
+      } else {
+        this.role = <Link to="/profile" className="nav-link" onClick={this.props.clearQuery}><i className="fas fa-user-circle"></i> {this.props.isLoggedIn.username}</Link>
+      }
+    }
+
     return (
       <nav id="uppernav" className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand"><img src="../../images/phix-icon.svg" height="40" alt="Phoenix" />&nbsp;&nbsp;Phixit</Link>
@@ -30,22 +40,22 @@ class Navbar extends Component {
               !this.props.isLoggedIn ?
             <Fragment>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/about" className="nav-link">About Us</Link>
+                <Link to="/about" className="nav-link" onClick={this.props.clearQuery}>About Us</Link>
               </li>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/login" className="nav-link">Login</Link>
+                <Link to="/login" className="nav-link" onClick={this.props.clearQuery}>Login</Link>
               </li>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/signup" className="nav-link">Signup</Link>
+                <Link to="/signup" className="nav-link" onClick={this.props.clearQuery}>Signup</Link>
               </li>
             </Fragment>
             :
             <Fragment>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-              <Link to="/profile" className="nav-link"><i className="fas fa-user-circle"></i> {this.props.isLoggedIn.username}</Link>
+              {this.role}
               </li>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <Link to="/about" className="nav-link">About Us <span className="sr-only">(current)</span></Link>
+                <Link to="/about" className="nav-link" onClick={this.props.clearQuery}>About Us <span className="sr-only">(current)</span></Link>
               </li>
               <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <Link to="/" onClick={() => this.logMeOut()} className="nav-link">
@@ -55,7 +65,7 @@ class Navbar extends Component {
             </Fragment>
             }
             <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-              <Link to="/cart" className="nav-link">
+              <Link to="/cart" className="nav-link" onClick={this.props.clearQuery}>
                 <i className="fas fa-shopping-cart"></i>
                 <span className="badge badge-danger">{this.props.cartLength}</span>
               </Link>

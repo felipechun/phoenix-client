@@ -45,7 +45,7 @@ class Home extends Component {
                     <div className="carousel-inner">
                       <div className="carousel-item active" data-interval="10000">
                         <div className="card cover-image">
-                          <div class="col-lg-6 col-md-9 col-xs-12 my-auto">
+                          <div className="col-lg-6 col-md-9 col-xs-12 my-auto">
                             <h1 className="text-light text-wrap phix-title ml-5 mr-5">This is where products come back to <b className="colorful">life</b></h1>
                           </div>
                         </div>
@@ -145,7 +145,7 @@ class Home extends Component {
                   <div className="carousel-inner">
                     <div className="carousel-item active" data-interval="10000">
                       <div className="card cover-image">
-                        <div class="col-lg-6 col-md-9 col-xs-12 my-auto">
+                        <div className="col-lg-6 col-md-9 col-xs-12 my-auto">
                           <h1 className="text-light text-wrap phix-title ml-5 mr-5 pl-5">This is where products come back to <b className="colorful">life</b></h1>
                         </div>
                       </div>

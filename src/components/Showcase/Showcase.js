@@ -17,7 +17,7 @@ export class Search extends Component {
       <div className="container mt-3">
         <div className="row">
           <div className="col-12">
-            <DynamicSearchBar />
+          <DynamicSearchBar state={this.props.state} filterHandler={this.props.filterHandler}/>
             {/* <h1>Search Results from Home</h1> */}
           </div>
         </div>
