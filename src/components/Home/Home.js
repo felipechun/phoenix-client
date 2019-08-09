@@ -70,18 +70,21 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              {/* <div className="row mb-3 mt-3">
+              <div className="row mb-3 mt-3">
+                <div className="col-12">
+                  <hr className="mb-4 mt-4"></hr>
+                </div>
                 <div className="col-12">
                   <h1 className="font-weight-bold">Categories</h1>
                 </div>
-              </div> */}
+              </div>
               <div className="row">
                 <div className="col-lg-6 col-sm-6 col-xs-12 p-2 position-relative">
                   <Link onClick={() => this.props.getProductsFromApi('Laptop')} to='/products/'>
                     <div className="color-bg position-absolute w-100 h-100 top-0"></div>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/laptops-category.jpg" alt="laptops category" />
-                      <div className="centered position-absolute text-light">Laptops</div>
+                      <div className="centered position-absolute font-weight-bold text-light">Laptops</div>
                     </div>
                   </Link>
                 </div>
@@ -89,7 +92,7 @@ class Home extends Component {
                   <Link onClick={() => this.props.getProductsFromApi('TV')} to='/products/'>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/tv-category.jpg" alt="tv category" />
-                      <div className="centered position-absolute text-dark">TV's</div>
+                      <div className="centered position-absolute font-weight-bold text-dark">TV's</div>
                     </div>
                   </Link>
                 </div>
@@ -97,7 +100,7 @@ class Home extends Component {
                   <Link onClick={() => this.props.getProductsFromApi('Mobile')} to='/products/'>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/mobile-category.jpg" alt="laptops category" />
-                      <div className="centered position-absolute text-dark">Smartphones</div>
+                      <div className="centered position-absolute font-weight-bold text-dark">Smartphones</div>
                     </div>
                   </Link>
                 </div>
@@ -105,7 +108,7 @@ class Home extends Component {
                   <Link onClick={() => this.props.getProductsFromApi('Tablet')} to='/products/'>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/tablet-category.jpeg" alt="laptops category" />
-                      <div className="centered position-absolute text-dark">Tablets</div>
+                      <div className="centered position-absolute font-weight-bold text-dark">Tablets</div>
                     </div>
                   </Link>
                 </div>
@@ -113,7 +116,7 @@ class Home extends Component {
                   <Link onClick={() => this.props.getProductsFromApi('Consoles')} to='/products/'>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/console-category.jpeg" alt="laptops category" />
-                      <div className="centered position-absolute text-dark">Consoles</div>
+                      <div className="centered position-absolute font-weight-bold text-dark">Consoles</div>
                     </div>
                   </Link>
                 </div>
@@ -121,7 +124,7 @@ class Home extends Component {
                   <Link onClick={() => this.props.getProductsFromApi('Audio')} to='/products/'>
                     <div className="card d-flex flex-column justify-content-center align-items-center">
                       <img className="category-img" src="./images/audio-category.jpeg" alt="laptops category" />
-                      <div className="centered position-absolute text-dark">Audio</div>
+                      <div className="centered position-absolute font-weight-bold text-dark">Audio</div>
                     </div>
                   </Link>
                 </div>
@@ -170,18 +173,21 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            {/* <div className="row mb-3 mt-3">
-              <div className="col-12">
-                <h1 className="font-weight-bold">Categories</h1>
-              </div>
-            </div> */}
+            <div className="row mb-3 mt-3">
+                <div className="col-12">
+                  {/* <hr className="mb-4 mt-4"></hr> */}
+                </div>
+                <div className="col-12 mt-5 mb-5">
+                  <h1 className="font-weight-bold text-center">Categories</h1>
+                </div>
+            </div>
             <div className="row">
               <div className="col-lg-6 col-sm-6 col-xs-12 p-2 position-relative">
                 <Link onClick={() => this.props.getProductsFromApi('Laptop')} to='/products/'>
                   <div className="color-bg position-absolute w-100 h-100 top-0"></div>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/laptops-category.jpg" alt="laptops category" />
-                    <div className="centered position-absolute text-light">Laptops</div>
+                    <div className="centered position-absolute font-weight-bold text-light">Laptops</div>
                   </div>
                 </Link>
               </div>
@@ -189,7 +195,7 @@ class Home extends Component {
                 <Link onClick={() => this.props.getProductsFromApi('TV')} to='/products/'>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/tv-category.jpg" alt="tv category" />
-                    <div className="centered position-absolute text-dark">TV's</div>
+                    <div className="centered position-absolute font-weight-bold text-dark">TV's</div>
                   </div>
                 </Link>
               </div>
@@ -197,7 +203,7 @@ class Home extends Component {
                 <Link onClick={() => this.props.getProductsFromApi('Mobile')} to='/products/'>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/mobile-category.jpg" alt="laptops category" />
-                    <div className="centered position-absolute text-dark">Smartphones</div>
+                    <div className="centered position-absolute font-weight-bold text-dark">Smartphones</div>
                   </div>
                 </Link>
               </div>
@@ -205,7 +211,7 @@ class Home extends Component {
                 <Link onClick={() => this.props.getProductsFromApi('Tablet')} to='/products/'>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/tablet-category.jpeg" alt="laptops category" />
-                    <div className="centered position-absolute text-dark">Tablets</div>
+                    <div className="centered position-absolute font-weight-bold text-dark">Tablets</div>
                   </div>
                 </Link>
               </div>
@@ -213,7 +219,7 @@ class Home extends Component {
                 <Link onClick={() => this.props.getProductsFromApi('Consoles')} to='/products/'>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/console-category.jpeg" alt="laptops category" />
-                    <div className="centered position-absolute text-dark">Consoles</div>
+                    <div className="centered position-absolute font-weight-bold text-dark">Consoles</div>
                   </div>
                 </Link>
               </div>
@@ -221,7 +227,7 @@ class Home extends Component {
                 <Link onClick={() => this.props.getProductsFromApi('Audio')} to='/products/'>
                   <div className="card d-flex flex-column justify-content-center align-items-center">
                     <img className="category-img" src="./images/audio-category.jpeg" alt="laptops category" />
-                    <div className="centered position-absolute text-light">Audio</div>
+                    <div className="centered position-absolute font-weight-bold text-light">Audio</div>
                   </div>
                 </Link>
               </div>

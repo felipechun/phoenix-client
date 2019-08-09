@@ -45,7 +45,7 @@ class Checkout extends Component {
                 <div className="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                   <div className="card">
                     <div className="card-header d-flex flex-row justify-content-between">
-                      <span>Your Products</span> <Link to="/showcase"><i className="fas fa-trash-alt"></i></Link>
+                      <span>Your Products</span> {/*<Link to="/showcase"><i className="fas fa-trash-alt"></i></Link>*/}
                     </div>
                     <div className="card-body border-top">
                     </div>

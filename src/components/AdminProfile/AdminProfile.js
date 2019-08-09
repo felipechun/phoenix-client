@@ -49,7 +49,7 @@ export class AdminProfile extends Component {
             <div className="col-3">
               <div className="card mb-3 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                 <div className="card-header text-uppercase">
-                  <span>Managment</span>
+                  <span>Management</span>
                 </div>
                 <a className="nav-link border-bottom active" id="v-pills-products-tab" data-toggle="pill" href="#v-pills-products" role="tab" aria-controls="v-pills-products" aria-selected="true">Products</a>
                 <a className="nav-link border-bottom" id="v-pills-companies-tab" data-toggle="pill" href="#v-pills-companies" role="tab" aria-controls="v-pills-companies" aria-selected="false">Companies</a>
